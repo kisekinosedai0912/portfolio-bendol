@@ -1,16 +1,35 @@
-# React + Vite
+# Personal Portfolio – Full-Stack Developer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to my Personal Portfolio repository! 🚀
+This project is a modern, React-based web application designed to showcase my skills, experience, and projects as a Full-Stack Developer. It serves as a central hub where visitors can explore my technical expertise, development journey, and the technologies I use to build scalable and user-focused applications.
 
-Currently, two official plugins are available:
+## ✨ Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The portfolio highlights my hands-on experience in both front-end and back-end development, presenting real-world projects, tech stacks, and tools I’ve worked with throughout my career. It is built with performance, responsiveness, and clean UI/UX in mind.
 
-## React Compiler
+## 🔑 Key Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### React-Based Interface
+A clean, modern, and fully responsive UI built with React for an intuitive and seamless user experience.
 
-## Expanding the ESLint configuration
+### Vite-Powered Development
+Uses Vite for lightning-fast builds, instant hot module replacement (HMR), and an optimized development workflow.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Full-Stack Skill Showcase
+Dedicated sections highlighting my experience with front-end and back-end technologies, frameworks, databases, and development tools.
+
+### Project Highlights
+Showcases selected projects with descriptions, features, and technologies used, reflecting real-world problem-solving and implementation.
+
+### Responsive & Accessible Design
+Optimized for desktop, tablet, and mobile devices to ensure accessibility across different screen sizes.
+
+## 🎯 Purpose
+
+This portfolio is built to:
+
+Present my professional profile and technical capabilities
+
+Demonstrate my approach to building clean, maintainable, and scalable applications
+
+Serve as a living project that evolves as I grow as a developer
