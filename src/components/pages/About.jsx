@@ -34,7 +34,7 @@ export default function About() {
                             </p>
 
                             <div className="flex gap-4">
-                                <Button name={'Portfolio'} />
+                                <Button name={'Portfolio'} link={'#projects'} />
                                 <Button name={'Download CV'} />
                             </div>
 

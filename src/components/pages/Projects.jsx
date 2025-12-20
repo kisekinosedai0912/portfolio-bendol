@@ -106,8 +106,8 @@ export default function Projects() {
             image: Chat,
             description:
                 `A simple live chat app built with native html, css, javascript in frontend with express and mongodb for backend.
-                 It uses simple authentication system with live socket integration to allow live chatting towards all users available.
-                 It is a personal project built to practice live socket integration and showcase my curiosity in developing systems/apps.
+                 It uses simple authentication system with web socket integration to allow live chatting towards all users available.
+                 It is a personal project built to practice web socket integration and showcase my curiosity in developing systems/apps.
                 `,
             tech: ["Express", "Node Js", "MongoDB", "Javascript", "HTML", "CSS"],
         },

@@ -36,15 +36,17 @@ export default function Home() {
                 </h2>
 
                 {/* Button */}
-                <button
+                <a
                     className="
                         mt-6 px-6 py-3 rounded-lg
                         bg-white/10 text-white font-jetbrains
                         hover:bg-white/20
                         transition-all duration-200
-                    ">
+                    "
+                    href='#about'
+                >
                     Explore me
-                </button>
+                </a>
             </div>
         </section>
     )
