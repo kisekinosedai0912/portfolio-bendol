@@ -1,7 +1,8 @@
-import { Wrench, GitBranch, Github, Figma } from 'lucide-react';
 import { VscVscode } from "react-icons/vsc";
 import { SiRender, SiVercel } from "react-icons/si";
 import { FaGitAlt, FaGithubSquare, FaFigma } from "react-icons/fa";
+import { FaScrewdriverWrench } from "react-icons/fa6";
+import { LiaMicrosoft } from "react-icons/lia";
 
 export default function TechTools() {
     const tools = [
@@ -11,7 +12,8 @@ export default function TechTools() {
         { name: "Figma", icon: FaFigma },
         { name: "Render", icon: SiRender },
         { name: "Vercel", icon: SiVercel },
-        { name: "XRM Toolbox", icon: Wrench },
+        { name: "Microsoft Services", icon: LiaMicrosoft },
+        { name: "XRM Toolbox", icon: FaScrewdriverWrench },
     ];
 
     return (

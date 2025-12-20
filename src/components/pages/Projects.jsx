@@ -19,6 +19,7 @@ export default function Projects() {
             id: 1,
             title: "GeoQuest - Gamified Tourism Platform for Escalante City",
             image: GeoQuest,
+            link: "https://geoquest-t9s2.onrender.com",
             description:
                 `A gamified tourism web app built from React, Express, Nodejs & MongoDB. This platform was built and designed
                  to provide tourists and the townsfolk of Escalante City a unified platform with details of their tourist sites
@@ -32,6 +33,7 @@ export default function Projects() {
             id: 2,
             title: "FretMuse - Open source website platform for beginner guitarists",
             image: FretMuse,
+            link: "https://fret-muse.vercel.app",
             description:
                 `A personal website intentionhally built to help fellow guitar enthusiasts to level up their guitar skills
                  with provided scale patterns, random note generation for fret memorization and interactive, responsive UI.
@@ -43,6 +45,7 @@ export default function Projects() {
             id: 3,
             title: "RAGPRES - Recycled and Greenery Points Reward Exchange System",
             image: RAGPRES,
+            link: null,
             description:
                 `A Barangay Community web system built with Laravel, jQuery and Admin LTE plugin to follow a fast development pace.
                  The system was made to give the Barangay Poblacion I of Sagay City, Negros Occidental a software & website that will
@@ -56,6 +59,7 @@ export default function Projects() {
             id: 4,
             title: "Web Based Scheduler System with Automated Conflict Resolution",
             image: Scheduler,
+            link: null,
             description:
                 `A web app built with Laravel, jQuery and Tailwind, to address the manual scheduling process of Sagay City Senior
                  High School during enrollment scheduling to teachers, student's subjects, and classrooms. It features 
@@ -69,6 +73,7 @@ export default function Projects() {
             id: 5,
             title: "Student Performance Metrics Management System",
             image: Metrics,
+            link: null,
             description:
                 `A web system designed and engineered for the needs of Sewahon National High School. It caters account creation automation, 
                  automated grade calculation and rankings. It was built as a collaboration project with a co-developer using native PHP and 
@@ -81,6 +86,7 @@ export default function Projects() {
             id: 6,
             title: "Rosejing Secure Inventory and Semi-POS Management System",
             image: POS,
+            link: null,
             description:
                 `A web system engineered using Laravel, jQuery and MySQL to ensure secure transactions, inventory & sales management
                  throughout every branch of Rosejing Computer Parts Shop. It features barcode generation of products, sales history,
@@ -93,6 +99,7 @@ export default function Projects() {
             id: 7,
             title: "Muscle Hub - Gym Membership & Sales Management System",
             image: Gym,
+            link: null,
             description:
                 `A mockup web system built for Muscle Hub gym in our area. It features gym membership management, sales dashboard,
                  authentication and product selling parts. The implementation of the system is still on hold due to the gym's status
@@ -104,6 +111,7 @@ export default function Projects() {
             id: 8,
             title: "Live Chat App",
             image: Chat,
+            link: null,
             description:
                 `A simple live chat app built with native html, css, javascript in frontend with express and mongodb for backend.
                  It uses simple authentication system with web socket integration to allow live chatting towards all users available.
@@ -115,6 +123,7 @@ export default function Projects() {
             id: 9,
             title: "Laundry Management System",
             image: Laundry,
+            link: 'https://laundry-management-system-32ft.onrender.com',
             description:
                 `A simple Laundry Management System built with React, Expres, Node Js and Tailwind. The data are only stored on JSON files
                  because the primary role of this system is just to demonstrate a solution in a project of a student in their specific
@@ -234,14 +243,19 @@ function ProjectModal({ project, onClose }) {
                     </div>
 
                     {/* Action Button */}
-                    <button
-                        className="inline-flex items-center gap-2 px-6 py-2 rounded-full
-                        bg-gradient-to-r from-[#6162ff] to-[#b352ff] text-white
-                        font-jetbrains text-sm hover:opacity-90 transition"
-                    >
-                        <ExternalLink size={16} />
-                        Live Demo
-                    </button>
+                    {project.link && (
+                        <a
+                            href={project.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 px-6 py-2 rounded-full
+                            bg-gradient-to-r from-[#6162ff] to-[#b352ff] text-white
+                            font-jetbrains text-sm hover:opacity-90 transition"
+                        >
+                            <ExternalLink size={16} />
+                            Live Demo
+                        </a>
+                    )}
                 </div>
             </motion.div>
         </motion.div>

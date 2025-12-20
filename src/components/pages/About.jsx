@@ -35,7 +35,6 @@ export default function About() {
 
                             <div className="flex gap-4">
                                 <Button name={'Portfolio'} link={'#projects'} />
-                                <Button name={'Download CV'} />
                             </div>
 
                             <div className="flex gap-12 mt-4">

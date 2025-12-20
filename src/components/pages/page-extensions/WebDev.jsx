@@ -1,7 +1,7 @@
 import { SiMongodb, SiMysql, SiRender, SiVercel, SiJavascript, SiJquery, SiReactquery, SiVite, SiTailwindcss } from "react-icons/si";
 import { RiFirebaseLine } from "react-icons/ri";
 import { VscAzureDevops } from "react-icons/vsc";
-import { FaReact, FaPhp, FaNodeJs, FaLaravel } from "react-icons/fa";
+import { FaReact, FaPhp, FaNodeJs, FaLaravel, FaCss3Alt } from "react-icons/fa";
 
 export default function WebDev() {
     const webDevStack = [
@@ -18,6 +18,7 @@ export default function WebDev() {
         { name: "jQuery", icon: SiJquery },
         { name: "NodeJs", icon: FaNodeJs },
         { name: "Tailwind", icon: SiTailwindcss },
+        { name: "CSS", icon: FaCss3Alt },
         { name: "Vite", icon: SiVite },
         { name: "Tanstack Query", icon: SiReactquery },
     ];
