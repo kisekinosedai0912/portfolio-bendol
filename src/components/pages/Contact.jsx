@@ -58,34 +58,36 @@ export default function Contact() {
                     const Wrapper = contact.href ? "a" : "div";
         
                     return (
-                    <Wrapper
-                        key={index}
-                        href={contact.href || undefined}
-                        target={contact.href?.startsWith("http") ? "_blank" : undefined}
-                        rel="noopener noreferrer"
-                        className="group flex items-center gap-4 p-6 rounded-xl
-                        bg-black/40 border border-blue-600/20
-                        hover:border-purple-500/50 hover:shadow-lg hover:shadow-purple-500/20
-                        transition-all duration-300"
-                    >
-                        {/* Icon */}
-                        <div
-                            className="flex items-center justify-center w-12 h-12 rounded-lg
-                            bg-gradient-to-br from-[#6162ff] to-[#b352ff]"
+                        <Wrapper
+                            key={index}
+                            href={contact.href || undefined}
+                            target={contact.href?.startsWith("http") ? "_blank" : undefined}
+                            rel="noopener noreferrer"
+                            className="group flex items-center gap-4 p-6 rounded-xl
+                            bg-black/40 border border-blue-600/20
+                            hover:border-purple-500/50 hover:shadow-lg hover:shadow-purple-500/20
+                            transition-all duration-300"
                         >
-                            <Icon className="w-6 h-6 text-white" />
-                        </div>
-        
-                        {/* Text */}
-                        <div>
-                            <p className="font-jetbrains text-sm text-gray-400">
-                                {contact.label}
-                            </p>
-                            <p className="font-jetbrains text-white text-sm md:text-base">
-                                {contact.value}
-                            </p>
-                        </div>
-                    </Wrapper>
+                            {/* Icon */}
+                            <div
+                                className="shrink-0 flex items-center justify-center 
+                                w-12 h-12 rounded-lg
+                                bg-gradient-to-br from-[#6162ff] to-[#b352ff]"
+                            >
+                                <Icon className="w-6 h-6 text-white" />
+                            </div>
+
+            
+                            {/* Text */}
+                            <div>
+                                <p className="font-jetbrains text-sm text-gray-400">
+                                    {contact.label}
+                                </p>
+                                <p className="font-jetbrains text-white text-sm md:text-base">
+                                    {contact.value}
+                                </p>
+                            </div>
+                        </Wrapper>
                     );
                 })}
             </div>
