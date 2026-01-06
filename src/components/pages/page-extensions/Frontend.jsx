@@ -1,5 +1,5 @@
 import { FaCss3Alt, FaHtml5, FaBootstrap, FaReact } from "react-icons/fa";
-import { SiTailwindcss, SiJavascript, SiJquery, SiAxios, SiShadcnui, SiMui, SiVite, SiReactquery } from "react-icons/si";
+import { SiTailwindcss, SiJavascript, SiJquery, SiAxios, SiShadcnui, SiMui, SiVite, SiReactquery, SiRedux  } from "react-icons/si";
 
 export default function Frontend() {
     const frontendStack = [
@@ -15,6 +15,7 @@ export default function Frontend() {
         { name: "MUI", icon: SiMui },
         { name: "Vite", icon: SiVite },
         { name: "TanStack Query", icon: SiReactquery },
+        { name: "Zustand", icon: SiRedux },
     ];
 
     return (

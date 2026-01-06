@@ -43,6 +43,31 @@ export default function Projects() {
         },
         {
             id: 3,
+            title: "Live Chat App",
+            image: Chat,
+            link: null,
+            description:
+                `A simple live chat app built with native html, css, javascript in frontend with express and mongodb for backend.
+                 It uses simple authentication system with web socket integration to allow live chatting towards all users available.
+                 It is a personal project built to practice web socket integration and showcase my curiosity in developing systems/apps.
+                `,
+            tech: ["Express", "Node Js", "MongoDB", "Javascript", "HTML", "CSS"],
+        },
+        {
+            id: 4,
+            title: "Laundry Management System",
+            image: Laundry,
+            link: 'https://laundry-management-system-32ft.onrender.com',
+            description:
+                `A simple Laundry Management System built with React, Expres, Node Js and Tailwind. The data are only stored on JSON files
+                 because the primary role of this system is just to demonstrate a solution in a project of a student in their specific
+                 subject. It solves a problem found in the area specifically in laundry shops. The simple system was only built for a 
+                 project and not implemented yet.
+                `,
+            tech: [ "React" ,"Express", "Node Js", "JSON", "Javascript", "Tailwind"],
+        },
+        {
+            id: 5,
             title: "RAGPRES - Recycled and Greenery Points Reward Exchange System",
             image: RAGPRES,
             link: null,
@@ -56,7 +81,7 @@ export default function Projects() {
             tech: ["Laravel", "Javascript", "jQuery", "MySQL", "HTML", "Tailwind"],
         },
         {
-            id: 4,
+            id: 6,
             title: "Web Based Scheduler System with Automated Conflict Resolution",
             image: Scheduler,
             link: null,
@@ -70,7 +95,7 @@ export default function Projects() {
             tech: ["Laravel", "Javascript", "jQuery", "MySQL", "HTML", "Tailwind"],
         },
         {
-            id: 5,
+            id: 7,
             title: "Student Performance Metrics Management System",
             image: Metrics,
             link: null,
@@ -83,7 +108,7 @@ export default function Projects() {
             tech: ["PHP", "Javascript", "jQuery", "MySQL", "HTML", "Tailwind"],
         },
         {
-            id: 6,
+            id: 8,
             title: "Rosejing Secure Inventory and Semi-POS Management System",
             image: POS,
             link: null,
@@ -96,7 +121,7 @@ export default function Projects() {
             tech: ["Laravel", "Javascript", "jQuery", "MySQL", "HTML", "Tailwind"],
         },
         {
-            id: 7,
+            id: 9,
             title: "Muscle Hub - Gym Membership & Sales Management System",
             image: Gym,
             link: null,
@@ -106,31 +131,6 @@ export default function Projects() {
                  of not yet fully paid and will be implemented as soon as the owner contacts to proceed the development.
                 `,
             tech: ["PHP", "jQuery", "MySQL", "HTML", "Tailwind", "CSS"],
-        },
-        {
-            id: 8,
-            title: "Live Chat App",
-            image: Chat,
-            link: null,
-            description:
-                `A simple live chat app built with native html, css, javascript in frontend with express and mongodb for backend.
-                 It uses simple authentication system with web socket integration to allow live chatting towards all users available.
-                 It is a personal project built to practice web socket integration and showcase my curiosity in developing systems/apps.
-                `,
-            tech: ["Express", "Node Js", "MongoDB", "Javascript", "HTML", "CSS"],
-        },
-        {
-            id: 9,
-            title: "Laundry Management System",
-            image: Laundry,
-            link: 'https://laundry-management-system-32ft.onrender.com',
-            description:
-                `A simple Laundry Management System built with React, Expres, Node Js and Tailwind. The data are only stored on JSON files
-                 because the primary role of this system is just to demonstrate a solution in a project of a student in their specific
-                 subject. It solves a problem found in the area specifically in laundry shops. The simple system was only built for a 
-                 project and not implemented yet.
-                `,
-            tech: [ "React" ,"Express", "Node Js", "JSON", "Javascript", "Tailwind"],
         },
     ];
 
