@@ -41,10 +41,13 @@ export default function About() {
                         {/* Content Container */}
                         <div className="flex flex-col items-center md:items-start gap-6 max-w-xl">
                             <p className="font-sans text-[15px] md:text-base text-white/80 text-center md:text-left leading-relaxed text-balance">
-                                I am a professional with a degree in information technology,
-                                with more than 1 year of experience as freelance and software developer.
-                                I started Full-stack Web Development and gained my first Junior CRM Developer
-                                role at Technosoft Automotive last year.
+                                I am a professional developer with a degree in information technology,
+                                with more than 2 years of experience as freelance and software developer.
+                                The tech stack that I mainly use includes most of Javascript ecosystem such as React,
+                                Next.js, Node.js, and MongoDB. I also have experience with PHP and Laravel framework.
+                                Currently, I am focusing on automating workflows and systems to improve 
+                                productivity and efficiency of the products and handling microservices architecture.
+                                Implementing industry standards and best practices while keeping up on the current trends and technologies.
                             </p>
 
                             <div className="flex gap-4">
@@ -53,12 +56,12 @@ export default function About() {
 
                             <div className="flex gap-12 mt-4">
                                 <DataContainer
-                                    count="1+"
+                                    count="2"
                                     unit="years"
                                     label="Experience"
                                 />
                                 <DataContainer
-                                    count="9"
+                                    count="13"
                                     unit="Projects"
                                     label="Projects"
                                 />

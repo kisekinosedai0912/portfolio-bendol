@@ -1,5 +1,18 @@
 import { FaCss3Alt, FaHtml5, FaBootstrap, FaReact } from "react-icons/fa";
-import { SiTailwindcss, SiJavascript, SiJquery, SiAxios, SiShadcnui, SiMui, SiVite, SiReactquery, SiRedux  } from "react-icons/si";
+import { LiaTheaterMasksSolid } from "react-icons/lia";
+import { 
+    SiTailwindcss, 
+    SiJavascript, 
+    SiJquery, 
+    SiAxios, 
+    SiShadcnui, 
+    SiMui, 
+    SiVite, 
+    SiReactquery, 
+    SiRedux,
+    SiNextdotjs,
+    SiClerk
+} from "react-icons/si";
 
 export default function Frontend() {
     const frontendStack = [
@@ -9,6 +22,9 @@ export default function Frontend() {
         { name: "Bootstrap", icon: FaBootstrap },
         { name: "Javascript", icon: SiJavascript },
         { name: "React", icon: FaReact },
+        { name: "Next.js", icon: SiNextdotjs },
+        { name: "Clerk", icon: SiClerk },
+        { name: "Playwright", icon: LiaTheaterMasksSolid },
         { name: "jQuery", icon: SiJquery },
         { name: "Axios", icon: SiAxios },
         { name: "Shadcn UI", icon: SiShadcnui },
@@ -30,36 +46,38 @@ export default function Frontend() {
                 </defs>
             </svg>
 
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5">
-                {frontendStack.map((tech, index) => {
-                    const IconComponent = tech.icon;
-                    return (
-                        <div
-                            key={index}
-                            className="
-                                group
-                                flex flex-col items-center justify-center gap-3
-                                p-5
-                                bg-white/[0.03]
-                                border border-white/10
-                                rounded-xl
-                                transition-all duration-300
-                                hover:-translate-y-1
-                                hover:border-[#8b5cff]/60
-                                hover:bg-white/[0.05]
-                                hover:shadow-lg hover:shadow-[#6162ff]/10"
-                        >
-                            <IconComponent
-                                className="w-9 h-9 transition-transform duration-300 group-hover:scale-110"
-                                style={{ fill: "url(#iconGradient)" }}
-                            />
+            <div className="max-h-[540px] overflow-y-auto pr-2 custom-scrollbar">
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5">
+                    {frontendStack.map((tech, index) => {
+                        const IconComponent = tech.icon;
+                        return (
+                            <div
+                                key={index}
+                                className="
+                                    group
+                                    flex flex-col items-center justify-center gap-3
+                                    p-5
+                                    bg-white/[0.03]
+                                    border border-white/10
+                                    rounded-xl
+                                    transition-all duration-300
+                                    hover:-translate-y-1
+                                    hover:border-[#8b5cff]/60
+                                    hover:bg-white/[0.05]
+                                    hover:shadow-lg hover:shadow-[#6162ff]/10"
+                            >
+                                <IconComponent
+                                    className="w-9 h-9 transition-transform duration-300 group-hover:scale-110"
+                                    style={{ fill: "url(#iconGradient)" }}
+                                />
 
-                            <p className="font-jetbrains text-[12px] tracking-wider text-white/85 text-center">
-                                {tech.name}
-                            </p>
-                        </div>
-                    );
-                })}
+                                <p className="font-jetbrains text-[12px] tracking-wider text-white/85 text-center">
+                                    {tech.name}
+                                </p>
+                            </div>
+                        );
+                    })}
+                </div>
             </div>
         </>
     );

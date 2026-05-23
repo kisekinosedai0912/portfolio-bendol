@@ -1,17 +1,21 @@
 import { motion } from "framer-motion";
 import { VscVscode } from "react-icons/vsc";
-import { SiRender, SiVercel } from "react-icons/si";
-import { FaGitAlt, FaGithubSquare, FaFigma } from "react-icons/fa";
-import { FaScrewdriverWrench } from "react-icons/fa6";
+import { SiRender, SiVercel, SiRailway, SiGoogleanalytics } from "react-icons/si";
+import { FaGitAlt, FaGithubSquare, FaFigma, FaDocker } from "react-icons/fa";
+import { FaScrewdriverWrench, FaSquareGithub } from "react-icons/fa6";
 import { LiaMicrosoft } from "react-icons/lia";
 
 export default function TechTools() {
     const tools = [
         { name: "Visual Studio Code", icon: VscVscode},
+        { name: "Google Analytics", icon: SiGoogleanalytics },
         { name: "Git", icon: FaGitAlt },
         { name: "GitHub", icon: FaGithubSquare },
+        { name: "GitHub Desktop", icon: FaSquareGithub },
+        { name: "Docker", icon: FaDocker },
         { name: "Figma", icon: FaFigma },
         { name: "Render", icon: SiRender },
+        { name: "Railway", icon: SiRailway },
         { name: "Vercel", icon: SiVercel },
         { name: "Microsoft Services", icon: LiaMicrosoft },
         { name: "XRM Toolbox", icon: FaScrewdriverWrench },
@@ -47,36 +51,38 @@ export default function TechTools() {
                     </div>
 
                     {/* Tools Grid Section */}
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5">
-                        {tools.map((tool, index) => {
-                            const IconComponent = tool.icon;
-                            return (
-                                <div
-                                    key={index}
-                                    className="
-                                        group
-                                        flex flex-col items-center justify-center gap-3
-                                        p-5
-                                        bg-white/[0.03]
-                                        border border-white/10
-                                        rounded-xl
-                                        transition-all duration-300
-                                        hover:-translate-y-1
-                                        hover:border-[#8b5cff]/60
-                                        hover:bg-white/[0.05]
-                                        hover:shadow-lg hover:shadow-[#6162ff]/10"
-                                >
-                                    <IconComponent
-                                        className="w-9 h-9 transition-transform duration-300 group-hover:scale-110"
-                                        style={{ fill: "url(#iconGradient)" }}
-                                    />
+                    <div className="max-h-[540px] overflow-y-auto pr-2 custom-scrollbar">
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5">
+                            {tools.map((tool, index) => {
+                                const IconComponent = tool.icon;
+                                return (
+                                    <div
+                                        key={index}
+                                        className="
+                                            group
+                                            flex flex-col items-center justify-center gap-3
+                                            p-5
+                                            bg-white/[0.03]
+                                            border border-white/10
+                                            rounded-xl
+                                            transition-all duration-300
+                                            hover:-translate-y-1
+                                            hover:border-[#8b5cff]/60
+                                            hover:bg-white/[0.05]
+                                            hover:shadow-lg hover:shadow-[#6162ff]/10"
+                                    >
+                                        <IconComponent
+                                            className="w-9 h-9 transition-transform duration-300 group-hover:scale-110"
+                                            style={{ fill: "url(#iconGradient)" }}
+                                        />
 
-                                    <p className="font-jetbrains text-[12px] tracking-wider text-white/85 text-center">
-                                        {tool.name}
-                                    </p>
-                                </div>
-                            );
-                        })}
+                                        <p className="font-jetbrains text-[12px] tracking-wider text-white/85 text-center">
+                                            {tool.name}
+                                        </p>
+                                    </div>
+                                );
+                            })}
+                        </div>
                     </div>
                 </motion.div>
             </section>

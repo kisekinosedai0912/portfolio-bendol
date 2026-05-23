@@ -90,3 +90,26 @@ html {
   right: -160px;
   background: radial-gradient(circle, rgba(179, 82, 255, 0.35) 0%, transparent 70%);
 }
+
+/* thin themed scrollbar used inside scrollable card grids */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(139, 92, 255, 0.45) transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(97, 98, 255, 0.5), rgba(179, 82, 255, 0.5));
+  border-radius: 9999px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, rgba(97, 98, 255, 0.85), rgba(179, 82, 255, 0.85));
+}
