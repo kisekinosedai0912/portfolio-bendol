@@ -11,7 +11,8 @@ import {
     SiReactquery, 
     SiRedux,
     SiNextdotjs,
-    SiClerk
+    SiClerk,
+    SiTypescript
 } from "react-icons/si";
 
 export default function Frontend() {
@@ -21,6 +22,7 @@ export default function Frontend() {
         { name: "Tailwind", icon: SiTailwindcss },
         { name: "Bootstrap", icon: FaBootstrap },
         { name: "Javascript", icon: SiJavascript },
+        { name: "Typescript", icon: SiTypescript },
         { name: "React", icon: FaReact },
         { name: "Next.js", icon: SiNextdotjs },
         { name: "Clerk", icon: SiClerk },

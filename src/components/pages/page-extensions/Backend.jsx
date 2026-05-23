@@ -1,11 +1,12 @@
 import { FaPhp, FaNodeJs, FaCode, FaLaravel } from "react-icons/fa";
-import { SiExpress, SiNextdotjs, SiFastify, SiClerk , SiNgrok, SiDrizzle } from "react-icons/si";
+import { SiExpress, SiNextdotjs, SiFastify, SiClerk , SiNgrok, SiDrizzle, SiTypescript } from "react-icons/si";
 import { BsBing } from "react-icons/bs";
 
 export default function Backend() {
     const backendStack = [
         { name: "NodeJs", icon: FaNodeJs },
         { name: "Next.js", icon: SiNextdotjs },
+        { name: "Typescript", icon: SiTypescript },
         { name: "Express Js", icon: SiExpress },
         { name: "Fastify", icon: SiFastify },
         { name: "Drizzle", icon: SiDrizzle },

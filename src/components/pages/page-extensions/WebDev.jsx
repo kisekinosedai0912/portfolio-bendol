@@ -16,7 +16,8 @@ import { SiMongodb,
     SiNgrok,
     SiFastify,
     SiDrizzle,
-    SiExpress
+    SiExpress,
+    SiTypescript
 } from "react-icons/si";
 import { BsBing } from "react-icons/bs";
 import { RiFirebaseLine } from "react-icons/ri";
@@ -52,7 +53,7 @@ export default function WebDev() {
         { name: "Tanstack Query", icon: SiReactquery },
         { name: "Zustand", icon: SiRedux },
         { name: "Browserless", icon: BsBing },
-        { name: "React Dev Tools", icon: FaReact },
+        { name: "Typescript", icon: SiTypescript },
     ];
 
     return (
