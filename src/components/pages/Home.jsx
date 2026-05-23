@@ -1,4 +1,6 @@
-import { useTypewriter } from '../../hooks/typeWriterHook.js';
+import { motion, AnimatePresence } from 'framer-motion'
+import { ArrowRight } from 'lucide-react'
+import { useTypewriter } from '../../hooks/typeWriterHook.js'
 
 export default function Home() {
     const phrases = [
@@ -8,46 +10,75 @@ export default function Home() {
         "a System Designer",
         "a Full-stack Developer"
     ]
-    const typedText = useTypewriter(phrases)
+    const { phrase, index } = useTypewriter(phrases)
 
     return (
         <section id="home" className="min-h-screen flex items-center justify-center text-center px-4 z-100">
-            <div className="flex flex-col items-center gap-6">
-                
-                {/* Line 1 */}
-                <h1 className="font-jetbrains text-4xl md:text-6xl text-white">
-                    Hi! I am{" "}
-                    <span className="gradient-text">
-                        {typedText}
+            <motion.div
+                className="flex flex-col items-center gap-6 max-w-4xl"
+                initial={{ opacity: 0, y: 24 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, ease: 'easeOut' }}
+            >
+                {/* Availability pill */}
+                <div className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm">
+                    <span className="relative flex h-2 w-2">
+                        <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 animate-ping" />
+                        <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
                     </span>
-                    <span className="blinking-cursor">|</span>
+                    <span className="font-jetbrains text-[11px] uppercase tracking-[0.2em] text-white/70">
+                        Available for work
+                    </span>
+                </div>
+
+                {/* Line 1 */}
+                <h1 className="font-display text-5xl md:text-7xl font-semibold tracking-tight leading-[1.05] text-white">
+                    Hi! I am{" "}
+                    <span className="relative inline-block align-baseline overflow-hidden">
+                        <AnimatePresence mode="wait">
+                            <motion.span
+                                key={index}
+                                className="gradient-text inline-block"
+                                initial={{ opacity: 0, y: 12 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: -12 }}
+                                transition={{ duration: 0.45, ease: 'easeOut' }}
+                            >
+                                {phrase}
+                            </motion.span>
+                        </AnimatePresence>
+                    </span>
                 </h1>
 
                 {/* Line 2 */}
-                <h2 className="font-jetbrains text-2xl md:text-4xl text-white">
+                <h2 className="font-display text-2xl md:text-4xl font-medium tracking-tight text-white/90">
                     Engineering your ideas through systems
                 </h2>
 
                 {/* Line 3 */}
-                <h2 className="font-jetbrains text-2xl md:text-4xl">
+                <h2 className="font-display text-2xl md:text-4xl font-medium tracking-tight">
                     <span className="gradient-text">always building</span>{" "}
-                    <span className="text-white">&</span>{" "}
+                    <span className="text-white/90">&</span>{" "}
                     <span className="gradient-text">shipping!</span>
                 </h2>
 
-                {/* Button */}
+                {/* CTA */}
                 <a
+                    href="#about"
                     className="
-                        mt-6 px-6 py-3 rounded-lg
-                        bg-white/10 text-white font-jetbrains
-                        hover:bg-white/20
+                        group mt-6 inline-flex items-center gap-2 px-7 py-3 rounded-lg
+                        bg-gradient-to-r from-[#6162ff] to-[#b352ff]
+                        text-white font-jetbrains text-sm tracking-wide
+                        shadow-lg shadow-[#6162ff]/25
+                        hover:-translate-y-0.5 hover:shadow-[#b352ff]/40
                         transition-all duration-200
+                        focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8b5cff]/60
                     "
-                    href='#about'
                 >
                     Explore me
+                    <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" />
                 </a>
-            </div>
+            </motion.div>
         </section>
     )
 }

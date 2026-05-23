@@ -13,13 +13,13 @@ html {
 }
 
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
+  color-scheme: dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: #050515;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -27,32 +27,66 @@ html {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* retro bg style */
+::selection {
+  background: rgba(139, 92, 255, 0.35);
+  color: #ffffff;
+}
+
+*:focus-visible {
+  outline: 2px solid rgba(139, 92, 255, 0.7);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+/* retro grid bg, softer lines + radial fade so it dissolves into the page */
 .grid-bg {
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(99,102,241,0.35) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(99,102,241,0.35) 1px, transparent 1px);
+    linear-gradient(rgba(99, 102, 241, 0.18) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(99, 102, 241, 0.18) 1px, transparent 1px);
   background-size: 60px 60px;
   transform-origin: center top;
   transform: perspective(800px) rotateX(65deg);
+  -webkit-mask-image: radial-gradient(ellipse at 50% 0%, #000 35%, transparent 80%);
+          mask-image: radial-gradient(ellipse at 50% 0%, #000 35%, transparent 80%);
 }
 
-/* typwriter & text gradient styles */
+/* gradient text with a richer mid-stop for smoother color transition */
 .gradient-text {
-  background: linear-gradient(90deg, #6162ff, #b352ff);
+  background: linear-gradient(90deg, #6162ff 0%, #8b5cff 50%, #b352ff 100%);
   -webkit-background-clip: text;
+          background-clip: text;
   -webkit-text-fill-color: transparent;
+  color: transparent;
 }
 
-.blinking-cursor {
-  margin-left: 4px;
-  animation: blink 1s infinite;
-  color: white;
+/* ambient decorative glows used inside GridBackground for depth */
+.glow-blob-a,
+.glow-blob-b {
+  position: absolute;
+  pointer-events: none;
+  border-radius: 9999px;
+  filter: blur(90px);
+  opacity: 0.55;
 }
 
-@keyframes blink {
-  0%, 50%, 100% { opacity: 1; }
-  25%, 75% { opacity: 0; }
+.glow-blob-a {
+  width: 520px;
+  height: 520px;
+  top: -120px;
+  left: -120px;
+  background: radial-gradient(circle, rgba(97, 98, 255, 0.45) 0%, transparent 70%);
+}
+
+.glow-blob-b {
+  width: 600px;
+  height: 600px;
+  bottom: -160px;
+  right: -160px;
+  background: radial-gradient(circle, rgba(179, 82, 255, 0.35) 0%, transparent 70%);
 }

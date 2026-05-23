@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { VscVscode } from "react-icons/vsc";
 import { SiRender, SiVercel } from "react-icons/si";
 import { FaGitAlt, FaGithubSquare, FaFigma } from "react-icons/fa";
@@ -28,46 +29,56 @@ export default function TechTools() {
                 </defs>
             </svg>
 
-            <section id="tech-tools" className="flex justify-center px-4 md:px-8 py-12 bg-gradient-to-b from-[#060023] to-[#010003]">
-                <div className="max-w-6xl w-full">
-                    <div className="text-center mb-16">
-                        <h2 className="font-jetbrains text-3xl md:text-4xl text-white mb-4">
+            <section id="tech-tools" className="flex justify-center px-4 md:px-8 py-16 bg-gradient-to-b from-[#060023] to-[#010003]">
+                <motion.div
+                    className="max-w-6xl w-full"
+                    initial={{ opacity: 0, y: 24 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-80px" }}
+                    transition={{ duration: 0.6, ease: 'easeOut' }}
+                >
+                    <div className="text-center mb-12">
+                        <p className="font-jetbrains text-[11px] uppercase tracking-[0.3em] text-white/50 mb-3">
+                            What I use daily
+                        </p>
+                        <h2 className="font-display text-3xl md:text-4xl font-semibold tracking-tight">
                             <span className="gradient-text">Tools</span>
                         </h2>
                     </div>
 
                     {/* Tools Grid Section */}
-                    <div>
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-                            {tools.map((tool, index) => {
-                                const IconComponent = tool.icon;
-                                return (
-                                    <div
-                                        key={index}
-                                        className="
-                                            flex flex-col items-center justify-center
-                                            p-4
-                                            bg-black/40
-                                            border border-blue-600/30
-                                            rounded-lg
-                                            transition-all duration-200
-                                            hover:border-blue-600
-                                            hover:shadow-lg hover:shadow-blue-600/20"
-                                    >
-                                        <IconComponent
-                                            className="w-8 h-8 mb-2"
-                                            style={{ fill: "url(#iconGradient)" }}
-                                        />
-            
-                                        <p className="font-jetbrains text-white text-center text-xs md:text-sm">
-                                            {tool.name}
-                                        </p>
-                                    </div>
-                                );
-                            })}
-                        </div>
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5">
+                        {tools.map((tool, index) => {
+                            const IconComponent = tool.icon;
+                            return (
+                                <div
+                                    key={index}
+                                    className="
+                                        group
+                                        flex flex-col items-center justify-center gap-3
+                                        p-5
+                                        bg-white/[0.03]
+                                        border border-white/10
+                                        rounded-xl
+                                        transition-all duration-300
+                                        hover:-translate-y-1
+                                        hover:border-[#8b5cff]/60
+                                        hover:bg-white/[0.05]
+                                        hover:shadow-lg hover:shadow-[#6162ff]/10"
+                                >
+                                    <IconComponent
+                                        className="w-9 h-9 transition-transform duration-300 group-hover:scale-110"
+                                        style={{ fill: "url(#iconGradient)" }}
+                                    />
+
+                                    <p className="font-jetbrains text-[12px] tracking-wider text-white/85 text-center">
+                                        {tool.name}
+                                    </p>
+                                </div>
+                            );
+                        })}
                     </div>
-                </div>
+                </motion.div>
             </section>
         </>
     );

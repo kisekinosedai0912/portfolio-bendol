@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import TechTools from './page-extensions/TechTools';
 import TechStack from './page-extensions/TechStack';
 import Profile from '../../assets/img/profile.png';
@@ -6,27 +7,40 @@ import Button from '../Button';
 export default function About() {
     return (
         <>
-            <section id="about" className="min-h-screen flex items-center justify-center px-4 md:px-8 bg-gradient-to-b from-[#010003] to-[#060023]">
-                <div className="max-w-6xl w-full">
-                    <h1 className="text-center text-4xl md:text-5xl font-jetbrains text-white mb-12">
-                        <span className="gradient-text">Professional Summary</span>
-                    </h1>
+            <section id="about" className="min-h-screen flex items-center justify-center px-4 md:px-8 py-20 bg-gradient-to-b from-[#010003] to-[#060023]">
+                <motion.div
+                    className="max-w-6xl w-full"
+                    initial={{ opacity: 0, y: 24 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-80px" }}
+                    transition={{ duration: 0.6, ease: 'easeOut' }}
+                >
+                    <div className="text-center mb-14">
+                        <p className="font-jetbrains text-[11px] uppercase tracking-[0.3em] text-white/50 mb-3">
+                            About me
+                        </p>
+                        <h1 className="font-display text-4xl md:text-5xl font-semibold tracking-tight">
+                            <span className="gradient-text">Professional Summary</span>
+                        </h1>
+                    </div>
 
                     <div className="flex flex-col md:flex-row items-center justify-center gap-12 md:gap-16">
                         {/* Image Container */}
                         <div className="flex-shrink-0">
-                            <div className="w-64 h-80 rounded-lg border-2 border-blue-600 overflow-hidden bg-black/50">
-                                <img 
-                                    src={Profile} 
-                                    alt="Professional portrait" 
-                                    className="w-full h-full object-cover opacity-80"
-                                />
+                            <div className="p-[2px] rounded-2xl bg-gradient-to-br from-[#6162ff] via-[#8b5cff] to-[#b352ff] shadow-2xl shadow-[#6162ff]/20">
+                                <div className="w-64 h-80 rounded-2xl overflow-hidden bg-black/50">
+                                    <img
+                                        src={Profile}
+                                        alt="Professional portrait of Jasper Bendol"
+                                        className="w-full h-full object-cover opacity-90 hover:scale-[1.03] transition-transform duration-500"
+                                    />
+                                </div>
                             </div>
                         </div>
 
                         {/* Content Container */}
-                        <div className="flex flex-col items-center md:items-center gap-6 max-w-xl">
-                            <p className="font-jetbrains text-sm md:text-base text-white/90 text-center leading-relaxed">
+                        <div className="flex flex-col items-center md:items-start gap-6 max-w-xl">
+                            <p className="font-sans text-[15px] md:text-base text-white/80 text-center md:text-left leading-relaxed text-balance">
                                 I am a professional with a degree in information technology,
                                 with more than 1 year of experience as freelance and software developer.
                                 I started Full-stack Web Development and gained my first Junior CRM Developer
@@ -51,7 +65,7 @@ export default function About() {
                             </div>
                         </div>
                     </div>
-                </div>
+                </motion.div>
             </section>
             <TechTools />
             <TechStack />
@@ -61,11 +75,12 @@ export default function About() {
 
 function DataContainer({ count, unit, label }) {
     return (
-        <div className="flex flex-col items-center gap-2">
-            <p className="font-jetbrains text-lg text-white">
-                {count} {unit}
+        <div className="flex flex-col items-center md:items-start gap-1.5">
+            <p className="font-display text-3xl md:text-4xl font-semibold leading-none">
+                <span className="gradient-text">{count}</span>
+                <span className="font-jetbrains text-sm text-white/60 ml-2">{unit}</span>
             </p>
-            <span className="gradient-text font-jetbrains text-sm">
+            <span className="font-jetbrains text-[11px] uppercase tracking-[0.2em] text-white/50">
                 {label}
             </span>
         </div>

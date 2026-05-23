@@ -5,19 +5,20 @@ export default function Header() {
     const [open, setOpen] = useState(false)
 
     return (
-        <header className="fixed top-0 z-50 w-full h-16 flex items-center justify-between px-6 md:px-12 
-            border-b border-indigo-400/30 backdrop-blur-md bg-black/30">
+        <header className="fixed top-0 z-50 w-full h-16 flex items-center justify-between px-6 md:px-12
+            border-b border-white/5 backdrop-blur-xl bg-[#050515]/60">
 
             {/* Logo */}
             <a
                 href="#home"
-                className="font-jetbrains text-[#7252FF] font-bold tracking-wide text-lg"
+                className="group flex items-center gap-2 font-jetbrains text-white text-[15px] font-semibold tracking-[0.18em]"
             >
-                Jasper-Portfolio
+                <span className="inline-block w-2 h-2 rounded-full bg-gradient-to-br from-[#6162ff] to-[#b352ff] shadow-[0_0_10px_rgba(139,92,255,0.7)]" />
+                <span>JASPER<span className="text-white/40">/</span>PORTFOLIO</span>
             </a>
 
             {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center gap-3">
+            <nav className="hidden md:flex items-center gap-1">
                 <NavItem icon={House} label="Home" link="#home" />
                 <NavItem icon={User} label="About" link="#about" />
                 <NavItem icon={Network} label="Projects" link="#projects" />
@@ -27,20 +28,22 @@ export default function Header() {
             {/* Mobile Menu Button */}
             <button
                 onClick={() => setOpen(!open)}
-                className="md:hidden text-[#7252FF] hover:text-white transition"
+                className="md:hidden p-2 rounded-md text-white/80 hover:text-white hover:bg-white/5 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8b5cff]/60"
                 aria-label="Toggle menu"
+                aria-expanded={open}
             >
-                {open ? <X size={26} /> : <Menu size={26} />}
+                {open ? <X size={24} /> : <Menu size={24} />}
             </button>
 
             {/* Mobile Dropdown */}
             {open && (
                 <div
-                    className="absolute top-16 left-0 w-full 
-                    bg-gradient-to-b from-[#060023] to-[#010003]
-                    border-b border-indigo-400/30 md:hidden"
+                    className="absolute top-16 left-0 w-full
+                    bg-[#050515]/95 backdrop-blur-xl
+                    border-b border-white/5 md:hidden
+                    animate-in fade-in slide-in-from-top-2 duration-200"
                 >
-                    <div className="flex flex-col items-center gap-2 py-4">
+                    <div className="flex flex-col items-stretch gap-1 px-4 py-4">
                         <NavItem icon={House} label="Home" link="#home" onClick={() => setOpen(false)} />
                         <NavItem icon={User} label="About" link="#about" onClick={() => setOpen(false)} />
                         <NavItem icon={Network} label="Projects" link="#projects" onClick={() => setOpen(false)} />
@@ -58,16 +61,17 @@ function NavItem({ icon: Icon, label, link, onClick }) {
             href={link}
             onClick={onClick}
             className="
-                flex items-center gap-2 px-5 py-2
-                font-jetbrains text-sm text-[#7252FF]
-                rounded-xl
-                hover:bg-indigo-900/60
+                flex items-center gap-2 px-4 py-2
+                font-jetbrains text-[12px] uppercase tracking-[0.18em]
+                text-white/70
+                rounded-lg
+                hover:bg-white/5
                 hover:text-white
-                hover:shadow-[0_0_20px_rgba(99,102,241,0.45)]
                 transition-all duration-200
+                focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8b5cff]/60
             "
         >
-            <Icon size={18} />
+            <Icon size={16} className="text-[#8b5cff]" />
             <span>{label}</span>
         </a>
     )

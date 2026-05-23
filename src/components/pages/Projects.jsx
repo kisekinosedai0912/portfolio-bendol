@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ExternalLink, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion"
 import GeoQuest from '../../assets/img/geoquest.png'
@@ -140,39 +140,77 @@ export default function Projects() {
             className="min-h-screen px-4 md:px-8 py-20 bg-gradient-to-b from-[#060023] to-[#010003]"
         >
             {/* Title */}
-            <h1 className="text-center text-3xl md:text-4xl font-jetbrains text-white mb-16">
-                <span className="gradient-text">My Portfolio</span>
-            </h1>
+            <motion.div
+                className="text-center mb-14"
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.6, ease: 'easeOut' }}
+            >
+                <p className="font-jetbrains text-[11px] uppercase tracking-[0.3em] text-white/50 mb-3">
+                    Selected work
+                </p>
+                <h1 className="font-display text-4xl md:text-5xl font-semibold tracking-tight">
+                    <span className="gradient-text">My Portfolio</span>
+                </h1>
+            </motion.div>
 
             {/* Grid */}
-            <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {projects.map((project) => (
-                    <div
+            <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                {projects.map((project, idx) => (
+                    <motion.div
                         key={project.id}
-                        className="bg-black/40 rounded-xl overflow-hidden border border-blue-600/20 hover:border-blue-600 transition-all duration-300"
+                        className="group relative p-[1px] rounded-2xl bg-gradient-to-br from-white/10 to-white/5 hover:from-[#6162ff]/60 hover:to-[#b352ff]/60 transition-all duration-300"
+                        initial={{ opacity: 0, y: 24 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, margin: "-60px" }}
+                        transition={{ duration: 0.5, delay: (idx % 3) * 0.08, ease: 'easeOut' }}
                     >
-                        <img
-                            src={project.image}
-                            alt={project.title}
-                            className="w-full h-48 object-cover"
-                        />
+                        <div className="h-full rounded-2xl overflow-hidden bg-[#0a0a1a]/80 backdrop-blur-sm flex flex-col">
+                            <div className="overflow-hidden">
+                                <img
+                                    src={project.image}
+                                    alt={project.title}
+                                    loading="lazy"
+                                    className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105"
+                                />
+                            </div>
 
-                        <div className="p-6">
-                            <h3 className="font-jetbrains text-lg mb-4 gradient-text">
-                                {project.title}
-                            </h3>
+                            <div className="p-6 flex flex-col gap-4 flex-1">
+                                <h3 className="font-display text-lg md:text-xl font-semibold leading-snug">
+                                    <span className="gradient-text">{project.title}</span>
+                                </h3>
 
-                            <button
-                                onClick={() => setActiveProject(project)}
-                                className="inline-flex items-center gap-2 px-5 py-2 rounded-full text-sm font-jetbrains
-                                bg-gradient-to-r from-[#6162ff] to-[#b352ff] text-white
-                                hover:opacity-90 transition"
-                            >
-                                <ExternalLink size={16} />
-                                Details
-                            </button>
+                                <div className="flex flex-wrap gap-1.5">
+                                    {project.tech.slice(0, 4).map((t, i) => (
+                                        <span
+                                            key={i}
+                                            className="px-2 py-0.5 text-[10px] font-jetbrains tracking-wider rounded-full bg-white/5 border border-white/10 text-white/70"
+                                        >
+                                            {t}
+                                        </span>
+                                    ))}
+                                    {project.tech.length > 4 && (
+                                        <span className="px-2 py-0.5 text-[10px] font-jetbrains tracking-wider rounded-full bg-white/5 border border-white/10 text-white/50">
+                                            +{project.tech.length - 4}
+                                        </span>
+                                    )}
+                                </div>
+
+                                <button
+                                    onClick={() => setActiveProject(project)}
+                                    className="mt-auto inline-flex items-center gap-2 px-5 py-2 rounded-full text-[12px] font-jetbrains tracking-wider
+                                    bg-gradient-to-r from-[#6162ff] to-[#b352ff] text-white
+                                    hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[#b352ff]/30
+                                    transition-all duration-200
+                                    focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8b5cff]/60"
+                                >
+                                    <ExternalLink size={14} />
+                                    Details
+                                </button>
+                            </div>
                         </div>
-                    </div>
+                    </motion.div>
                 ))}
             </div>
 
@@ -189,43 +227,59 @@ export default function Projects() {
 }
 
 function ProjectModal({ project, onClose }) {
+    useEffect(() => {
+        const onKey = (e) => {
+            if (e.key === 'Escape') onClose();
+        }
+        document.addEventListener('keydown', onKey)
+        const prevOverflow = document.body.style.overflow
+        document.body.style.overflow = 'hidden'
+        return () => {
+            document.removeEventListener('keydown', onKey)
+            document.body.style.overflow = prevOverflow
+        }
+    }, [onClose])
+
     return (
         <motion.div
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm px-4"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-md px-4 py-6"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            onClick={onClose}
         >
             {/* Modal Card */}
             <motion.div
-                className="relative max-w-3xl w-full bg-gradient-to-br from-[#1a1a2e] to-[#0f0f1c] rounded-xl overflow-hidden shadow-xl"
-                initial={{ scale: 0.85, opacity: 0, y: 40 }}
+                className="relative max-w-3xl w-full max-h-[90vh] overflow-y-auto bg-gradient-to-br from-[#1a1a2e] to-[#0f0f1c] rounded-2xl shadow-2xl border border-white/10"
+                initial={{ scale: 0.9, opacity: 0, y: 30 }}
                 animate={{ scale: 1, opacity: 1, y: 0 }}
-                exit={{ scale: 0.85, opacity: 0, y: 40 }}
-                transition={{ duration: 0.35, ease: "easeOut" }}
+                exit={{ scale: 0.9, opacity: 0, y: 30 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
+                onClick={(e) => e.stopPropagation()}
             >
                 {/* Close Button */}
                 <button
                     onClick={onClose}
-                    className="absolute top-4 right-4 text-white hover:text-purple-400 transition"
+                    aria-label="Close project details"
+                    className="absolute top-4 right-4 z-10 p-2 rounded-full bg-black/40 backdrop-blur-md text-white/80 hover:text-white hover:bg-black/60 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8b5cff]/60"
                 >
-                    <X size={22} color="black" />
+                    <X size={20} />
                 </button>
 
                 {/* Image */}
                 <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-64 object-cover"
+                    className="w-full h-64 object-cover rounded-t-2xl"
                 />
 
                 {/* Content */}
-                <div className="p-6">
-                    <h2 className="font-jetbrains text-2xl mb-4 gradient-text">
-                        {project.title}
+                <div className="p-6 md:p-8">
+                    <h2 className="font-display text-2xl md:text-3xl font-semibold tracking-tight mb-4">
+                        <span className="gradient-text">{project.title}</span>
                     </h2>
 
-                    <p className="text-gray-300 mb-6 leading-relaxed">
+                    <p className="font-sans text-white/80 leading-relaxed mb-6 text-balance">
                         {project.description}
                     </p>
 
@@ -234,8 +288,8 @@ function ProjectModal({ project, onClose }) {
                         {project.tech.map((tech, index) => (
                             <span
                                 key={index}
-                                className="px-3 py-1 text-xs font-jetbrains rounded-full
-                                bg-white/10 text-purple-300 border border-purple-500/30"
+                                className="px-3 py-1 text-[11px] font-jetbrains tracking-wider rounded-full
+                                bg-white/5 border border-white/10 text-white/80"
                             >
                                 {tech}
                             </span>
@@ -248,11 +302,14 @@ function ProjectModal({ project, onClose }) {
                             href={project.link}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 px-6 py-2 rounded-full
+                            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full
                             bg-gradient-to-r from-[#6162ff] to-[#b352ff] text-white
-                            font-jetbrains text-sm hover:opacity-90 transition"
+                            font-jetbrains text-[12px] tracking-wider
+                            hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[#b352ff]/40
+                            transition-all duration-200
+                            focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8b5cff]/60"
                         >
-                            <ExternalLink size={16} />
+                            <ExternalLink size={14} />
                             Live Demo
                         </a>
                     )}

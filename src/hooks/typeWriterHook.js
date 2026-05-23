@@ -1,35 +1,17 @@
 import { useEffect, useState } from "react"
 
-export function useTypewriter(words, speed = 160, delay = 1200) {
-    const [text, setText] = useState("")
-    const [wordIndex, setWordIndex] = useState(0)
-    const [isDeleting, setIsDeleting] = useState(false)
+export function useTypewriter(words, interval = 2200) {
+    const [index, setIndex] = useState(0)
 
     useEffect(() => {
-        const currentWord = words[wordIndex]
-        let timeout
+        if (!words || words.length === 0) return
 
-        if (!isDeleting) {
-            // typing
-            timeout = setTimeout(() => {
-                setText(currentWord.slice(0, text.length + 1))
-                if (text === currentWord) {
-                setTimeout(() => setIsDeleting(true), delay)
-                }
-            }, speed)
-        } else {
-            // deleting
-            timeout = setTimeout(() => {
-                setText(currentWord.slice(0, text.length - 1))
-                if (text === "") {
-                setIsDeleting(false)
-                setWordIndex((prev) => (prev + 1) % words.length)
-                }
-            }, speed / 1.5)
-        }
+        const id = setInterval(() => {
+            setIndex((prev) => (prev + 1) % words.length)
+        }, interval)
 
-        return () => clearTimeout(timeout)
-    }, [text, isDeleting, wordIndex, words, speed, delay])
+        return () => clearInterval(id)
+    }, [words, interval])
 
-    return text
+    return { phrase: words[index], index }
 }
