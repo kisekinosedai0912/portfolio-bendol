@@ -17,12 +17,16 @@ import { SiMongodb,
     SiFastify,
     SiDrizzle,
     SiExpress,
-    SiTypescript
+    SiTypescript,
+    SiSentry,
+    SiXampp 
 } from "react-icons/si";
 import { BsBing } from "react-icons/bs";
 import { RiFirebaseLine } from "react-icons/ri";
 import { VscAzureDevops } from "react-icons/vsc";
 import { FaReact, FaPhp, FaNodeJs, FaLaravel, FaCss3Alt } from "react-icons/fa";
+import { CiLink } from "react-icons/ci";
+import { PiInfinityFill } from "react-icons/pi";
 
 export default function WebDev() {
     const webDevStack = [
@@ -30,11 +34,15 @@ export default function WebDev() {
         { name: "MongoDB", icon: SiMongodb },
         { name: "Postgresql", icon: SiPostgresql },
         { name: "MySQL", icon: SiMysql },
+        { name: "XAMPP", icon: SiXampp },
         { name: "Ngrok", icon: SiNgrok },
         { name: "Drizzle", icon: SiDrizzle },
         { name: "Firebase", icon: RiFirebaseLine },
         { name: "Azure DevOps", icon: VscAzureDevops },
+        { name: "Sentry", icon: SiSentry },
         { name: "Temporal", icon: SiTemporal },
+        { name: "Inngest", icon: CiLink },
+        { name: "Infisical", icon: PiInfinityFill },
         { name: "Railway", icon: SiRailway },
         { name: "Render", icon: SiRender },
         { name: "Vercel", icon: SiVercel },

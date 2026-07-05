@@ -1,6 +1,21 @@
 import { FaPhp, FaNodeJs, FaCode, FaLaravel } from "react-icons/fa";
-import { SiExpress, SiNextdotjs, SiFastify, SiClerk , SiNgrok, SiDrizzle, SiTypescript } from "react-icons/si";
+import { 
+    SiExpress, 
+    SiNextdotjs, 
+    SiFastify, 
+    SiClerk , 
+    SiNgrok, 
+    SiDrizzle,
+    SiTypescript,
+    SiTerraform,
+    SiSentry,
+    SiTemporal,
+    SiXampp
+} from "react-icons/si";
 import { BsBing } from "react-icons/bs";
+import { CiLink } from "react-icons/ci";
+import { TbBrandTerraform } from "react-icons/tb";
+import { PiInfinityFill } from "react-icons/pi";
 
 export default function Backend() {
     const backendStack = [
@@ -10,6 +25,13 @@ export default function Backend() {
         { name: "Express Js", icon: SiExpress },
         { name: "Fastify", icon: SiFastify },
         { name: "Drizzle", icon: SiDrizzle },
+        { name: "XAMPP", icon: SiXampp },
+        { name: "Tabularis", icon: TbBrandTerraform },
+        { name: "Terraform", icon: SiTerraform },
+        { name: "Sentry", icon: SiSentry },
+        { name: "Temporal", icon: SiTemporal },
+        { name: "Inngest", icon: CiLink },
+        { name: "Infisical", icon: PiInfinityFill },
         { name: "Clerk", icon: SiClerk },
         { name: "Ngrok", icon: SiNgrok },
         { name: "PHP", icon: FaPhp },

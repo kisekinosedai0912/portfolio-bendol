@@ -1,6 +1,15 @@
 import { motion } from "framer-motion";
 import { VscVscode } from "react-icons/vsc";
-import { SiRender, SiVercel, SiRailway, SiGoogleanalytics } from "react-icons/si";
+import { SiRender, 
+    SiCursor, 
+    SiGoogleanalytics, 
+    SiSentry, 
+    SiTerraform, 
+    SiTemporal, 
+    SiNx ,
+    SiDbeaver,
+    SiMongodb 
+} from "react-icons/si";
 import { FaGitAlt, FaGithubSquare, FaFigma, FaDocker } from "react-icons/fa";
 import { FaScrewdriverWrench, FaSquareGithub } from "react-icons/fa6";
 import { LiaMicrosoft } from "react-icons/lia";
@@ -8,15 +17,15 @@ import { LiaMicrosoft } from "react-icons/lia";
 export default function TechTools() {
     const tools = [
         { name: "Visual Studio Code", icon: VscVscode},
+        { name: "Cursor", icon: SiCursor },
         { name: "Google Analytics", icon: SiGoogleanalytics },
         { name: "Git", icon: FaGitAlt },
         { name: "GitHub", icon: FaGithubSquare },
         { name: "GitHub Desktop", icon: FaSquareGithub },
         { name: "Docker", icon: FaDocker },
+        { name: "Sentry", icon: SiSentry },
+        { name: "Terraform", icon: SiTerraform },
         { name: "Figma", icon: FaFigma },
-        { name: "Render", icon: SiRender },
-        { name: "Railway", icon: SiRailway },
-        { name: "Vercel", icon: SiVercel },
         { name: "Microsoft Services", icon: LiaMicrosoft },
         { name: "XRM Toolbox", icon: FaScrewdriverWrench },
     ];
