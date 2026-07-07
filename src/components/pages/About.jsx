@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { Briefcase, FolderGit2 } from 'lucide-react';
 import TechTools from './page-extensions/TechTools';
 import TechStack from './page-extensions/TechStack';
 import Profile from '../../assets/img/profile.png';
@@ -26,13 +27,18 @@ export default function About() {
 
                     <div className="flex flex-col md:flex-row items-center justify-center gap-12 md:gap-16">
                         {/* Image Container */}
-                        <div className="flex-shrink-0">
-                            <div className="p-[2px] rounded-2xl bg-gradient-to-br from-[#6162ff] via-[#8b5cff] to-[#b352ff] shadow-2xl shadow-[#6162ff]/20">
+                        <div className="relative flex-shrink-0">
+                            {/* ambient glow for depth */}
+                            <div
+                                aria-hidden="true"
+                                className="absolute -inset-5 rounded-full bg-gradient-to-br from-[#6162ff]/25 to-[#b352ff]/25 blur-3xl opacity-70"
+                            />
+                            <div className="group relative p-[2px] rounded-2xl bg-gradient-to-br from-[#6162ff] via-[#8b5cff] to-[#b352ff] shadow-2xl shadow-[#6162ff]/20">
                                 <div className="w-64 h-80 rounded-2xl overflow-hidden bg-black/50">
                                     <img
                                         src={Profile}
                                         alt="Professional portrait of Jasper Bendol"
-                                        className="w-full h-full object-cover opacity-90 hover:scale-[1.03] transition-transform duration-500"
+                                        className="w-full h-full object-cover opacity-90 transition-transform duration-500 group-hover:scale-[1.03]"
                                     />
                                 </div>
                             </div>
@@ -50,21 +56,32 @@ export default function About() {
                                 Implementing industry standards and best practices while keeping up on the current trends and technologies.
                             </p>
 
-                            <div className="flex gap-4">
-                                <Button name={'Portfolio'} link={'#projects'} />
+                            {/* Focus areas */}
+                            <div className="flex flex-wrap gap-2 justify-center md:justify-start">
+                                {["MERN Stack", "Automation", "Microservices", "Laravel"].map((focus) => (
+                                    <span
+                                        key={focus}
+                                        className="px-3 py-1 text-[11px] font-jetbrains tracking-wider rounded-full bg-white/5 border border-white/10 text-white/75"
+                                    >
+                                        {focus}
+                                    </span>
+                                ))}
                             </div>
 
-                            <div className="flex gap-12 mt-4">
+                            <div className="flex flex-wrap items-stretch gap-3 mt-2">
                                 <DataContainer
+                                    icon={Briefcase}
                                     count="2"
                                     unit="years"
                                     label="Experience"
                                 />
                                 <DataContainer
+                                    icon={FolderGit2}
                                     count="13"
                                     unit="Projects"
-                                    label="Projects"
+                                    label="Completed"
                                 />
+                                <Button name={'Portfolio'} link={'#projects'} />
                             </div>
                         </div>
                     </div>
@@ -76,16 +93,21 @@ export default function About() {
     )
 }
 
-function DataContainer({ count, unit, label }) {
+function DataContainer({ icon: Icon, count, unit, label }) {
     return (
-        <div className="flex flex-col items-center md:items-start gap-1.5">
-            <p className="font-display text-3xl md:text-4xl font-semibold leading-none">
-                <span className="gradient-text">{count}</span>
-                <span className="font-jetbrains text-sm text-white/60 ml-2">{unit}</span>
-            </p>
-            <span className="font-jetbrains text-[11px] uppercase tracking-[0.2em] text-white/50">
-                {label}
-            </span>
+        <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-white/[0.03] border border-white/10">
+            <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-gradient-to-br from-[#6162ff] to-[#b352ff] shrink-0">
+                <Icon className="w-4 h-4 text-white" />
+            </div>
+            <div className="flex flex-col">
+                <p className="font-display text-2xl font-semibold leading-none">
+                    <span className="gradient-text">{count}</span>
+                    <span className="font-jetbrains text-xs text-white/60 ml-1">{unit}</span>
+                </p>
+                <span className="font-jetbrains text-[10px] uppercase tracking-[0.2em] text-white/50 mt-1">
+                    {label}
+                </span>
+            </div>
         </div>
     )
 }

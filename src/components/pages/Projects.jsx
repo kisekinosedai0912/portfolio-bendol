@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ExternalLink, X } from "lucide-react";
+import { ExternalLink, X, Lock } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion"
 import GeoQuest from '../../assets/img/geoquest.png'
 import FretMuse from '../../assets/img/fretmuse.png'
@@ -166,20 +166,49 @@ export default function Projects() {
                         viewport={{ once: true, margin: "-60px" }}
                         transition={{ duration: 0.5, delay: (idx % 3) * 0.08, ease: 'easeOut' }}
                     >
-                        <div className="h-full rounded-2xl overflow-hidden bg-[#0a0a1a]/80 backdrop-blur-sm flex flex-col">
-                            <div className="overflow-hidden">
+                        <div className="relative h-full rounded-2xl overflow-hidden bg-[#0a0a1a]/80 backdrop-blur-sm flex flex-col transition-shadow duration-300 group-hover:shadow-xl group-hover:shadow-[#6162ff]/10">
+                            {/* Media */}
+                            <div className="relative overflow-hidden">
                                 <img
                                     src={project.image}
                                     alt={project.title}
                                     loading="lazy"
                                     className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105"
                                 />
+                                {/* fade the image into the card body */}
+                                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0a0a1a] via-[#0a0a1a]/10 to-transparent" />
+
+                                {/* status badge */}
+                                <span
+                                    className={`absolute top-3 left-3 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-jetbrains uppercase tracking-[0.12em] backdrop-blur-md border ${
+                                        project.link
+                                            ? "bg-red-500/15 border-red-400/30 text-red-300"
+                                            : "bg-yellow-500/15 border-yellow-400/30 text-yellow-300"
+                                    }`}
+                                >
+                                    <span
+                                        className={`w-1.5 h-1.5 rounded-full ${
+                                            project.link ? "bg-red-400 animate-pulse" : "bg-yellow-400"
+                                        }`}
+                                    />
+                                    {project.link ? "Live" : "Private"}
+                                </span>
+
+                                {/* project index */}
+                                <span className="absolute top-3 right-3 font-jetbrains text-[11px] tracking-wider text-white/45">
+                                    {String(project.id).padStart(2, "0")}
+                                </span>
                             </div>
 
-                            <div className="p-6 flex flex-col gap-4 flex-1">
-                                <h3 className="font-display text-lg md:text-xl font-semibold leading-snug">
-                                    <span className="gradient-text">{project.title}</span>
+                            {/* Body */}
+                            <div className="p-6 flex flex-col gap-3 flex-1">
+                                <h3 className="font-display text-lg md:text-xl font-semibold leading-snug gradient-text line-clamp-2 min-h-[3.5rem]">
+                                    {project.title}
                                 </h3>
+
+                                <p className="font-sans text-[13px] leading-relaxed text-white/55 line-clamp-2">
+                                    {project.description}
+                                </p>
 
                                 <div className="flex flex-wrap gap-1.5">
                                     {project.tech.slice(0, 4).map((t, i) => (
@@ -197,17 +226,33 @@ export default function Projects() {
                                     )}
                                 </div>
 
-                                <button
-                                    onClick={() => setActiveProject(project)}
-                                    className="mt-auto inline-flex items-center gap-2 px-5 py-2 rounded-full text-[12px] font-jetbrains tracking-wider
-                                    bg-gradient-to-r from-[#6162ff] to-[#b352ff] text-white
-                                    hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[#b352ff]/30
-                                    transition-all duration-200
-                                    focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8b5cff]/60"
-                                >
-                                    <ExternalLink size={14} />
-                                    Details
-                                </button>
+                                <div className="mt-auto flex items-center gap-2 pt-1">
+                                    <button
+                                        onClick={() => setActiveProject(project)}
+                                        className="flex-1 inline-flex items-center justify-center gap-2 px-5 py-2 rounded-full text-[12px] font-jetbrains tracking-wider
+                                        bg-gradient-to-r from-[#6162ff] to-[#b352ff] text-white
+                                        hover:shadow-lg hover:shadow-[#b352ff]/30
+                                        transition-all duration-200
+                                        focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8b5cff]/60"
+                                    >
+                                        <ExternalLink size={14} />
+                                        Details
+                                    </button>
+                                    {project.link && (
+                                        <a
+                                            href={project.link}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            aria-label={`Open ${project.title} live site`}
+                                            className="inline-flex items-center justify-center w-9 h-9 rounded-full border border-white/15 bg-white/5 text-white/70
+                                            hover:text-white hover:border-[#8b5cff]/60 hover:bg-white/10
+                                            transition-all duration-200
+                                            focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8b5cff]/60"
+                                        >
+                                            <ExternalLink size={15} />
+                                        </a>
+                                    )}
+                                </div>
                             </div>
                         </div>
                     </motion.div>
@@ -267,11 +312,30 @@ function ProjectModal({ project, onClose }) {
                 </button>
 
                 {/* Image */}
-                <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-64 object-cover rounded-t-2xl"
-                />
+                <div className="relative">
+                    <img
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-64 object-cover rounded-t-2xl"
+                    />
+                    <div className="pointer-events-none absolute inset-0 rounded-t-2xl bg-gradient-to-t from-[#0f0f1c] via-transparent to-transparent" />
+
+                    {/* status badge */}
+                    <span
+                        className={`absolute bottom-4 left-6 inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-jetbrains uppercase tracking-[0.12em] backdrop-blur-md border ${
+                            project.link
+                                ? "bg-red-500/15 border-red-400/30 text-red-300"
+                                : "bg-yellow-500/15 border-yellow-400/30 text-yellow-300"
+                        }`}
+                    >
+                        <span
+                            className={`w-1.5 h-1.5 rounded-full ${
+                                project.link ? "bg-red-400 animate-pulse" : "bg-yellow-400"
+                            }`}
+                        />
+                        {project.link ? "Live" : "Private"}
+                    </span>
+                </div>
 
                 {/* Content */}
                 <div className="p-6 md:p-8">
@@ -297,7 +361,7 @@ function ProjectModal({ project, onClose }) {
                     </div>
 
                     {/* Action Button */}
-                    {project.link && (
+                    {project.link ? (
                         <a
                             href={project.link}
                             target="_blank"
@@ -312,6 +376,15 @@ function ProjectModal({ project, onClose }) {
                             <ExternalLink size={14} />
                             Live Demo
                         </a>
+                    ) : (
+                        <span
+                            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full
+                            bg-white/5 border border-white/10 text-white/50
+                            font-jetbrains text-[12px] tracking-wider cursor-not-allowed"
+                        >
+                            <Lock size={14} />
+                            Not publicly deployed
+                        </span>
                     )}
                 </div>
             </motion.div>

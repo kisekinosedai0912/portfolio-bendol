@@ -19,7 +19,8 @@ import { SiMongodb,
     SiExpress,
     SiTypescript,
     SiSentry,
-    SiXampp 
+    SiXampp ,
+	SiNeon
 } from "react-icons/si";
 import { BsBing } from "react-icons/bs";
 import { RiFirebaseLine } from "react-icons/ri";
@@ -32,6 +33,7 @@ export default function WebDev() {
     const webDevStack = [
         { name: "Google Analytics", icon: SiGoogleanalytics },
         { name: "MongoDB", icon: SiMongodb },
+        { name: "Neon", icon: SiNeon },
         { name: "Postgresql", icon: SiPostgresql },
         { name: "MySQL", icon: SiMysql },
         { name: "XAMPP", icon: SiXampp },
@@ -83,14 +85,13 @@ export default function WebDev() {
                             <div key={index}
                                 className="
                                     group
+                                    animated-border
                                     flex flex-col items-center justify-center gap-3
                                     p-5
                                     bg-white/[0.03]
                                     border border-white/10
                                     rounded-xl
                                     transition-all duration-300
-                                    hover:-translate-y-1
-                                    hover:border-[#8b5cff]/60
                                     hover:bg-white/[0.05]
                                     hover:shadow-lg hover:shadow-[#6162ff]/10"
                             >

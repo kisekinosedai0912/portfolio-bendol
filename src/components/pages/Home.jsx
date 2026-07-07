@@ -13,9 +13,9 @@ export default function Home() {
     const { phrase, index } = useTypewriter(phrases)
 
     return (
-        <section id="home" className="min-h-screen flex items-center justify-center text-center px-4 z-100">
+        <section id="home" className="min-h-screen flex items-center justify-center px-4 z-100">
             <motion.div
-                className="flex flex-col items-center gap-6 max-w-4xl"
+                className="flex flex-col items-center md:items-start gap-6 w-full max-w-4xl text-center md:text-left"
                 initial={{ opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, ease: 'easeOut' }}
@@ -31,8 +31,7 @@ export default function Home() {
                     </span>
                 </div>
 
-                {/* Line 1 */}
-                <h1 className="font-display text-5xl md:text-7xl font-semibold tracking-tight leading-[1.05] text-white">
+                <h1 className="font-display text-4xl sm:text-5xl md:text-[clamp(2.5rem,5vw,4.5rem)] md:whitespace-nowrap font-semibold tracking-tight leading-[1.05] text-white">
                     Hi! I am{" "}
                     <span className="relative inline-block align-baseline overflow-hidden">
                         <AnimatePresence mode="wait">

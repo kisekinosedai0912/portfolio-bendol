@@ -69,14 +69,13 @@ export default function TechTools() {
                                         key={index}
                                         className="
                                             group
+                                            animated-border
                                             flex flex-col items-center justify-center gap-3
                                             p-5
                                             bg-white/[0.03]
                                             border border-white/10
                                             rounded-xl
                                             transition-all duration-300
-                                            hover:-translate-y-1
-                                            hover:border-[#8b5cff]/60
                                             hover:bg-white/[0.05]
                                             hover:shadow-lg hover:shadow-[#6162ff]/10"
                                     >
