@@ -10,13 +10,41 @@ import POS from '../../assets/img/product-page.png'
 import Gym from '../../assets/img/gym-dashboard.png'
 import Chat from '../../assets/img/chat.jpg'
 import Laundry from '../../assets/img/laundry.jpg'
+import Uplow from '../../assets/img/uplow.png'
+import Dahlings from '../../assets/img/dahlings.png'
 
 export default function Projects() {
     const [activeProject, setActiveProject] = useState(null);
 
     const projects = [
-        {
+		{
             id: 1,
+            title: "Uplow - Media & reputation monitoring for the Icelandic market",
+            image: Uplow,
+            link: 'https://www.uplow.com/',
+            description:
+                `A media monitoring system built for Icelandic companies that tracks ads published in various platforms. These platforms
+				includes meta, google, podcast & radio channels. It helps the businesses know the latest updates of their competitors,
+				giving the business insights and most of all, efficiency of information especially with the built-in AI chat that 
+				instantly gives the results you ask.
+                `,
+            tech: ["Next.Js", "Node Js", "Neon", "Typescript", "Tailwind", "Temporal", "Nx Workspace", "Sentry", "OpenAI Models"],
+        },
+		{
+            id: 2,
+            title: "Dahlings SPA & Salon",
+            image: Dahlings,
+            link: null,
+            description:
+                `A web system built for Dahlings to improve their marketing services through websites  with a POS & inventory system.
+				This system is designed to solve the manual processes of Dahlings giving easier insights on their inventory levels,
+				stocks & purchasing transactions. The architecture is designed as microservices that are seamless & scalable following
+				modern structures & up to the standard.
+                `,
+            tech: ["React", "Express Js", "Node Js", "Typescript", "Tailwind", "Postgres SQL", "Redis", "Inngest", "Nx Workspace"],
+        },
+        {
+            id: 3,
             title: "GeoQuest - Gamified Tourism Platform for Escalante City",
             image: GeoQuest,
             link: "https://geoquest-t9s2.onrender.com",
@@ -30,7 +58,7 @@ export default function Projects() {
             tech: ["React", "JavaScript", "Express", "Node Js", "MongoDB", "Firebase", "Google Cloud", "Tailwind"],
         },
         {
-            id: 2,
+            id: 4,
             title: "FretMuse - Open source website platform for beginner guitarists",
             image: FretMuse,
             link: "https://fret-muse.vercel.app",
@@ -42,7 +70,7 @@ export default function Projects() {
             tech: ["React", "JavaScript", "Tailwind", "CSS"],
         },
         {
-            id: 3,
+            id: 5,
             title: "Live Chat App",
             image: Chat,
             link: null,
@@ -54,7 +82,7 @@ export default function Projects() {
             tech: ["Express", "Node Js", "MongoDB", "Javascript", "HTML", "CSS"],
         },
         {
-            id: 4,
+            id: 6,
             title: "Laundry Management System",
             image: Laundry,
             link: 'https://laundry-management-system-32ft.onrender.com',
@@ -67,7 +95,7 @@ export default function Projects() {
             tech: [ "React" ,"Express", "Node Js", "JSON", "Javascript", "Tailwind"],
         },
         {
-            id: 5,
+            id: 7,
             title: "RAGPRES - Recycled and Greenery Points Reward Exchange System",
             image: RAGPRES,
             link: null,
@@ -81,7 +109,7 @@ export default function Projects() {
             tech: ["Laravel", "Javascript", "jQuery", "MySQL", "HTML", "Tailwind"],
         },
         {
-            id: 6,
+            id: 8,
             title: "Web Based Scheduler System with Automated Conflict Resolution",
             image: Scheduler,
             link: null,
@@ -95,7 +123,7 @@ export default function Projects() {
             tech: ["Laravel", "Javascript", "jQuery", "MySQL", "HTML", "Tailwind"],
         },
         {
-            id: 7,
+            id: 9,
             title: "Student Performance Metrics Management System",
             image: Metrics,
             link: null,
@@ -108,7 +136,7 @@ export default function Projects() {
             tech: ["PHP", "Javascript", "jQuery", "MySQL", "HTML", "Tailwind"],
         },
         {
-            id: 8,
+            id: 10,
             title: "Rosejing Secure Inventory and Semi-POS Management System",
             image: POS,
             link: null,
@@ -121,7 +149,7 @@ export default function Projects() {
             tech: ["Laravel", "Javascript", "jQuery", "MySQL", "HTML", "Tailwind"],
         },
         {
-            id: 9,
+            id: 11,
             title: "Muscle Hub - Gym Membership & Sales Management System",
             image: Gym,
             link: null,
