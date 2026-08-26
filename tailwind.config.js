@@ -8,11 +8,13 @@ export default {
         "./src/**/*.{js,ts,jsx,tsx}",
     ],
 	theme: {
-		extend: {
+			extend: {
 			fontFamily: {
-			  jetbrains: ['"JetBrains Mono"', 'monospace'],
-			  display: ['"Space Grotesk"', 'system-ui', 'sans-serif'],
-			  sans: ['Inter', 'system-ui', 'sans-serif'],
+			  jetbrains: ['"Geist Mono"', 'monospace'],
+			  mono: ['"Geist Mono"', 'monospace'],
+			  display: ['Geist', 'system-ui', 'sans-serif'],
+			  sans: ['Geist', 'system-ui', 'sans-serif'],
+			  'pixel-line': ['"Geist Pixel Line"', 'monospace'],
 			},
 			fontSize: {
 				'xs-16': '16px',

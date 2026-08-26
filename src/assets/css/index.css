@@ -2,6 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Geist';
+  src: url('../../../node_modules/geist/dist/fonts/geist-sans/Geist-Variable.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geist Mono';
+  src: url('../../../node_modules/geist/dist/fonts/geist-mono/GeistMono-Variable.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geist Pixel Line';
+  src: url('../../../node_modules/geist/dist/fonts/geist-pixel/GeistPixel-Line.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -13,7 +37,7 @@ html {
 }
 
 :root {
-  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Geist', system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -40,20 +64,6 @@ html {
 
 .text-balance {
   text-wrap: balance;
-}
-
-/* retro grid bg, softer lines + radial fade so it dissolves into the page */
-.grid-bg {
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(99, 102, 241, 0.18) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(99, 102, 241, 0.18) 1px, transparent 1px);
-  background-size: 60px 60px;
-  transform-origin: center top;
-  transform: perspective(800px) rotateX(65deg);
-  -webkit-mask-image: radial-gradient(ellipse at 50% 0%, #000 35%, transparent 80%);
-          mask-image: radial-gradient(ellipse at 50% 0%, #000 35%, transparent 80%);
 }
 
 /* gradient text with a richer mid-stop for smoother color transition */

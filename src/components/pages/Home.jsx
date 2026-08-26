@@ -1,82 +1,96 @@
-import { motion, AnimatePresence } from 'framer-motion'
-import { ArrowRight } from 'lucide-react'
-import { useTypewriter } from '../../hooks/typeWriterHook.js'
+import { motion } from 'framer-motion'
+import { ArrowRight, Download } from 'lucide-react'
+import FoldText from '../react-bits/FoldText'
+import Orb from '../react-bits/Orb'
+import TargetCursor from '../react-bits/TargetCursor'
 
 export default function Home() {
-    const phrases = [
-        "Jasper Bendol",
-        "a Web Developer",
-        "a Software Developer",
-        "a System Designer",
-        "a Full-stack Developer"
-    ]
-    const { phrase, index } = useTypewriter(phrases)
-
     return (
-        <section id="home" className="min-h-screen flex items-center justify-center px-4 z-100">
+        <section id="home" className="relative flex h-screen h-svh max-h-screen max-h-svh items-center overflow-hidden bg-[#07100d] px-5 py-5 pr-20 sm:px-8 sm:pr-24 lg:px-12 lg:pr-28">
+            <TargetCursor
+                targetSelector=".hero-cursor-target"
+                cursorColor="#6ee7b7"
+                cursorColorOnTarget="#ecfdf5"
+                spinDuration={2}
+                hoverDuration={0.2}
+            />
             <motion.div
-                className="flex flex-col items-center md:items-start gap-6 w-full max-w-4xl text-center md:text-left"
+                className="mx-auto grid h-full w-full max-w-[82rem] content-center items-center gap-6 lg:grid-cols-[1fr_0.9fr] lg:gap-10 xl:gap-16"
                 initial={{ opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, ease: 'easeOut' }}
+                transition={{ duration: 0.7, ease: 'easeOut' }}
             >
-                {/* Availability pill */}
-                <div className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm">
-                    <span className="relative flex h-2 w-2">
-                        <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 animate-ping" />
-                        <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
-                    </span>
-                    <span className="font-jetbrains text-[11px] uppercase tracking-[0.2em] text-white/70">
-                        Available for work
-                    </span>
+                <div className="flex flex-col items-start">
+                    <a
+                        href="#contact"
+                        data-cursor-grid-ignore
+                        className="hero-cursor-target group mb-5 inline-flex items-center gap-3 rounded-xl border border-white/10 bg-white/[0.04] p-1 pr-4 font-mono text-[9px] uppercase tracking-[0.16em] text-white/50 backdrop-blur-sm transition-colors hover:border-emerald-300/25 hover:text-white/75 sm:mb-7 sm:text-[10px]"
+                    >
+                        <span className="rounded-lg bg-emerald-400 px-3 py-2 text-[#06100c]">
+                            Available
+                        </span>
+                        New projects
+                        <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+                    </a>
+
+                    <h1 className="max-w-2xl font-sans text-[clamp(2.5rem,4.15vw,4.125rem)] font-medium leading-[1.06] tracking-[-0.025em] text-white">
+                        <FoldText
+                            text="Engineering your ideas"
+                            className="block"
+                            color="#ffffff"
+                        />
+                        <FoldText
+                            text="through systems"
+                            className="block"
+                            color="#6ee7b7"
+                        />
+                    </h1>
+
+                    <p className="mt-5 max-w-xl font-sans text-sm leading-6 text-white/55 sm:mt-6 sm:text-base sm:leading-7">
+                        I&apos;m Jasper, a software engineer building reliable full-stack systems,
+                        scalable architecture, and thoughtful user/developer experiences.
+                    </p>
+
+                    <div className="mt-6 flex flex-wrap gap-3 sm:mt-8">
+                        <a
+                            href="#projects"
+                            data-cursor-grid-ignore
+                            className="hero-cursor-target group inline-flex items-center gap-3 rounded-xl bg-emerald-400 px-5 py-3 font-mono text-[10px] font-medium uppercase tracking-[0.1em] text-[#06100c] shadow-lg shadow-emerald-400/15 transition-colors hover:bg-emerald-300 sm:px-6 sm:text-xs"
+                        >
+                            Browse projects
+                            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                        </a>
+                        <a
+                            href="/Developer_Resume_Jasper_Bendol.pdf"
+                            download
+                            data-cursor-grid-ignore
+                            className="hero-cursor-target inline-flex items-center gap-3 rounded-xl border border-white/10 bg-white/[0.04] px-5 py-3 font-mono text-[10px] uppercase tracking-[0.1em] text-white/70 transition-colors hover:border-white/20 hover:bg-white/[0.07] hover:text-white sm:px-6 sm:text-xs"
+                        >
+                            <Download className="h-4 w-4" />
+                            Resume
+                        </a>
+                    </div>
+
+                    <p className="mt-5 font-pixel-line text-[9px] uppercase tracking-[0.2em] text-white/35 sm:mt-6 sm:text-[11px]">
+                        Mid-level Software Engineer <span className="px-2 text-emerald-300/60">•</span> Clean code
+                    </p>
                 </div>
 
-                <h1 className="font-display text-4xl sm:text-5xl md:text-[clamp(2.5rem,5vw,4.5rem)] md:whitespace-nowrap font-semibold tracking-tight leading-[1.05] text-white">
-                    Hi! I am{" "}
-                    <span className="relative inline-block align-baseline overflow-hidden">
-                        <AnimatePresence mode="wait">
-                            <motion.span
-                                key={index}
-                                className="gradient-text inline-block"
-                                initial={{ opacity: 0, y: 12 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, y: -12 }}
-                                transition={{ duration: 0.45, ease: 'easeOut' }}
-                            >
-                                {phrase}
-                            </motion.span>
-                        </AnimatePresence>
-                    </span>
-                </h1>
-
-                {/* Line 2 */}
-                <h2 className="font-display text-2xl md:text-4xl font-medium tracking-tight text-white/90">
-                    Engineering your ideas through systems
-                </h2>
-
-                {/* Line 3 */}
-                <h2 className="font-display text-2xl md:text-4xl font-medium tracking-tight">
-                    <span className="gradient-text">always building</span>{" "}
-                    <span className="text-white/90">&</span>{" "}
-                    <span className="gradient-text">shipping!</span>
-                </h2>
-
-                {/* CTA */}
-                <a
-                    href="#about"
-                    className="
-                        group mt-6 inline-flex items-center gap-2 px-7 py-3 rounded-lg
-                        bg-gradient-to-r from-[#6162ff] to-[#b352ff]
-                        text-white font-jetbrains text-sm tracking-wide
-                        shadow-lg shadow-[#6162ff]/25
-                        hover:-translate-y-0.5 hover:shadow-[#b352ff]/40
-                        transition-all duration-200
-                        focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8b5cff]/60
-                    "
-                >
-                    Explore me
-                    <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" />
-                </a>
+                <div className="relative mx-auto flex w-full max-w-[34rem] items-center justify-center">
+                    <div className="pointer-events-none absolute left-1/2 top-1/2 aspect-square w-[126%] max-w-[42rem] -translate-x-1/2 -translate-y-1/2 opacity-100 drop-shadow-[0_0_36px_rgba(52,211,153,0.2)]">
+                        <Orb hue={108} hoverIntensity={0.4} rotateOnHover={false} backgroundColor="#07100d" />
+                    </div>
+                    <div
+                        data-cursor-grid-ignore
+                        className="relative z-10 w-[86%] max-w-[29rem] overflow-hidden rounded-[1.15rem] shadow-[0_24px_80px_rgba(0,0,0,0.48)]"
+                    >
+                        <img
+                            src="/snippet.png"
+                            alt="JavaScript code describing Jasper's software engineering focus"
+                            className="block h-auto w-full rounded-[1.15rem] opacity-[0.94]"
+                        />
+                    </div>
+                </div>
             </motion.div>
         </section>
     )
