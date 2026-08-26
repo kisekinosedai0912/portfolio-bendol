@@ -8,12 +8,12 @@ export default function Footer() {
                 w-full
                 py-8 sm:py-10
                 flex flex-col items-center gap-5 sm:gap-6
-                text-indigo-400
-                bg-gradient-to-b from-[#060023] to-[#010003]
+                text-emerald-300
+                bg-[#06110e]
             "
         >
             {/* Top gradient divider */}
-            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#8b5cff]/40 to-transparent" />
+            <div className="absolute left-0 right-0 top-0 h-px bg-gradient-to-r from-transparent via-emerald-300/25 to-transparent" />
 
             {/* Social icons */}
             <div className="flex items-center justify-center flex-wrap gap-3 sm:gap-4">
@@ -55,10 +55,11 @@ function SocialIcon({ icon: Icon, link, label }) {
                 bg-white/[0.03]
                 hover:text-white
                 hover:bg-white/[0.07]
-                hover:border-[#8b5cff]/60
-                hover:shadow-[0_0_20px_rgba(139,92,255,0.35)]
-                transition-all duration-200
-                focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8b5cff]/60
+                hover:text-emerald-200
+                hover:border-emerald-300/40
+                hover:shadow-[0_0_20px_rgba(52,211,153,0.2)]
+                transition-colors duration-200
+                focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-200/70
             "
         >
             <Icon size={18} className="sm:hidden" />

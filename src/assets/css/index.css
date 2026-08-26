@@ -43,7 +43,7 @@ html {
 
   color-scheme: dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #050515;
+  background-color: #07100d;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -52,12 +52,12 @@ html {
 }
 
 ::selection {
-  background: rgba(139, 92, 255, 0.35);
+  background: rgba(52, 211, 153, 0.3);
   color: #ffffff;
 }
 
 *:focus-visible {
-  outline: 2px solid rgba(139, 92, 255, 0.7);
+  outline: 2px solid rgba(110, 231, 183, 0.72);
   outline-offset: 2px;
   border-radius: 6px;
 }
@@ -66,9 +66,8 @@ html {
   text-wrap: balance;
 }
 
-/* gradient text with a richer mid-stop for smoother color transition */
 .gradient-text {
-  background: linear-gradient(90deg, #6162ff 0%, #8b5cff 50%, #b352ff 100%);
+  background: linear-gradient(90deg, #f0fdf4 0%, #6ee7b7 52%, #a3e635 100%);
   -webkit-background-clip: text;
           background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -90,7 +89,7 @@ html {
   height: 520px;
   top: -120px;
   left: -120px;
-  background: radial-gradient(circle, rgba(97, 98, 255, 0.45) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(52, 211, 153, 0.28) 0%, transparent 70%);
 }
 
 .glow-blob-b {
@@ -98,13 +97,13 @@ html {
   height: 600px;
   bottom: -160px;
   right: -160px;
-  background: radial-gradient(circle, rgba(179, 82, 255, 0.35) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(163, 230, 53, 0.2) 0%, transparent 70%);
 }
 
 /* thin themed scrollbar used inside scrollable card grids */
 .custom-scrollbar {
   scrollbar-width: thin;
-  scrollbar-color: rgba(139, 92, 255, 0.45) transparent;
+  scrollbar-color: rgba(52, 211, 153, 0.42) transparent;
 }
 
 .custom-scrollbar::-webkit-scrollbar {
@@ -116,12 +115,12 @@ html {
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, rgba(97, 98, 255, 0.5), rgba(179, 82, 255, 0.5));
+  background: linear-gradient(180deg, rgba(52, 211, 153, 0.52), rgba(163, 230, 53, 0.38));
   border-radius: 9999px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, rgba(97, 98, 255, 0.85), rgba(179, 82, 255, 0.85));
+  background: linear-gradient(180deg, rgba(110, 231, 183, 0.85), rgba(163, 230, 53, 0.72));
 }
 
 /* animatable angle so the conic gradient can smoothly spin */
@@ -154,9 +153,9 @@ html {
     from var(--border-angle),
     transparent 0deg,
     transparent 120deg,
-    #6162ff 200deg,
-    #8b5cff 260deg,
-    #b352ff 320deg,
+    #34d399 200deg,
+    #6ee7b7 260deg,
+    #a3e635 320deg,
     transparent 360deg
   );
   -webkit-mask:

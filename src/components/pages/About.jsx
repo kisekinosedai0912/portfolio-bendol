@@ -1,113 +1,143 @@
-import { motion } from 'framer-motion';
-import { Briefcase, FolderGit2 } from 'lucide-react';
-import TechTools from './page-extensions/TechTools';
-import TechStack from './page-extensions/TechStack';
-import Profile from '../../assets/img/profile.png';
-import Button from '../Button';
+import { motion } from "framer-motion";
+import {
+    ArrowUpRight,
+    BriefcaseBusiness,
+    FolderGit2,
+    MapPin,
+} from "lucide-react";
+import Profile from "../../assets/img/profile.png";
+import IdCard from "../IdCard";
+
+const focusAreas = [
+    "System architecture",
+    "Event-driven services",
+    "Workflow automation",
+    "Full-stack engineering",
+];
 
 export default function About() {
     return (
-        <>
-            <section id="about" className="min-h-screen flex items-center justify-center px-4 md:px-8 py-20 bg-gradient-to-b from-[#010003] to-[#060023]">
+        <section
+            id="about"
+            className="relative flex min-h-screen items-center overflow-hidden bg-[#0b1713] px-5 py-24 pr-20 sm:px-8 sm:pr-24 lg:px-12 lg:pr-28"
+        >
+                <div
+                    aria-hidden="true"
+                    className="pointer-events-none absolute left-[14%] top-[18%] h-64 w-64 rounded-full bg-emerald-400/[0.07] blur-[100px]"
+                />
+
                 <motion.div
-                    className="max-w-6xl w-full"
-                    initial={{ opacity: 0, y: 24 }}
+                    className="relative mx-auto w-full max-w-[82rem]"
+                    initial={{ opacity: 0, y: 28 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-80px" }}
-                    transition={{ duration: 0.6, ease: 'easeOut' }}
+                    transition={{ duration: 0.65, ease: "easeOut" }}
                 >
-                    <div className="text-center mb-14">
-                        <p className="font-jetbrains text-[11px] uppercase tracking-[0.3em] text-white/50 mb-3">
-                            About me
+                    <div className="mb-12 text-center lg:mb-16">
+                        <p className="mb-4 font-mono text-[10px] uppercase tracking-[0.28em] text-emerald-300/70">
+                            01 / About me
                         </p>
-                        <h1 className="font-display text-4xl md:text-5xl font-semibold tracking-tight">
-                            <span className="gradient-text">Professional Summary</span>
-                        </h1>
                     </div>
 
-                    <div className="flex flex-col md:flex-row items-center justify-center gap-12 md:gap-16">
-                        {/* Image Container */}
-                        <div className="relative flex-shrink-0">
-                            {/* ambient glow for depth */}
-                            <div
-                                aria-hidden="true"
-                                className="absolute -inset-5 rounded-full bg-gradient-to-br from-[#6162ff]/25 to-[#b352ff]/25 blur-3xl opacity-70"
+                    <div className="grid items-center gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:gap-16 xl:gap-24">
+                        <div
+                            data-cursor-grid-ignore
+                            className="mx-auto w-fit lg:mx-0"
+                        >
+                            <IdCard
+                                imageSrc={Profile}
+                                imageAlt="Professional portrait of Jasper Bendol"
+                                name="Jasper Bendol"
+                                title="Mid-Level Software Engineer"
+                                idNumber="0329-0912-0001"
                             />
-                            <div className="group relative p-[2px] rounded-2xl bg-gradient-to-br from-[#6162ff] via-[#8b5cff] to-[#b352ff] shadow-2xl shadow-[#6162ff]/20">
-                                <div className="w-64 h-80 rounded-2xl overflow-hidden bg-black/50">
-                                    <img
-                                        src={Profile}
-                                        alt="Professional portrait of Jasper Bendol"
-                                        className="w-full h-full object-cover opacity-90 transition-transform duration-500 group-hover:scale-[1.03]"
-                                    />
-                                </div>
-                            </div>
                         </div>
 
-                        {/* Content Container */}
-                        <div className="flex flex-col items-center md:items-start gap-6 max-w-xl">
-                            <p className="font-sans text-[15px] md:text-base text-white/80 text-center md:text-left leading-relaxed text-balance">
-                                I am a professional developer with a degree in information technology,
-                                with more than 2 years of experience as freelance and software developer.
-                                The tech stack that I mainly use includes most of Javascript ecosystem such as React,
-                                Next.js, Node.js, and MongoDB. I also have experience with PHP and Laravel framework.
-                                Currently, I am focusing on automating workflows and systems to improve 
-                                productivity and efficiency of the products and handling microservices architecture.
-                                Implementing industry standards and best practices while keeping up on the current trends and technologies.
+                        <div className="flex flex-col items-start">
+                            <p className="max-w-3xl font-sans text-base leading-7 text-white/62 sm:text-lg sm:leading-8">
+                                I&apos;m currently employed at Sourcefit
+                                Philippines as Full-stack Software Engineer
+                                managing automated workflows, implementing new
+                                microservices, features, optimizations that
+                                scales & leading the microservices architecture
+                                change. I have over 2+ years of hands-on
+                                experience building production-focused web
+                                systems. My tech stack is diverse, but I&apos;m
+                                mostly interested in the architecture behind
+                                systems that scales and how microservices
+                                communicate, how workflows recover, and how
+                                teams keep complex systems understandable &
+                                maintainable.
                             </p>
 
-                            {/* Focus areas */}
-                            <div className="flex flex-wrap gap-2 justify-center md:justify-start">
-                                {["MERN Stack", "Automation", "Microservices", "Laravel"].map((focus) => (
+                            <p className="mt-5 max-w-3xl font-sans text-sm leading-7 text-white/45 sm:text-base">
+                                My current work centers on event-driven
+                                microservices, automated workflows, system
+                                optimization, and full-stack product delivery
+                                using the JavaScript ecosystem and pragmatic
+                                backend tooling.
+                            </p>
+
+                            <div className="mt-7 flex flex-wrap gap-2">
+                                {focusAreas.map((focus) => (
                                     <span
                                         key={focus}
-                                        className="px-3 py-1 text-[11px] font-jetbrains tracking-wider rounded-full bg-white/5 border border-white/10 text-white/75"
+                                        data-cursor-grid-ignore
+                                        className="hero-cursor-target rounded-full border border-emerald-200/12 bg-emerald-300/[0.045] px-3.5 py-2 font-mono text-[9px] uppercase tracking-[0.14em] text-emerald-100/65 sm:text-[10px]"
                                     >
                                         {focus}
                                     </span>
                                 ))}
                             </div>
 
-                            <div className="flex flex-wrap items-stretch gap-3 mt-2">
-                                <DataContainer
-                                    icon={Briefcase}
-                                    count="2"
-                                    unit="years"
-                                    label="Experience"
+                            <div className="mt-8 grid w-full grid-cols-1 gap-3 sm:grid-cols-3">
+                                <Metric
+                                    icon={BriefcaseBusiness}
+                                    value="2+"
+                                    label="Years experience"
                                 />
-                                <DataContainer
+                                <Metric
                                     icon={FolderGit2}
-                                    count="13"
-                                    unit="Projects"
-                                    label="Completed"
+                                    value="13"
+                                    label="Projects completed"
                                 />
-                                <Button name={'Portfolio'} link={'#projects'} />
+                                <Metric
+                                    icon={MapPin}
+                                    value="PH"
+                                    label="Available remotely"
+                                />
                             </div>
+
+                            <a
+                                href="#projects"
+                                data-cursor-grid-ignore
+                                className="hero-cursor-target mt-7 inline-flex items-center gap-3 rounded-xl bg-emerald-400 px-5 py-3 font-mono text-[10px] font-medium uppercase tracking-[0.12em] text-[#06100c] transition-colors hover:bg-emerald-300 sm:text-xs"
+                            >
+                                Explore selected work
+                                <ArrowUpRight className="h-4 w-4" />
+                            </a>
                         </div>
                     </div>
                 </motion.div>
-            </section>
-            <TechTools />
-            <TechStack />
-        </>
-    )
+        </section>
+    );
 }
 
-function DataContainer({ icon: Icon, count, unit, label }) {
+function Metric({ icon: Icon, value, label }) {
     return (
-        <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-white/[0.03] border border-white/10">
-            <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-gradient-to-br from-[#6162ff] to-[#b352ff] shrink-0">
-                <Icon className="w-4 h-4 text-white" />
-            </div>
-            <div className="flex flex-col">
-                <p className="font-display text-2xl font-semibold leading-none">
-                    <span className="gradient-text">{count}</span>
-                    <span className="font-jetbrains text-xs text-white/60 ml-1">{unit}</span>
-                </p>
-                <span className="font-jetbrains text-[10px] uppercase tracking-[0.2em] text-white/50 mt-1">
-                    {label}
+        <div className="rounded-2xl border border-white/[0.08] bg-white/[0.025] p-4 backdrop-blur-sm">
+            <div className="flex items-center justify-between gap-3">
+                <span className="font-sans text-2xl font-medium tracking-[-0.04em] text-emerald-300">
+                    {value}
                 </span>
+                <Icon
+                    className="h-4 w-4 text-emerald-200/45"
+                    strokeWidth={1.7}
+                />
             </div>
+            <p className="mt-2 font-mono text-[9px] uppercase tracking-[0.16em] text-white/40">
+                {label}
+            </p>
         </div>
-    )
+    );
 }

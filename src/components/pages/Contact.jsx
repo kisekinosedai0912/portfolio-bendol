@@ -44,7 +44,7 @@ export default function Contact() {
     return (
         <section
             id="contact"
-            className="min-h-screen px-4 md:px-8 py-20 bg-gradient-to-b from-[#010003] to-[#060023]"
+            className="min-h-screen bg-[#0c1915] px-5 py-24 pr-20 sm:px-8 sm:pr-24 lg:px-12 lg:pr-28"
         >
             {/* Title */}
             <motion.div
@@ -54,10 +54,10 @@ export default function Contact() {
                 viewport={{ once: true, margin: "-80px" }}
                 transition={{ duration: 0.6, ease: 'easeOut' }}
             >
-                <p className="font-jetbrains text-[11px] uppercase tracking-[0.3em] text-white/50 mb-3">
+                <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.28em] text-emerald-300/65">
                     Let&apos;s talk
                 </p>
-                <h1 className="font-display text-4xl md:text-5xl font-semibold tracking-tight">
+                <h1 className="font-sans text-4xl font-medium tracking-[-0.04em] md:text-5xl">
                     <span className="gradient-text">Get in Touch with Me</span>
                 </h1>
             </motion.div>
@@ -75,17 +75,17 @@ export default function Contact() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, margin: "-40px" }}
                             transition={{ duration: 0.4, delay: (index % 2) * 0.06, ease: 'easeOut' }}
-                            className="group p-[1px] rounded-2xl bg-gradient-to-br from-white/10 to-white/5 hover:from-[#6162ff]/60 hover:to-[#b352ff]/60 transition-all duration-300"
+                            className="group rounded-2xl border border-white/[0.08] bg-white/[0.02] transition-colors duration-300 hover:border-emerald-300/25"
                         >
                             <Wrapper
                                 href={contact.href || undefined}
                                 target={contact.href?.startsWith("http") ? "_blank" : undefined}
                                 rel="noopener noreferrer"
-                                className="flex items-center gap-4 p-5 md:p-6 rounded-2xl bg-[#0a0a1a]/80 backdrop-blur-sm h-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8b5cff]/60"
+                                className="flex h-full items-center gap-4 rounded-2xl bg-[#0a1210]/82 p-5 backdrop-blur-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-200/70 md:p-6"
                             >
                                 {/* Icon */}
-                                <div className="shrink-0 flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-[#6162ff] to-[#b352ff] shadow-md shadow-[#6162ff]/30">
-                                    <Icon className="w-5 h-5 text-white" />
+                                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-emerald-200/12 bg-emerald-300/[0.07] shadow-md shadow-emerald-950/30">
+                                    <Icon className="h-5 w-5 text-emerald-300" />
                                 </div>
 
                                 {/* Text */}
@@ -101,7 +101,7 @@ export default function Contact() {
                                 {/* Hover arrow */}
                                 {contact.href && (
                                     <ArrowUpRight
-                                        className="shrink-0 w-4 h-4 text-white/40 transition-all duration-200 group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                                        className="h-4 w-4 shrink-0 text-white/40 transition-colors duration-200 group-hover:text-emerald-300"
                                     />
                                 )}
                             </Wrapper>

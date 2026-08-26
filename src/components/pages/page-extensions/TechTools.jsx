@@ -35,14 +35,14 @@ export default function TechTools() {
             {/* SVG Gradient Definition */}
             <svg width="0" height="0">
                 <defs>
-                    <linearGradient id="iconGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stopColor="#6162ff" />
-                    <stop offset="100%" stopColor="#b352ff" />
+                    <linearGradient id="toolsIconGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="#34d399" />
+                    <stop offset="100%" stopColor="#a3e635" />
                     </linearGradient>
                 </defs>
             </svg>
 
-            <section id="tech-tools" className="flex justify-center px-4 md:px-8 py-16 bg-gradient-to-b from-[#060023] to-[#010003]">
+            <section id="tech-tools" className="flex min-h-screen items-center justify-center bg-[#091410] px-5 py-24 pr-20 sm:px-8 sm:pr-24 lg:px-12 lg:pr-28">
                 <motion.div
                     className="max-w-6xl w-full"
                     initial={{ opacity: 0, y: 24 }}
@@ -51,10 +51,10 @@ export default function TechTools() {
                     transition={{ duration: 0.6, ease: 'easeOut' }}
                 >
                     <div className="text-center mb-12">
-                        <p className="font-jetbrains text-[11px] uppercase tracking-[0.3em] text-white/50 mb-3">
+                        <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.28em] text-emerald-300/65">
                             What I use daily
                         </p>
-                        <h2 className="font-display text-3xl md:text-4xl font-semibold tracking-tight">
+                        <h2 className="font-sans text-3xl font-medium tracking-[-0.035em] md:text-4xl">
                             <span className="gradient-text">Tools</span>
                         </h2>
                     </div>
@@ -77,11 +77,12 @@ export default function TechTools() {
                                             rounded-xl
                                             transition-all duration-300
                                             hover:bg-white/[0.05]
-                                            hover:shadow-lg hover:shadow-[#6162ff]/10"
+                                            hover:border-emerald-300/25
+                                            hover:shadow-lg hover:shadow-emerald-950/30"
                                     >
                                         <IconComponent
                                             className="w-9 h-9 transition-transform duration-300 group-hover:scale-110"
-                                            style={{ fill: "url(#iconGradient)" }}
+                                            style={{ fill: "url(#toolsIconGradient)" }}
                                         />
 
                                         <p className="font-jetbrains text-[12px] tracking-wider text-white/85 text-center">

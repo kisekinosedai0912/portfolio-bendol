@@ -11,7 +11,7 @@ export default function Dock({ items, className = '' }) {
 
     return (
         <motion.nav
-            className={`flex h-[222px] w-[62px] flex-col items-end justify-center gap-2 overflow-visible rounded-[1.65rem] border border-white/10 bg-[#0a0f0e]/85 p-2 shadow-2xl shadow-black/40 backdrop-blur-xl ${className}`}
+            className={`flex h-auto w-[62px] flex-col items-end justify-center gap-2 overflow-visible rounded-[1.65rem] border border-white/10 bg-[#0a0f0e]/85 p-2 shadow-2xl shadow-black/40 backdrop-blur-xl ${className}`}
             onPointerMove={({ clientY }) => mouseY.set(clientY)}
             onMouseLeave={() => mouseY.set(Infinity)}
             aria-label="Primary navigation"

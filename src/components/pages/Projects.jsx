@@ -165,7 +165,7 @@ export default function Projects() {
     return (
         <section
             id="projects"
-            className="min-h-screen px-4 md:px-8 py-20 bg-gradient-to-b from-[#060023] to-[#010003]"
+            className="min-h-screen bg-[#0a1411] px-5 py-24 pr-20 sm:px-8 sm:pr-24 lg:px-12 lg:pr-28"
         >
             {/* Title */}
             <motion.div
@@ -175,10 +175,10 @@ export default function Projects() {
                 viewport={{ once: true, margin: "-80px" }}
                 transition={{ duration: 0.6, ease: 'easeOut' }}
             >
-                <p className="font-jetbrains text-[11px] uppercase tracking-[0.3em] text-white/50 mb-3">
+                <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.28em] text-emerald-300/65">
                     Selected work
                 </p>
-                <h1 className="font-display text-4xl md:text-5xl font-semibold tracking-tight">
+                <h1 className="font-sans text-4xl font-medium tracking-[-0.04em] md:text-5xl">
                     <span className="gradient-text">My Portfolio</span>
                 </h1>
             </motion.div>
@@ -188,13 +188,13 @@ export default function Projects() {
                 {projects.map((project, idx) => (
                     <motion.div
                         key={project.id}
-                        className="group relative p-[1px] rounded-2xl bg-gradient-to-br from-white/10 to-white/5 hover:from-[#6162ff]/60 hover:to-[#b352ff]/60 transition-all duration-300"
+                        className="group relative rounded-2xl border border-white/[0.08] bg-white/[0.02] transition-colors duration-300 hover:border-emerald-300/25"
                         initial={{ opacity: 0, y: 24 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, margin: "-60px" }}
                         transition={{ duration: 0.5, delay: (idx % 3) * 0.08, ease: 'easeOut' }}
                     >
-                        <div className="relative h-full rounded-2xl overflow-hidden bg-[#0a0a1a]/80 backdrop-blur-sm flex flex-col transition-shadow duration-300 group-hover:shadow-xl group-hover:shadow-[#6162ff]/10">
+                        <div className="relative flex h-full flex-col overflow-hidden rounded-2xl bg-[#0a1210]/88 backdrop-blur-sm transition-shadow duration-300 group-hover:shadow-xl group-hover:shadow-emerald-950/35">
                             {/* Media */}
                             <div className="relative overflow-hidden">
                                 <img
@@ -204,19 +204,19 @@ export default function Projects() {
                                     className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105"
                                 />
                                 {/* fade the image into the card body */}
-                                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0a0a1a] via-[#0a0a1a]/10 to-transparent" />
+                                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0a1210] via-[#0a1210]/10 to-transparent" />
 
                                 {/* status badge */}
                                 <span
                                     className={`absolute top-3 left-3 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-jetbrains uppercase tracking-[0.12em] backdrop-blur-md border ${
                                         project.link
-                                            ? "bg-red-500/15 border-red-400/30 text-red-300"
+                                            ? "bg-emerald-400/15 border-emerald-300/30 text-emerald-200"
                                             : "bg-yellow-500/15 border-yellow-400/30 text-yellow-300"
                                     }`}
                                 >
                                     <span
                                         className={`w-1.5 h-1.5 rounded-full ${
-                                            project.link ? "bg-red-400 animate-pulse" : "bg-yellow-400"
+                                            project.link ? "bg-emerald-300 animate-pulse" : "bg-yellow-400"
                                         }`}
                                     />
                                     {project.link ? "Live" : "Private"}
@@ -230,7 +230,7 @@ export default function Projects() {
 
                             {/* Body */}
                             <div className="p-6 flex flex-col gap-3 flex-1">
-                                <h3 className="font-display text-lg md:text-xl font-semibold leading-snug gradient-text line-clamp-2 min-h-[3.5rem]">
+                                <h3 className="min-h-[3.5rem] font-sans text-lg font-medium leading-snug tracking-[-0.025em] text-white line-clamp-2 md:text-xl">
                                     {project.title}
                                 </h3>
 
@@ -258,10 +258,10 @@ export default function Projects() {
                                     <button
                                         onClick={() => setActiveProject(project)}
                                         className="flex-1 inline-flex items-center justify-center gap-2 px-5 py-2 rounded-full text-[12px] font-jetbrains tracking-wider
-                                        bg-gradient-to-r from-[#6162ff] to-[#b352ff] text-white
-                                        hover:shadow-lg hover:shadow-[#b352ff]/30
-                                        transition-all duration-200
-                                        focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8b5cff]/60"
+                                        bg-emerald-400 text-[#06100c]
+                                        hover:bg-emerald-300
+                                        transition-colors duration-200
+                                        focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-200/70"
                                     >
                                         <ExternalLink size={14} />
                                         Details
@@ -273,9 +273,9 @@ export default function Projects() {
                                             rel="noopener noreferrer"
                                             aria-label={`Open ${project.title} live site`}
                                             className="inline-flex items-center justify-center w-9 h-9 rounded-full border border-white/15 bg-white/5 text-white/70
-                                            hover:text-white hover:border-[#8b5cff]/60 hover:bg-white/10
+                                            hover:text-emerald-200 hover:border-emerald-300/40 hover:bg-emerald-300/[0.06]
                                             transition-all duration-200
-                                            focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8b5cff]/60"
+                                            focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-200/70"
                                         >
                                             <ExternalLink size={15} />
                                         </a>
@@ -323,7 +323,7 @@ function ProjectModal({ project, onClose }) {
         >
             {/* Modal Card */}
             <motion.div
-                className="relative max-w-3xl w-full max-h-[90vh] overflow-y-auto bg-gradient-to-br from-[#1a1a2e] to-[#0f0f1c] rounded-2xl shadow-2xl border border-white/10"
+                className="relative max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-2xl border border-emerald-200/10 bg-gradient-to-br from-[#0d1914] to-[#07100d] shadow-2xl"
                 initial={{ scale: 0.9, opacity: 0, y: 30 }}
                 animate={{ scale: 1, opacity: 1, y: 0 }}
                 exit={{ scale: 0.9, opacity: 0, y: 30 }}
@@ -334,7 +334,7 @@ function ProjectModal({ project, onClose }) {
                 <button
                     onClick={onClose}
                     aria-label="Close project details"
-                    className="absolute top-4 right-4 z-10 p-2 rounded-full bg-black/40 backdrop-blur-md text-white/80 hover:text-white hover:bg-black/60 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8b5cff]/60"
+                    className="absolute right-4 top-4 z-10 rounded-full bg-black/40 p-2 text-white/80 backdrop-blur-md transition hover:bg-black/60 hover:text-emerald-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-200/70"
                 >
                     <X size={20} />
                 </button>
@@ -346,19 +346,19 @@ function ProjectModal({ project, onClose }) {
                         alt={project.title}
                         className="w-full h-64 object-cover rounded-t-2xl"
                     />
-                    <div className="pointer-events-none absolute inset-0 rounded-t-2xl bg-gradient-to-t from-[#0f0f1c] via-transparent to-transparent" />
+                    <div className="pointer-events-none absolute inset-0 rounded-t-2xl bg-gradient-to-t from-[#07100d] via-transparent to-transparent" />
 
                     {/* status badge */}
                     <span
                         className={`absolute bottom-4 left-6 inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-jetbrains uppercase tracking-[0.12em] backdrop-blur-md border ${
                             project.link
-                                ? "bg-red-500/15 border-red-400/30 text-red-300"
+                                ? "bg-emerald-400/15 border-emerald-300/30 text-emerald-200"
                                 : "bg-yellow-500/15 border-yellow-400/30 text-yellow-300"
                         }`}
                     >
                         <span
                             className={`w-1.5 h-1.5 rounded-full ${
-                                project.link ? "bg-red-400 animate-pulse" : "bg-yellow-400"
+                                project.link ? "bg-emerald-300 animate-pulse" : "bg-yellow-400"
                             }`}
                         />
                         {project.link ? "Live" : "Private"}
@@ -367,7 +367,7 @@ function ProjectModal({ project, onClose }) {
 
                 {/* Content */}
                 <div className="p-6 md:p-8">
-                    <h2 className="font-display text-2xl md:text-3xl font-semibold tracking-tight mb-4">
+                    <h2 className="mb-4 font-sans text-2xl font-medium tracking-[-0.035em] md:text-3xl">
                         <span className="gradient-text">{project.title}</span>
                     </h2>
 
@@ -395,11 +395,11 @@ function ProjectModal({ project, onClose }) {
                             target="_blank"
                             rel="noopener noreferrer"
                             className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full
-                            bg-gradient-to-r from-[#6162ff] to-[#b352ff] text-white
+                            bg-emerald-400 text-[#06100c]
                             font-jetbrains text-[12px] tracking-wider
-                            hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[#b352ff]/40
-                            transition-all duration-200
-                            focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8b5cff]/60"
+                            hover:bg-emerald-300
+                            transition-colors duration-200
+                            focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-200/70"
                         >
                             <ExternalLink size={14} />
                             Live Demo

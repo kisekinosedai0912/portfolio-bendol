@@ -71,9 +71,9 @@ export default function WebDev() {
             {/* SVG Gradient Definition */}
             <svg width="0" height="0">
                 <defs>
-                    <linearGradient id="iconGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stopColor="#6162ff" />
-                    <stop offset="100%" stopColor="#b352ff" />
+                    <linearGradient id="webIconGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="#34d399" />
+                    <stop offset="100%" stopColor="#a3e635" />
                     </linearGradient>
                 </defs>
             </svg>
@@ -93,11 +93,12 @@ export default function WebDev() {
                                     rounded-xl
                                     transition-all duration-300
                                     hover:bg-white/[0.05]
-                                    hover:shadow-lg hover:shadow-[#6162ff]/10"
+                                    hover:border-emerald-300/25
+                                    hover:shadow-lg hover:shadow-emerald-950/30"
                             >
                                 <IconComponent
                                     className="w-9 h-9 transition-transform duration-300 group-hover:scale-110"
-                                    style={{ fill: "url(#iconGradient)" }}
+                                    style={{ fill: "url(#webIconGradient)" }}
                                 />
 
                                 <p className="font-jetbrains text-[12px] tracking-wider text-white/85 text-center">

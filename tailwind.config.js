@@ -30,12 +30,12 @@ export default {
 			},
 			colors: {
 				brand: {
-					indigo: '#6162ff',
-					violet: '#b352ff',
-					mid: '#8b5cff',
-					deep: '#050515',
-					ink: '#010003',
-					night: '#060023',
+					emerald: '#34d399',
+					mint: '#6ee7b7',
+					lime: '#a3e635',
+					deep: '#07100d',
+					ink: '#030c09',
+					night: '#08130f',
 				},
 			},
 			keyframes: {

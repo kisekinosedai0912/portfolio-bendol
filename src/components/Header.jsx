@@ -1,10 +1,12 @@
-import { FolderKanban, House, Mail, User } from 'lucide-react'
+import { FolderKanban, House, Layers, Mail, User, Wrench } from 'lucide-react'
 import Dock from './react-bits/Dock'
 
 export default function Header() {
     const items = [
         { icon: House, label: 'Home', href: '#home' },
         { icon: User, label: 'About', href: '#about' },
+        { icon: Wrench, label: 'Tools', href: '#tech-tools' },
+        { icon: Layers, label: 'Stack', href: '#tech-stack' },
         { icon: FolderKanban, label: 'Projects', href: '#projects' },
         { icon: Mail, label: 'Contact', href: '#contact' }
     ]

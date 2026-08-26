@@ -32,7 +32,7 @@ export default function TechStack() {
     };
 
     return (
-        <section id="tech-stack" className="flex justify-center px-4 md:px-8 py-16 bg-gradient-to-b from-[#010003] to-[#060023]">
+        <section id="tech-stack" className="flex min-h-screen items-center justify-center bg-[#0d1a16] px-5 py-24 pr-20 sm:px-8 sm:pr-24 lg:px-12 lg:pr-28">
             <motion.div
                 className="max-w-6xl w-full"
                 initial={{ opacity: 0, y: 24 }}
@@ -41,10 +41,10 @@ export default function TechStack() {
                 transition={{ duration: 0.6, ease: 'easeOut' }}
             >
                 <div className="text-center mb-12">
-                    <p className="font-jetbrains text-[11px] uppercase tracking-[0.3em] text-white/50 mb-3">
+                    <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.28em] text-emerald-300/65">
                         What I work with
                     </p>
-                    <h2 className="font-display text-3xl md:text-4xl font-semibold tracking-tight">
+                    <h2 className="font-sans text-3xl font-medium tracking-[-0.035em] md:text-4xl">
                         <span className="gradient-text">Tech-Stack</span>
                     </h2>
                 </div>
@@ -58,9 +58,9 @@ export default function TechStack() {
                             <button
                                 key={tab.id}
                                 onClick={() => setActiveTab(tab.id)}
-                                className={`animated-border flex items-center gap-2 px-5 py-2.5 font-jetbrains text-[12px] uppercase tracking-[0.15em] rounded-full transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8b5cff]/60 ${
+                                className={`animated-border flex items-center gap-2 px-5 py-2.5 font-mono text-[12px] uppercase tracking-[0.15em] rounded-full transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-200/70 ${
                                     isActive
-                                        ? 'bg-gradient-to-r from-[#6162ff] to-[#b352ff] text-white shadow-lg shadow-[#b352ff]/30'
+                                        ? 'bg-emerald-400 text-[#06100c] shadow-lg shadow-emerald-400/15'
                                         : 'bg-white/[0.04] text-white/70 border border-white/10 hover:text-white hover:bg-white/[0.07] hover:border-white/20'
                                 }`}
                             >
