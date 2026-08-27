@@ -22,7 +22,7 @@ const projects = [
         description:
             `A media monitoring system built for Icelandic companies that tracks ads published in various platforms. These platforms
 				includes meta, google, podcast & radio channels. It helps the businesses know the latest updates of their competitors,
-				giving the business insights and most of all, efficiency of information especially with the built-in AI chat that 
+				giving the business insights and most of all, efficiency of information especially with the built-in AI chat that
 				instantly gives the results you ask.
                 `,
         tech: ["Next.Js", "Node Js", "Neon", "Typescript", "Tailwind", "Temporal", "Nx Workspace", "Sentry", "OpenAI Models"],
@@ -48,7 +48,7 @@ const projects = [
         description:
             `A gamified tourism web app built from React, Express, Nodejs & MongoDB. This platform was built and designed
                  to provide tourists and the townsfolk of Escalante City a unified platform with details of their tourist sites
-                 found in the area. It features achievement based on user activity, quizzes and site visits allowing a gamified 
+                 found in the area. It features achievement based on user activity, quizzes and site visits allowing a gamified
                  concept. The engineering of this web app was designed with MERN stack with OAuth, JWT, Push Notifications and Map
                  features all for better user engagement.
                 `,
@@ -82,11 +82,11 @@ const projects = [
         id: 6,
         title: "Laundry Management System",
         image: Laundry,
-        link: "https://laundry-management-system-32ft.onrender.com",
+        link: null,
         description:
             `A simple Laundry Management System built with React, Expres, Node Js and Tailwind. The data are only stored on JSON files
                  because the primary role of this system is just to demonstrate a solution in a project of a student in their specific
-                 subject. It solves a problem found in the area specifically in laundry shops. The simple system was only built for a 
+                 subject. It solves a problem found in the area specifically in laundry shops. The simple system was only built for a
                  project and not implemented yet.
                 `,
         tech: ["React", "Express", "Node Js", "JSON", "Javascript", "Tailwind"],
@@ -99,7 +99,7 @@ const projects = [
         description:
             `A Barangay Community web system built with Laravel, jQuery and Admin LTE plugin to follow a fast development pace.
                  The system was made to give the Barangay Poblacion I of Sagay City, Negros Occidental a software & website that will
-                 showcase their recycled products and allow profits of every recycled materials made by the people in the area. It 
+                 showcase their recycled products and allow profits of every recycled materials made by the people in the area. It
                  features recycled materials as its primary asset as well as conducting commmunity campaigns, giving points to every
                  barangay participants and rewards them with points that they can use as well to purchase a product of their choice.
                 `,
@@ -112,10 +112,10 @@ const projects = [
         link: null,
         description:
             `A web app built with Laravel, jQuery and Tailwind, to address the manual scheduling process of Sagay City Senior
-                 High School during enrollment scheduling to teachers, student's subjects, and classrooms. It features 
-                 automated conflict resolution where the system detects if specific teacher schedules is conflicting with other or 
+                 High School during enrollment scheduling to teachers, student's subjects, and classrooms. It features
+                 automated conflict resolution where the system detects if specific teacher schedules is conflicting with other or
                  their own schedules. It also features and SMS notification for every school calendar events are made or changed to
-                 the designated teachers of SCSHS. 
+                 the designated teachers of SCSHS.
                 `,
         tech: ["Laravel", "Javascript", "jQuery", "MySQL", "HTML", "Tailwind"],
     },
@@ -125,9 +125,9 @@ const projects = [
         image: Metrics,
         link: null,
         description:
-            `A web system designed and engineered for the needs of Sewahon National High School. It caters account creation automation, 
-                 automated grade calculation and rankings. It was built as a collaboration project with a co-developer using native PHP and 
-                 jQuery for the development utilizing Github for codebase management, updates and version control. Implemented 4 user role 
+            `A web system designed and engineered for the needs of Sewahon National High School. It caters account creation automation,
+                 automated grade calculation and rankings. It was built as a collaboration project with a co-developer using native PHP and
+                 jQuery for the development utilizing Github for codebase management, updates and version control. Implemented 4 user role
                  access such as admin, student, teacher and parent to the system, each with different controls.
                 `,
         tech: ["PHP", "Javascript", "jQuery", "MySQL", "HTML", "Tailwind"],
@@ -221,9 +221,13 @@ export default function Projects() {
                     </div>
                 </div>
 
-                <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5 xl:grid-cols-3">
+                <div className="relative border-y border-white/[0.09]">
+                    <div
+                        aria-hidden="true"
+                        className="pointer-events-none absolute bottom-0 left-[2.45rem] top-0 hidden w-px bg-gradient-to-b from-emerald-300/35 via-white/10 to-transparent lg:block"
+                    />
                     {projects.map((project, index) => (
-                        <ProjectCard
+                        <ProjectFeature
                             key={project.id}
                             project={project}
                             index={index}
@@ -246,9 +250,11 @@ export default function Projects() {
     );
 }
 
-function ProjectCard({ project, index, onOpen }) {
+function ProjectFeature({ project, index, onOpen }) {
+    const isReversed = index % 2 === 1;
+
     return (
-        <motion.div
+        <motion.article
             custom={index}
             variants={cardVariants}
             initial="hidden"
@@ -256,71 +262,90 @@ function ProjectCard({ project, index, onOpen }) {
             viewport={{ once: true, margin: "-40px" }}
             data-project-card
             data-cursor-grid-ignore
-            className="relative flex flex-col overflow-hidden rounded-[1.4rem] border border-white/[0.09] bg-[#0c1914] shadow-[0_14px_36px_rgba(0,0,0,0.14)]"
+            className="relative grid gap-6 border-b border-white/[0.09] py-9 last:border-b-0 sm:py-12 lg:grid-cols-[5rem_minmax(0,1.2fr)_minmax(18rem,0.8fr)] lg:items-center lg:gap-8 lg:py-16"
         >
-            <div className="relative m-2 mb-0 overflow-hidden rounded-[1rem] border border-white/[0.06] bg-[#07100d]">
-                <img
-                    src={project.image}
-                    alt={project.title}
-                    loading="lazy"
-                    className="aspect-[16/9] w-full object-cover"
-                />
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#07100d]/75 via-transparent to-black/10" />
-
-                <span
-                    className={`absolute bottom-3 left-3 inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 font-mono text-[9px] uppercase tracking-[0.14em] backdrop-blur-md ${
-                        project.link
-                            ? "border-emerald-200/15 bg-emerald-300/[0.12] text-emerald-100/80"
-                            : "border-white/10 bg-white/[0.06] text-white/50"
-                    }`}
-                >
-                    <span
-                        className={`h-1.5 w-1.5 rounded-full ${
-                            project.link ? "animate-pulse bg-emerald-300" : "bg-white/35"
-                        }`}
-                    />
-                    {project.link ? "Live" : "Private"}
+            <div className="relative z-10 flex items-center gap-3 lg:self-start lg:pt-1">
+                <span className="flex h-5 w-5 items-center justify-center rounded-full border border-emerald-300/30 bg-[#0a1411]">
+                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-300/75" />
                 </span>
-
-                <span className="absolute bottom-3 right-3 rounded-full border border-white/10 bg-[#07100d]/55 px-2.5 py-1 font-mono text-[9px] tracking-[0.16em] text-white/45 backdrop-blur-md">
+                <span className="font-mono text-xs tracking-[0.2em] text-white/35 lg:text-sm">
                     {String(project.id).padStart(2, "0")}
                 </span>
             </div>
 
-            <div className="flex flex-1 flex-col p-5 pt-4">
-                <h3 className="min-h-[3.25rem] font-sans text-lg font-medium leading-snug tracking-[-0.025em] text-white/90 line-clamp-2 md:text-xl">
+            <div className={`relative min-w-0 ${isReversed ? "lg:order-3" : "lg:order-2"}`}>
+                <div
+                    aria-hidden="true"
+                    className={`absolute -top-7 z-10 font-mono text-[8px] uppercase tracking-[0.24em] text-emerald-300/45 ${
+                        isReversed ? "right-0" : "left-0"
+                    }`}
+                >
+                    frame / {String(project.id).padStart(2, "0")}
+                </div>
+                <div className="relative overflow-hidden border border-white/[0.11] bg-[#07100d] p-1.5 shadow-[0_24px_60px_rgba(0,0,0,0.2)]">
+                    <img
+                        src={project.image}
+                        alt={project.title}
+                        loading="lazy"
+                        className="aspect-[16/9] w-full object-cover"
+                    />
+                    <div className="pointer-events-none absolute inset-1.5 bg-gradient-to-t from-[#07100d]/60 via-transparent to-black/10" />
+                    <span
+                        className={`absolute bottom-4 left-4 inline-flex items-center gap-1.5 border px-2.5 py-1 font-mono text-[8px] uppercase tracking-[0.16em] backdrop-blur-md ${
+                            project.link
+                                ? "border-emerald-200/20 bg-[#07100d]/75 text-emerald-200/80"
+                                : "border-white/15 bg-[#07100d]/75 text-white/50"
+                        }`}
+                    >
+                        <span className={`h-1.5 w-1.5 rounded-full ${project.link ? "bg-emerald-300" : "bg-white/35"}`} />
+                        {project.link ? "Live system" : "Private build"}
+                    </span>
+                </div>
+                <div className="mt-2 flex items-center justify-between font-mono text-[7px] uppercase tracking-[0.2em] text-white/20">
+                    <span>Jasper Bendol / Selected work</span>
+                    <span>{String(index + 1).padStart(2, "0")} — {String(projects.length).padStart(2, "0")}</span>
+                </div>
+            </div>
+
+            <div className={`flex min-w-0 flex-col ${isReversed ? "lg:order-2 lg:pr-4" : "lg:order-3 lg:pl-4"}`}>
+                <p className="mb-4 font-mono text-[8px] uppercase tracking-[0.2em] text-emerald-300/55">
+                    {project.link ? "Public release" : "Client / internal system"}
+                </p>
+                <h3 className="font-sans text-[clamp(1.45rem,2.4vw,2.2rem)] font-medium leading-[1.12] tracking-[-0.035em] text-white/90">
                     {project.title}
                 </h3>
 
-                <p className="mt-3 font-sans text-[13px] leading-6 text-white/45 line-clamp-2">
+                <p className="mt-5 font-sans text-sm leading-7 text-white/48 line-clamp-3">
                     {project.description}
                 </p>
 
-                <div className="mt-4 flex flex-wrap gap-1.5">
+                <div className="mt-6 flex flex-wrap gap-x-3 gap-y-2">
                     {project.tech.slice(0, 4).map((tech) => (
                         <span
                             key={tech}
-                            className="rounded-md border border-emerald-200/10 bg-emerald-300/[0.04] px-2 py-1 font-mono text-[8px] uppercase tracking-[0.12em] text-emerald-100/55"
+                            className="border-l border-emerald-300/30 pl-2 font-mono text-[8px] uppercase tracking-[0.14em] text-emerald-100/55"
                         >
                             {tech}
                         </span>
                     ))}
                     {project.tech.length > 4 ? (
-                        <span className="rounded-md border border-white/[0.08] bg-white/[0.025] px-2 py-1 font-mono text-[8px] uppercase tracking-[0.12em] text-white/35">
-                            +{project.tech.length - 4}
+                        <span className="border-l border-white/15 pl-2 font-mono text-[8px] uppercase tracking-[0.14em] text-white/32">
+                            +{project.tech.length - 4} tools
                         </span>
                     ) : null}
                 </div>
 
-                <div className="mt-5 flex items-center gap-2 border-t border-white/[0.07] pt-4">
+                <div className="mt-7 flex flex-wrap items-center gap-4 border-t border-white/[0.08] pt-5">
                     <button
                         type="button"
                         onClick={onOpen}
                         data-cursor-grid-ignore
-                        className="hero-cursor-target group inline-flex flex-1 cursor-pointer items-center justify-center gap-2 rounded-xl bg-emerald-400 px-4 py-2.5 font-mono text-[10px] font-medium uppercase tracking-[0.12em] text-[#06100c] shadow-[0_8px_18px_rgba(52,211,153,0.12)] transition-[transform,background-color,box-shadow] duration-200 hover:-translate-y-0.5 hover:bg-emerald-300 hover:shadow-[0_12px_24px_rgba(52,211,153,0.2)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-200/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0c1914]"
+                        className="primary-action hero-cursor-target group inline-flex cursor-pointer items-stretch bg-[#0b1713] font-mono text-[9px] font-medium uppercase tracking-[0.15em] shadow-[0_8px_18px_rgba(52,211,153,0.12)] transition-[transform,box-shadow] duration-200 hover:-translate-y-0.5 hover:shadow-[0_12px_24px_rgba(52,211,153,0.2)] focus-visible:outline-none"
                     >
-                        Details
-                        <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                        <span className="primary-action__label">View case details</span>
+                        <span className="primary-action__end text-emerald-200">
+                            <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                        </span>
                     </button>
                     {project.link ? (
                         <a
@@ -328,14 +353,15 @@ function ProjectCard({ project, index, onOpen }) {
                             target="_blank"
                             rel="noopener noreferrer"
                             aria-label={`Open ${project.title} live site`}
-                            className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] text-white/55 transition-colors hover:border-emerald-200/20 hover:bg-white/[0.07] hover:text-emerald-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-200/70"
+                            className="inline-flex items-center gap-2 border-b border-white/20 py-1 font-mono text-[8px] uppercase tracking-[0.15em] text-white/48 transition-colors hover:border-emerald-300/60 hover:text-emerald-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-200/70"
                         >
-                            <ExternalLink className="h-4 w-4" />
+                            Visit live site
+                            <ExternalLink className="h-3.5 w-3.5" />
                         </a>
                     ) : null}
                 </div>
             </div>
-        </motion.div>
+        </motion.article>
     );
 }
 
@@ -433,10 +459,13 @@ function ProjectModal({ project, onClose, shouldReduceMotion }) {
                             href={project.link}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-3 rounded-xl bg-emerald-400 px-5 py-3 font-mono text-[10px] font-medium uppercase tracking-[0.12em] text-[#06100c] transition-colors hover:bg-emerald-300"
+                            data-cursor-grid-ignore
+                            className="primary-action hero-cursor-target group inline-flex items-stretch bg-[#0b1713] font-mono text-[10px] font-medium uppercase tracking-[0.12em] shadow-[0_8px_18px_rgba(52,211,153,0.12)] transition-[transform,box-shadow] duration-200 hover:-translate-y-0.5 hover:shadow-[0_12px_24px_rgba(52,211,153,0.2)]"
                         >
-                            Live demo
-                            <ArrowUpRight className="h-4 w-4" />
+                            <span className="primary-action__label">Live demo</span>
+                            <span className="primary-action__end text-emerald-200">
+                                <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                            </span>
                         </a>
                     ) : (
                         <span className="inline-flex items-center gap-3 rounded-xl border border-white/10 bg-white/[0.04] px-5 py-3 font-mono text-[10px] uppercase tracking-[0.12em] text-white/40">

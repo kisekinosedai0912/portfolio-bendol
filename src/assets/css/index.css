@@ -74,6 +74,50 @@ html {
   color: transparent;
 }
 
+/* Segmented primary CTA: square label, dark action end, one restrained point. */
+.primary-action {
+  --action-point: 0.65rem;
+  border-radius: 0 !important;
+  clip-path: polygon(
+    0 0,
+    calc(100% - var(--action-point)) 0,
+    100% 50%,
+    calc(100% - var(--action-point)) 100%,
+    0 100%
+  );
+  overflow: hidden;
+}
+
+.primary-action__label {
+  align-self: stretch;
+  display: inline-flex;
+  align-items: center;
+  background: #34d399;
+  color: #06100c;
+  padding: 0.72rem 1.25rem;
+  transition: background-color 200ms ease;
+}
+
+.primary-action__end {
+  align-self: stretch;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.75rem;
+  padding: 0.72rem 0.85rem 0.72rem 0.65rem;
+}
+
+.primary-action:hover .primary-action__label {
+  background: #6ee7b7;
+}
+
+.primary-action:focus-visible {
+  outline: none;
+  filter:
+    drop-shadow(0 0 1px rgba(236, 253, 245, 0.95))
+    drop-shadow(0 0 5px rgba(110, 231, 183, 0.78));
+}
+
 /* ambient decorative glows used inside GridBackground for depth */
 .glow-blob-a,
 .glow-blob-b {

@@ -24,13 +24,15 @@ export default function Home() {
                     <a
                         href="#contact"
                         data-cursor-grid-ignore
-                        className="hero-cursor-target group mb-5 inline-flex items-center gap-3 rounded-xl border border-white/10 bg-white/[0.04] p-1 pr-4 font-mono text-[9px] uppercase tracking-[0.16em] text-white/50 backdrop-blur-sm transition-colors hover:border-emerald-300/25 hover:text-white/75 sm:mb-7 sm:text-[10px]"
+                        className="primary-action hero-cursor-target group mb-5 inline-flex items-stretch border border-white/10 bg-[#0b1713] font-mono text-[9px] uppercase tracking-[0.16em] text-white/55 shadow-lg shadow-black/15 transition-transform duration-200 hover:-translate-y-0.5 sm:mb-7 sm:text-[10px]"
                     >
-                        <span className="rounded-lg bg-emerald-400 px-3 py-2 text-[#06100c]">
+                        <span className="primary-action__label">
                             Available
                         </span>
-                        New projects
-                        <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+                        <span className="primary-action__end gap-2 whitespace-nowrap">
+                            New projects
+                            <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+                        </span>
                     </a>
 
                     <h1 className="max-w-2xl font-sans text-[clamp(2.5rem,4.15vw,4.125rem)] font-medium leading-[1.06] tracking-[-0.025em] text-white">
@@ -55,10 +57,12 @@ export default function Home() {
                         <a
                             href="#projects"
                             data-cursor-grid-ignore
-                            className="hero-cursor-target group inline-flex items-center gap-3 rounded-xl bg-emerald-400 px-5 py-3 font-mono text-[10px] font-medium uppercase tracking-[0.1em] text-[#06100c] shadow-lg shadow-emerald-400/15 transition-colors hover:bg-emerald-300 sm:px-6 sm:text-xs"
+                            className="primary-action hero-cursor-target group inline-flex items-stretch bg-[#0b1713] font-mono text-[10px] font-medium uppercase tracking-[0.1em] shadow-lg shadow-emerald-400/15 transition-transform duration-200 hover:-translate-y-0.5 sm:text-xs"
                         >
-                            Browse projects
-                            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                            <span className="primary-action__label">Browse projects</span>
+                            <span className="primary-action__end text-emerald-200">
+                                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                            </span>
                         </a>
                         <a
                             href="/Developer_Resume_Jasper_Bendol.pdf"

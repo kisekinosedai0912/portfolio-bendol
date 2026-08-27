@@ -111,10 +111,12 @@ export default function About() {
                             <a
                                 href="#projects"
                                 data-cursor-grid-ignore
-                                className="hero-cursor-target mt-7 inline-flex items-center gap-3 rounded-xl bg-emerald-400 px-5 py-3 font-mono text-[10px] font-medium uppercase tracking-[0.12em] text-[#06100c] transition-colors hover:bg-emerald-300 sm:text-xs"
+                                className="primary-action hero-cursor-target group mt-7 inline-flex items-stretch bg-[#0b1713] font-mono text-[10px] font-medium uppercase tracking-[0.12em] transition-transform duration-200 hover:-translate-y-0.5 sm:text-xs"
                             >
-                                Explore selected work
-                                <ArrowUpRight className="h-4 w-4" />
+                                <span className="primary-action__label">Explore selected work</span>
+                                <span className="primary-action__end text-emerald-200">
+                                    <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                                </span>
                             </a>
                         </div>
                     </div>

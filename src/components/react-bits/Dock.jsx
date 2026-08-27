@@ -57,11 +57,11 @@ function DockItem({ item, mouseY }) {
             <AnimatePresence>
                 {isHovered && (
                     <motion.span
-                        initial={{ opacity: 0, x: 4 }}
-                        animate={{ opacity: 1, x: -6 }}
-                        exit={{ opacity: 0, x: 4 }}
+                        initial={{ opacity: 0, y: 4 }}
+                        animate={{ opacity: 1, y: -6 }}
+                        exit={{ opacity: 0, y: 4 }}
                         transition={{ duration: 0.18 }}
-                        className="pointer-events-none absolute right-[calc(100%+0.65rem)] whitespace-nowrap rounded-md border border-white/10 bg-[#101614] px-2.5 py-1 font-mono text-[10px] text-white shadow-xl"
+                        className="pointer-events-none absolute bottom-[calc(100%+0.45rem)] left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md border border-white/10 bg-[#101614] px-2.5 py-1 font-mono text-[10px] text-white shadow-xl"
                         role="tooltip"
                     >
                         {item.label}
