@@ -39,12 +39,12 @@ export default function Home() {
                         <FoldText
                             text="Engineering your ideas"
                             className="block"
-                            color="#ffffff"
+                            color="var(--theme-heading)"
                         />
                         <FoldText
                             text="through systems"
                             className="block"
-                            color="#6ee7b7"
+                            color="var(--theme-accent)"
                         />
                     </h1>
 

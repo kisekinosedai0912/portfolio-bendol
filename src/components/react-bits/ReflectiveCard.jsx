@@ -54,7 +54,7 @@ export default function ReflectiveCard({
                 transformStyle: "preserve-3d",
             }}
         >
-            <div className="absolute inset-0 overflow-hidden rounded-[1.75rem] border border-white/[0.12] bg-[#0a1511] shadow-[0_28px_70px_rgba(0,0,0,0.34)]">
+            <div className="theme-preserve-dark absolute inset-0 overflow-hidden rounded-[1.75rem] border border-white/[0.12] bg-[#0a1511] shadow-[0_28px_70px_rgba(0,0,0,0.34)]">
                 <img
                     src={imageSrc}
                     alt={imageAlt}

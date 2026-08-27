@@ -282,7 +282,7 @@ function ProjectFeature({ project, index, onOpen }) {
                 >
                     frame / {String(project.id).padStart(2, "0")}
                 </div>
-                <div className="relative overflow-hidden border border-white/[0.11] bg-[#07100d] p-1.5 shadow-[0_24px_60px_rgba(0,0,0,0.2)]">
+                <div className="theme-preserve-dark relative overflow-hidden border border-white/[0.11] bg-[#07100d] p-1.5 shadow-[0_24px_60px_rgba(0,0,0,0.2)]">
                     <img
                         src={project.image}
                         alt={project.title}
@@ -402,12 +402,12 @@ function ProjectModal({ project, onClose, shouldReduceMotion }) {
                     type="button"
                     onClick={onClose}
                     aria-label="Close project details"
-                    className="absolute right-4 top-4 z-10 rounded-xl border border-white/10 bg-[#07100d]/70 p-2 text-white/70 backdrop-blur-md transition-colors hover:border-emerald-200/20 hover:text-emerald-200"
+                    className="theme-preserve-dark absolute right-4 top-4 z-10 rounded-xl border border-white/10 bg-[#07100d]/70 p-2 text-white/70 backdrop-blur-md transition-colors hover:border-emerald-200/20 hover:text-emerald-200"
                 >
                     <X size={18} />
                 </button>
 
-                <div className="relative">
+                <div className="theme-preserve-dark relative">
                     <img
                         src={project.image}
                         alt={project.title}

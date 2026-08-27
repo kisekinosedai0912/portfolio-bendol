@@ -1,4 +1,5 @@
 import { AnimatePresence, motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
+import { Moon, Sun } from 'lucide-react'
 import { useRef, useState } from 'react'
 
 const spring = { mass: 0.1, stiffness: 150, damping: 12 }
@@ -6,7 +7,7 @@ const baseItemSize = 46
 const magnification = 64
 const interactionDistance = 110
 
-export default function Dock({ items, className = '' }) {
+export default function Dock({ items, theme, onToggleTheme, className = '' }) {
     const mouseY = useMotionValue(Infinity)
 
     return (
@@ -19,7 +20,62 @@ export default function Dock({ items, className = '' }) {
             {items.map((item) => (
                 <DockItem key={item.label} item={item} mouseY={mouseY} />
             ))}
+            <span aria-hidden="true" className="mx-auto h-px w-7 bg-white/10" />
+            <DockThemeToggle theme={theme} onToggle={onToggleTheme} mouseY={mouseY} />
         </motion.nav>
+    )
+}
+
+function DockThemeToggle({ theme, onToggle, mouseY }) {
+    const itemRef = useRef(null)
+    const [isHovered, setIsHovered] = useState(false)
+    const nextTheme = theme === 'dark' ? 'light' : 'dark'
+    const Icon = theme === 'dark' ? Sun : Moon
+    const mouseDistance = useTransform(mouseY, (value) => {
+        const bounds = itemRef.current?.getBoundingClientRect() ?? { y: 0, height: baseItemSize }
+
+        return value - bounds.y - bounds.height / 2
+    })
+    const size = useSpring(
+        useTransform(
+            mouseDistance,
+            [-interactionDistance, 0, interactionDistance],
+            [baseItemSize, magnification, baseItemSize]
+        ),
+        spring
+    )
+
+    return (
+        <motion.button
+            ref={itemRef}
+            type="button"
+            style={{ width: size, height: size }}
+            onClick={onToggle}
+            onHoverStart={() => setIsHovered(true)}
+            onHoverEnd={() => setIsHovered(false)}
+            onFocus={() => setIsHovered(true)}
+            onBlur={() => setIsHovered(false)}
+            className="relative flex shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-[#111714] text-white/65 shadow-md shadow-black/20 transition-colors hover:border-emerald-300/35 hover:bg-[#14201b] hover:text-emerald-300 focus-visible:text-emerald-300"
+            aria-label={`Switch to ${nextTheme} theme`}
+            aria-pressed={theme === 'light'}
+        >
+            <Icon className="h-[42%] w-[42%]" strokeWidth={1.7} />
+
+            <AnimatePresence>
+                {isHovered && (
+                    <motion.span
+                        initial={{ opacity: 0, x: 4 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: 4 }}
+                        transition={{ duration: 0.18 }}
+                        className="pointer-events-none absolute right-[calc(100%+0.8rem)] top-1/2 z-50 -translate-y-1/2 whitespace-nowrap rounded-md border border-white/10 bg-[#101614] px-2.5 py-1 font-mono text-[10px] text-white shadow-xl"
+                        role="tooltip"
+                    >
+                        {nextTheme === 'light' ? 'Light mode' : 'Dark mode'}
+                    </motion.span>
+                )}
+            </AnimatePresence>
+        </motion.button>
     )
 }
 
@@ -57,11 +113,11 @@ function DockItem({ item, mouseY }) {
             <AnimatePresence>
                 {isHovered && (
                     <motion.span
-                        initial={{ opacity: 0, y: 4 }}
-                        animate={{ opacity: 1, y: -6 }}
-                        exit={{ opacity: 0, y: 4 }}
+                        initial={{ opacity: 0, x: 4 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: 4 }}
                         transition={{ duration: 0.18 }}
-                        className="pointer-events-none absolute bottom-[calc(100%+0.45rem)] left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md border border-white/10 bg-[#101614] px-2.5 py-1 font-mono text-[10px] text-white shadow-xl"
+                        className="pointer-events-none absolute right-[calc(100%+0.8rem)] top-1/2 z-50 -translate-y-1/2 whitespace-nowrap rounded-md border border-white/10 bg-[#101614] px-2.5 py-1 font-mono text-[10px] text-white shadow-xl"
                         role="tooltip"
                     >
                         {item.label}
