@@ -46,6 +46,7 @@ export default function TargetCursor({
         const corners = cornersRef.current.filter(Boolean)
         const originalCursor = document.body.style.cursor
         let tickerActive = false
+        let spinRestartCall = null
 
         if (hideDefaultCursor) document.body.style.cursor = 'none'
 
@@ -87,7 +88,8 @@ export default function TargetCursor({
 
         const ticker = () => updateTargetCorners()
 
-        const leaveTarget = () => {
+        const leaveTarget = (target) => {
+            if (target && activeTargetRef.current !== target) return
             if (!activeTargetRef.current) return
             activeTargetRef.current = null
             if (tickerActive) {
@@ -111,12 +113,17 @@ export default function TargetCursor({
                     ease: 'power3.out'
                 })
             })
-            gsap.delayedCall(0.05, startSpin)
+            spinRestartCall?.kill()
+            spinRestartCall = gsap.delayedCall(0.05, () => {
+                spinRestartCall = null
+                if (!activeTargetRef.current) startSpin()
+            })
         }
 
         const enterTarget = (target) => {
             if (activeTargetRef.current === target) return
-            leaveTarget()
+            spinRestartCall?.kill()
+            spinRestartCall = null
             activeTargetRef.current = target
 
             spinTimelineRef.current?.pause()
@@ -151,7 +158,12 @@ export default function TargetCursor({
         const mouseOutHandler = (event) => {
             const target = event.target.closest?.(targetSelector)
             if (!target || target.contains(event.relatedTarget)) return
-            leaveTarget()
+            const nextTarget = event.relatedTarget?.closest?.(targetSelector)
+            if (nextTarget) {
+                enterTarget(nextTarget)
+                return
+            }
+            leaveTarget(target)
         }
         const mouseDownHandler = () => {
             gsap.to(dotRef.current, { scale: 0.7, duration: 0.3 })
@@ -178,6 +190,7 @@ export default function TargetCursor({
             window.removeEventListener('scroll', updateTargetCorners)
             window.removeEventListener('mousedown', mouseDownHandler)
             window.removeEventListener('mouseup', mouseUpHandler)
+            spinRestartCall?.kill()
             spinTimelineRef.current?.kill()
             document.body.style.cursor = originalCursor
         }
