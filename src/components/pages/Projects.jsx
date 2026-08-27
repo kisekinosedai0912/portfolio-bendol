@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { ArrowUpRight, ExternalLink, Lock, X } from "lucide-react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import CountUp from "../react-bits/CountUp";
 import GeoQuest from "../../assets/img/geoquest.png";
 import FretMuse from "../../assets/img/fretmuse.png";
 import RAGPRES from "../../assets/img/ragpres.jpg";
@@ -211,11 +212,14 @@ export default function Projects() {
                             and microservices to tourism, education, and operations tools.
                         </p>
                         <div className="hidden shrink-0 text-right sm:block">
-                            <span className="font-sans text-2xl font-medium tracking-[-0.04em] text-emerald-300">
-                                {String(projects.length).padStart(2, "0")}
-                            </span>
+                            <CountUp
+                                to={projects.length}
+                                duration={1.8}
+                                padStart={2}
+                                className="font-sans text-2xl font-medium tracking-[-0.04em] text-emerald-300"
+                            />
                             <p className="mt-1 font-mono text-[8px] uppercase tracking-[0.14em] text-white/28">
-                                {liveCount} live
+                                <CountUp to={liveCount} duration={1.4} delay={0.15} /> live
                             </p>
                         </div>
                     </div>

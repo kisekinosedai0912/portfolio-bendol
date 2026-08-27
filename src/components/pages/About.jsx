@@ -7,6 +7,7 @@ import {
 } from "lucide-react";
 import Profile from "../../assets/img/profile.png";
 import IdCard from "../IdCard";
+import CountUp from "../react-bits/CountUp";
 
 const focusAreas = [
     "System architecture",
@@ -93,12 +94,13 @@ export default function About() {
                             <div className="mt-8 grid w-full grid-cols-1 gap-3 sm:grid-cols-3">
                                 <Metric
                                     icon={BriefcaseBusiness}
-                                    value="2+"
+                                    to={2}
+                                    suffix="+"
                                     label="Years experience"
                                 />
                                 <Metric
                                     icon={FolderGit2}
-                                    value="13"
+                                    to={13}
                                     label="Projects completed"
                                 />
                                 <Metric
@@ -125,13 +127,22 @@ export default function About() {
     );
 }
 
-function Metric({ icon: Icon, value, label }) {
+function Metric({ icon: Icon, value, to, suffix = "", label }) {
     return (
         <div className="rounded-2xl border border-white/[0.08] bg-white/[0.025] p-4 backdrop-blur-sm">
             <div className="flex items-center justify-between gap-3">
-                <span className="font-sans text-2xl font-medium tracking-[-0.04em] text-emerald-300">
-                    {value}
-                </span>
+                {typeof to === "number" ? (
+                    <CountUp
+                        to={to}
+                        duration={1.6}
+                        suffix={suffix}
+                        className="font-sans text-2xl font-medium tracking-[-0.04em] text-emerald-300"
+                    />
+                ) : (
+                    <span className="font-sans text-2xl font-medium tracking-[-0.04em] text-emerald-300">
+                        {value}
+                    </span>
+                )}
                 <Icon
                     className="h-4 w-4 text-emerald-200/45"
                     strokeWidth={1.7}

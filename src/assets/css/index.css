@@ -74,7 +74,7 @@ html[data-theme='light'] {
   --theme-text: #1d3026;
   --theme-muted: #607268;
   --theme-border: rgba(25, 65, 44, 0.14);
-  --theme-cta-end: #10251b;
+  --theme-cta-end: #dce8e1;
 }
 
 body {
@@ -253,9 +253,49 @@ body {
   animation: border-spin 2.5s linear infinite;
 }
 
+@keyframes loader-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes loader-sweep {
+  0% {
+    transform: translateX(-120%);
+  }
+  100% {
+    transform: translateX(360%);
+  }
+}
+
+@keyframes loader-pulse {
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: translate(-50%, -50%) scale(0.85);
+  }
+  50% {
+    opacity: 0.7;
+    transform: translate(-50%, -50%) scale(1.15);
+  }
+}
+
+.loader-spin {
+  animation: loader-spin 7s linear infinite;
+}
+
+.loader-sweep {
+  animation: loader-sweep 1.4s ease-in-out infinite;
+}
+
+.loader-pulse {
+  animation: loader-pulse 1.8s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .animated-border:hover::before,
-  .animated-border:focus-visible::before {
+  .loader-spin,
+  .loader-sweep,
+  .loader-pulse {
     animation: none;
   }
 }
@@ -399,21 +439,31 @@ html[data-theme='light'] [class~="divide-white/[0.08]"] > :not([hidden]) ~ :not(
 
 html[data-theme='light'] .primary-action {
   background: var(--theme-cta-end) !important;
-  color: #d8f5e7;
-  box-shadow: 0 10px 24px rgba(20, 73, 45, 0.14);
+  color: #3d5648;
+  box-shadow: none;
+  filter:
+    drop-shadow(0 1px 0 rgba(25, 65, 44, 0.12))
+    drop-shadow(0 8px 16px rgba(20, 73, 45, 0.07));
 }
 
 html[data-theme='light'] .primary-action__label {
-  background: #18a86f;
-  color: #f7fff9;
+  background: #3dcb8f;
+  color: #10251b;
 }
 
 html[data-theme='light'] .primary-action:hover .primary-action__label {
-  background: #087b55;
+  background: #1fa86e;
+  color: #081810;
 }
 
 html[data-theme='light'] .primary-action__end {
-  color: #a7f3d0 !important;
+  color: #087b55 !important;
+}
+
+html[data-theme='light'] .primary-action:focus-visible {
+  filter:
+    drop-shadow(0 0 1px rgba(8, 123, 85, 0.9))
+    drop-shadow(0 0 5px rgba(8, 123, 85, 0.32));
 }
 
 html[data-theme='light'] .custom-scrollbar {

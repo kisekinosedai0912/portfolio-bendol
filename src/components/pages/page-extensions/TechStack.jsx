@@ -5,6 +5,7 @@ import Frontend from "./Frontend";
 import Backend from "./Backend";
 import WebDev from "./WebDev";
 import SoftwareDev from "./SoftwareDev";
+import CountUp from "../../react-bits/CountUp";
 
 const tabs = [
     {
@@ -203,9 +204,13 @@ export default function TechStack() {
                                         </div>
 
                                         <div className="hidden shrink-0 text-right sm:block">
-                                            <span className="font-sans text-2xl font-medium tracking-[-0.04em] text-emerald-300">
-                                                {String(activeTabData.count).padStart(2, "0")}
-                                            </span>
+                                            <CountUp
+                                                key={activeTab}
+                                                to={activeTabData.count}
+                                                duration={1.4}
+                                                padStart={2}
+                                                className="font-sans text-2xl font-medium tracking-[-0.04em] text-emerald-300"
+                                            />
                                             <p className="mt-1 font-mono text-[8px] uppercase tracking-[0.14em] text-white/28">
                                                 Technologies
                                             </p>
