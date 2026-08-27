@@ -1,49 +1,109 @@
 import { AnimatePresence, motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
 import { Moon, Sun } from 'lucide-react'
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 const spring = { mass: 0.1, stiffness: 150, damping: 12 }
-const baseItemSize = 46
-const magnification = 64
 const interactionDistance = 110
 
+function useIsDesktopDock() {
+    const [isDesktop, setIsDesktop] = useState(() =>
+        typeof window !== 'undefined' ? window.matchMedia('(min-width: 768px)').matches : true
+    )
+
+    useEffect(() => {
+        const media = window.matchMedia('(min-width: 768px)')
+        const update = () => setIsDesktop(media.matches)
+        update()
+        media.addEventListener('change', update)
+        return () => media.removeEventListener('change', update)
+    }, [])
+
+    return isDesktop
+}
+
+function useDockItemSize(mouseX, mouseY, baseSize, magSize) {
+    const itemRef = useRef(null)
+    const mouseDistance = useTransform([mouseX, mouseY], ([x, y]) => {
+        const bounds = itemRef.current?.getBoundingClientRect()
+        if (!bounds || !Number.isFinite(x) || !Number.isFinite(y)) return Infinity
+
+        const dx = x - (bounds.x + bounds.width / 2)
+        const dy = y - (bounds.y + bounds.height / 2)
+        return Math.hypot(dx, dy)
+    })
+    const size = useSpring(
+        useTransform(mouseDistance, [0, interactionDistance], [magSize, baseSize]),
+        spring
+    )
+
+    return { itemRef, size }
+}
+
 export default function Dock({ items, theme, onToggleTheme, className = '' }) {
+    const isDesktop = useIsDesktopDock()
+    const mouseX = useMotionValue(Infinity)
     const mouseY = useMotionValue(Infinity)
+    const baseSize = isDesktop ? 46 : 36
+    const magSize = isDesktop ? 64 : 46
 
     return (
         <motion.nav
-            className={`flex h-auto w-[62px] flex-col items-end justify-center gap-2 overflow-visible rounded-[1.65rem] border border-white/10 bg-[#0a0f0e]/85 p-2 shadow-2xl shadow-black/40 backdrop-blur-xl ${className}`}
-            onPointerMove={({ clientY }) => mouseY.set(clientY)}
-            onMouseLeave={() => mouseY.set(Infinity)}
+            className={`flex w-max max-w-[calc(100vw-1rem)] flex-row items-end gap-1.5 overflow-visible rounded-full border border-white/10 bg-[#0a0f0e]/85 p-1.5 shadow-2xl shadow-black/40 backdrop-blur-xl md:w-[62px] md:max-w-none md:flex-col md:gap-2 md:rounded-[1.65rem] md:p-2 ${className}`}
+            onPointerMove={({ clientX, clientY }) => {
+                mouseX.set(clientX)
+                mouseY.set(clientY)
+            }}
+            onPointerLeave={() => {
+                mouseX.set(Infinity)
+                mouseY.set(Infinity)
+            }}
             aria-label="Primary navigation"
         >
             {items.map((item) => (
-                <DockItem key={item.label} item={item} mouseY={mouseY} />
+                <DockItem
+                    key={item.label}
+                    item={item}
+                    mouseX={mouseX}
+                    mouseY={mouseY}
+                    baseSize={baseSize}
+                    magSize={magSize}
+                    isDesktop={isDesktop}
+                />
             ))}
-            <span aria-hidden="true" className="mx-auto h-px w-7 bg-white/10" />
-            <DockThemeToggle theme={theme} onToggle={onToggleTheme} mouseY={mouseY} />
+            <span aria-hidden="true" className="h-7 w-px bg-white/10 md:mx-auto md:h-px md:w-7" />
+            <DockThemeToggle
+                theme={theme}
+                onToggle={onToggleTheme}
+                mouseX={mouseX}
+                mouseY={mouseY}
+                baseSize={baseSize}
+                magSize={magSize}
+                isDesktop={isDesktop}
+            />
         </motion.nav>
     )
 }
 
-function DockThemeToggle({ theme, onToggle, mouseY }) {
-    const itemRef = useRef(null)
+function DockTooltip({ label, isDesktop }) {
+    return (
+        <motion.span
+            initial={isDesktop ? { opacity: 0, x: 4 } : { opacity: 0, y: 4 }}
+            animate={isDesktop ? { opacity: 1, x: 0 } : { opacity: 1, y: 0 }}
+            exit={isDesktop ? { opacity: 0, x: 4 } : { opacity: 0, y: 4 }}
+            transition={{ duration: 0.18 }}
+            className="pointer-events-none absolute bottom-[calc(100%+0.65rem)] left-1/2 z-50 -translate-x-1/2 whitespace-nowrap rounded-md border border-white/10 bg-[#101614] px-2.5 py-1 font-mono text-[10px] text-white shadow-xl md:bottom-auto md:left-auto md:right-[calc(100%+0.8rem)] md:top-1/2 md:translate-x-0 md:-translate-y-1/2"
+            role="tooltip"
+        >
+            {label}
+        </motion.span>
+    )
+}
+
+function DockThemeToggle({ theme, onToggle, mouseX, mouseY, baseSize, magSize, isDesktop }) {
     const [isHovered, setIsHovered] = useState(false)
     const nextTheme = theme === 'dark' ? 'light' : 'dark'
     const Icon = theme === 'dark' ? Sun : Moon
-    const mouseDistance = useTransform(mouseY, (value) => {
-        const bounds = itemRef.current?.getBoundingClientRect() ?? { y: 0, height: baseItemSize }
-
-        return value - bounds.y - bounds.height / 2
-    })
-    const size = useSpring(
-        useTransform(
-            mouseDistance,
-            [-interactionDistance, 0, interactionDistance],
-            [baseItemSize, magnification, baseItemSize]
-        ),
-        spring
-    )
+    const { itemRef, size } = useDockItemSize(mouseX, mouseY, baseSize, magSize)
 
     return (
         <motion.button
@@ -62,39 +122,20 @@ function DockThemeToggle({ theme, onToggle, mouseY }) {
             <Icon className="h-[42%] w-[42%]" strokeWidth={1.7} />
 
             <AnimatePresence>
-                {isHovered && (
-                    <motion.span
-                        initial={{ opacity: 0, x: 4 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: 4 }}
-                        transition={{ duration: 0.18 }}
-                        className="pointer-events-none absolute right-[calc(100%+0.8rem)] top-1/2 z-50 -translate-y-1/2 whitespace-nowrap rounded-md border border-white/10 bg-[#101614] px-2.5 py-1 font-mono text-[10px] text-white shadow-xl"
-                        role="tooltip"
-                    >
-                        {nextTheme === 'light' ? 'Light mode' : 'Dark mode'}
-                    </motion.span>
-                )}
+                {isHovered ? (
+                    <DockTooltip
+                        label={nextTheme === 'light' ? 'Light mode' : 'Dark mode'}
+                        isDesktop={isDesktop}
+                    />
+                ) : null}
             </AnimatePresence>
         </motion.button>
     )
 }
 
-function DockItem({ item, mouseY }) {
-    const itemRef = useRef(null)
+function DockItem({ item, mouseX, mouseY, baseSize, magSize, isDesktop }) {
     const [isHovered, setIsHovered] = useState(false)
-    const mouseDistance = useTransform(mouseY, (value) => {
-        const bounds = itemRef.current?.getBoundingClientRect() ?? { y: 0, height: baseItemSize }
-
-        return value - bounds.y - bounds.height / 2
-    })
-    const size = useSpring(
-        useTransform(
-            mouseDistance,
-            [-interactionDistance, 0, interactionDistance],
-            [baseItemSize, magnification, baseItemSize]
-        ),
-        spring
-    )
+    const { itemRef, size } = useDockItemSize(mouseX, mouseY, baseSize, magSize)
 
     return (
         <motion.a
@@ -111,18 +152,7 @@ function DockItem({ item, mouseY }) {
             <item.icon className="h-[42%] w-[42%]" strokeWidth={1.7} />
 
             <AnimatePresence>
-                {isHovered && (
-                    <motion.span
-                        initial={{ opacity: 0, x: 4 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: 4 }}
-                        transition={{ duration: 0.18 }}
-                        className="pointer-events-none absolute right-[calc(100%+0.8rem)] top-1/2 z-50 -translate-y-1/2 whitespace-nowrap rounded-md border border-white/10 bg-[#101614] px-2.5 py-1 font-mono text-[10px] text-white shadow-xl"
-                        role="tooltip"
-                    >
-                        {item.label}
-                    </motion.span>
-                )}
+                {isHovered ? <DockTooltip label={item.label} isDesktop={isDesktop} /> : null}
             </AnimatePresence>
         </motion.a>
     )

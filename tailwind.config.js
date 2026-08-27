@@ -14,6 +14,7 @@ export default {
 			  mono: ['"Geist Mono"', 'monospace'],
 			  display: ['Geist', 'system-ui', 'sans-serif'],
 			  sans: ['Geist', 'system-ui', 'sans-serif'],
+			  pixel: ['"Geist Pixel Line"', 'monospace'],
 			  'pixel-line': ['"Geist Pixel Line"', 'monospace'],
 			},
 			fontSize: {

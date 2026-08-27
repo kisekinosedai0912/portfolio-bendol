@@ -34,7 +34,7 @@ export default function Header() {
     return (
         <header
             data-cursor-grid-ignore
-            className="fixed right-3 top-1/2 z-50 -translate-y-1/2 sm:right-5 lg:right-7"
+            className="fixed bottom-[max(0.75rem,env(safe-area-inset-bottom))] left-1/2 z-50 -translate-x-1/2 md:bottom-auto md:left-auto md:right-5 md:top-1/2 md:translate-x-0 md:-translate-y-1/2 lg:right-7"
         >
             <Dock
                 items={items}

@@ -6,7 +6,7 @@ import TargetCursor from '../react-bits/TargetCursor'
 
 export default function Home() {
     return (
-        <section id="home" className="relative flex h-screen h-svh max-h-screen max-h-svh items-center overflow-hidden bg-[#07100d] px-5 py-5 pr-20 sm:px-8 sm:pr-24 lg:px-12 lg:pr-28">
+        <section id="home" className="relative flex h-screen h-svh max-h-screen max-h-svh items-center overflow-hidden bg-[#07100d] px-5 py-5 pb-24 sm:px-8 md:pb-5 md:pr-24 lg:px-12 lg:pr-28">
             <TargetCursor
                 targetSelector=".hero-cursor-target"
                 cursorColor="#6ee7b7"
@@ -35,7 +35,7 @@ export default function Home() {
                         </span>
                     </a>
 
-                    <h1 className="max-w-2xl font-sans text-[clamp(2.5rem,4.15vw,4.125rem)] font-medium leading-[1.06] tracking-[-0.025em] text-white">
+                    <h1 className="max-w-3xl font-pixel text-[clamp(1.85rem,3.5vw,3.5rem)] font-normal leading-[1.18] tracking-[0.04em] text-white">
                         <FoldText
                             text="Engineering your ideas"
                             className="block"
@@ -80,7 +80,7 @@ export default function Home() {
                     </p>
                 </div>
 
-                <div className="relative mx-auto flex w-full max-w-[34rem] items-center justify-center">
+                <div className="relative mx-auto hidden w-full max-w-[34rem] items-center justify-center lg:flex">
                     <div className="pointer-events-none absolute left-1/2 top-1/2 aspect-square w-[126%] max-w-[42rem] -translate-x-1/2 -translate-y-1/2 opacity-100 drop-shadow-[0_0_36px_rgba(52,211,153,0.2)]">
                         <Orb hue={108} hoverIntensity={0.4} rotateOnHover={false} backgroundColor="#07100d" />
                     </div>

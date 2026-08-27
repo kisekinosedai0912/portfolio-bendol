@@ -177,7 +177,7 @@ export default function Projects() {
     return (
         <section
             id="projects"
-            className="relative overflow-hidden bg-[#0a1411] px-5 py-24 pr-20 sm:px-8 sm:pr-24 lg:px-12 lg:pr-28"
+            className="relative overflow-hidden bg-[#0a1411] px-5 pb-32 pt-24 sm:px-8 md:py-24 md:pr-24 lg:px-12 lg:pr-28"
         >
             <div
                 aria-hidden="true"

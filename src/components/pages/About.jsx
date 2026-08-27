@@ -19,7 +19,7 @@ export default function About() {
     return (
         <section
             id="about"
-            className="relative flex min-h-screen items-center overflow-hidden bg-[#0b1713] px-5 py-24 pr-20 sm:px-8 sm:pr-24 lg:px-12 lg:pr-28"
+            className="relative flex min-h-screen items-center overflow-hidden bg-[#0b1713] px-5 pb-32 pt-24 sm:px-8 md:py-24 md:pr-24 lg:px-12 lg:pr-28"
         >
                 <div
                     aria-hidden="true"

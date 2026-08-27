@@ -1,69 +1,87 @@
-import { Github, Linkedin, Mail, Facebook } from "lucide-react"
+import { ArrowUp, Facebook, Github, Linkedin, Mail } from "lucide-react"
+
+const socials = [
+    {
+        icon: Facebook,
+        label: "Facebook",
+        href: "https://www.facebook.com/jasper.perks",
+    },
+    {
+        icon: Github,
+        label: "GitHub",
+        href: "https://github.com/kisekinosedai0912",
+    },
+    {
+        icon: Linkedin,
+        label: "LinkedIn",
+        href: "https://www.linkedin.com/in/jasper-bendol-3532aa407/",
+    },
+    {
+        icon: Mail,
+        label: "Email",
+        href: "mailto:jasperbendol0329@gmail.com",
+    },
+]
 
 export default function Footer() {
     return (
-        <footer
-            className="
-                relative
-                w-full
-                py-8 sm:py-10
-                flex flex-col items-center gap-5 sm:gap-6
-                text-emerald-300
-                bg-[#06110e]
-            "
-        >
-            {/* Top gradient divider */}
-            <div className="absolute left-0 right-0 top-0 h-px bg-gradient-to-r from-transparent via-emerald-300/25 to-transparent" />
+        <footer className="relative overflow-hidden border-t border-white/[0.08] bg-[#06110e] px-5 py-10 pb-28 sm:px-8 sm:pt-12 md:py-12 md:pr-24 lg:px-12 lg:pr-28">
+            <div
+                aria-hidden="true"
+                className="pointer-events-none absolute -left-16 top-0 h-56 w-56 rounded-full bg-emerald-400/[0.045] blur-[100px]"
+            />
 
-            {/* Social icons */}
-            <div className="flex items-center justify-center flex-wrap gap-3 sm:gap-4">
-                <SocialIcon icon={Facebook} label="Facebook" link="https://www.facebook.com/jasper.perks" />
-                <SocialIcon icon={Github} label="GitHub" link="https://github.com/kisekinosedai0912" />
-                <SocialIcon icon={Linkedin} label="LinkedIn" link="https://www.linkedin.com/in/jasper-bendol-3532aa407/" />
-                <SocialIcon icon={Mail} label="Email" link="mailto:jasperbendol0329@gmail.com" />
+            <div className="relative mx-auto w-full max-w-[82rem]">
+                <div className="grid gap-8 border-b border-white/[0.08] pb-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-end lg:gap-16 lg:pb-10">
+                    <div>
+                        <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.28em] text-emerald-300/70">
+                            Jasper Bendol
+                        </p>
+                        <p className="font-sans text-[clamp(1.25rem,2vw,1.75rem)] font-medium leading-[1.15] tracking-[-0.035em] text-white">
+                            Engineering ideas <span className="text-emerald-300">through systems</span>
+                        </p>
+                    </div>
+
+                    <div className="flex flex-wrap items-center justify-between gap-4">
+                        <div className="flex items-center gap-2">
+                            {socials.map((social) => (
+                                <SocialIcon key={social.label} {...social} />
+                            ))}
+                        </div>
+
+                        <a
+                            href="#home"
+                            className="primary-action group inline-flex items-stretch bg-[#0b1713] font-mono text-[10px] font-medium uppercase tracking-[0.12em] transition-transform duration-200 hover:-translate-y-0.5"
+                        >
+                            <span className="primary-action__label">Back to top</span>
+                            <span className="primary-action__end text-emerald-200">
+                                <ArrowUp className="h-4 w-4 transition-transform duration-200 group-hover:-translate-y-0.5" />
+                            </span>
+                        </a>
+                    </div>
+                </div>
+
+                <div className="mt-6 flex flex-wrap items-center justify-between gap-3 font-mono text-[8px] uppercase tracking-[0.18em] text-white/28">
+                    <span>© 2026 Jasper Bendol · All rights reserved</span>
+                    <span className="hidden sm:inline">Software Engineer · Philippines</span>
+                </div>
             </div>
-
-            {/* Copyright */}
-            <p
-                className="
-                    font-jetbrains
-                    text-[11px] sm:text-xs
-                    text-white/50
-                    tracking-[0.18em] uppercase
-                    text-center
-                    px-4
-                "
-            >
-                © 2025 Jasper Bendol · All rights reserved
-            </p>
         </footer>
     )
 }
 
-function SocialIcon({ icon: Icon, link, label }) {
+function SocialIcon({ icon: Icon, href, label }) {
+    const isExternal = href.startsWith("http")
+
     return (
         <a
-            href={link ? link : "#"}
-            target="_blank"
-            rel="noreferrer"
+            href={href}
+            target={isExternal ? "_blank" : undefined}
+            rel={isExternal ? "noopener noreferrer" : undefined}
             aria-label={label}
-            className="
-                p-2.5 sm:p-3
-                rounded-full
-                text-white/60
-                border border-white/10
-                bg-white/[0.03]
-                hover:text-white
-                hover:bg-white/[0.07]
-                hover:text-emerald-200
-                hover:border-emerald-300/40
-                hover:shadow-[0_0_20px_rgba(52,211,153,0.2)]
-                transition-colors duration-200
-                focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-200/70
-            "
+            className="flex h-10 w-10 items-center justify-center border border-white/[0.08] bg-white/[0.025] text-white/55 transition-colors duration-200 hover:border-emerald-200/20 hover:bg-emerald-300/[0.07] hover:text-emerald-200 sm:h-11 sm:w-11"
         >
-            <Icon size={18} className="sm:hidden" />
-            <Icon size={20} className="hidden sm:block" />
+            <Icon className="h-4 w-4" strokeWidth={1.7} />
         </a>
     )
 }
