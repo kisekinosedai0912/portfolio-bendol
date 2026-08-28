@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { ArrowUpRight, ExternalLink, Lock, X } from "lucide-react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import CountUp from "../react-bits/CountUp";
 import GeoQuest from "../../assets/img/geoquest.png";
 import FretMuse from "../../assets/img/fretmuse.png";
 import RAGPRES from "../../assets/img/ragpres.jpg";
@@ -160,8 +159,6 @@ const projects = [
     },
 ];
 
-const liveCount = projects.filter((project) => project.link).length;
-
 const cardVariants = {
     hidden: { opacity: 0, y: 16 },
     visible: (index) => ({
@@ -206,22 +203,11 @@ export default function Projects() {
                         </h2>
                     </div>
 
-                    <div className="flex max-w-xl flex-col gap-4 sm:flex-row sm:items-end sm:justify-between sm:gap-8">
+                    <div className="max-w-xl">
                         <p className="font-sans text-sm leading-7 text-white/50 sm:text-base">
                             Production systems, client work, and personal builds—from media monitoring
                             and microservices to tourism, education, and operations tools.
                         </p>
-                        <div className="hidden shrink-0 text-right sm:block">
-                            <CountUp
-                                to={projects.length}
-                                duration={1.8}
-                                padStart={2}
-                                className="font-sans text-2xl font-medium tracking-[-0.04em] text-emerald-300"
-                            />
-                            <p className="mt-1 font-mono text-[8px] uppercase tracking-[0.14em] text-white/28">
-                                <CountUp to={liveCount} duration={1.4} delay={0.15} /> live
-                            </p>
-                        </div>
                     </div>
                 </div>
 
@@ -280,8 +266,8 @@ function ProjectFeature({ project, index, onOpen }) {
             <div className={`relative min-w-0 ${isReversed ? "lg:order-3" : "lg:order-2"}`}>
                 <div
                     aria-hidden="true"
-                    className={`absolute -top-7 z-10 font-mono text-[8px] uppercase tracking-[0.24em] text-emerald-300/45 ${
-                        isReversed ? "right-0" : "left-0"
+                    className={`relative z-10 mb-3 font-mono text-[8px] uppercase tracking-[0.24em] text-emerald-300/45 sm:absolute sm:-top-7 sm:mb-0 ${
+                        isReversed ? "text-right sm:right-0" : "sm:left-0"
                     }`}
                 >
                     frame / {String(project.id).padStart(2, "0")}

@@ -34,10 +34,13 @@ export default function About() {
                 viewport={{ once: true, margin: "-80px" }}
                 transition={{ duration: 0.65, ease: "easeOut" }}
             >
-                <div className="mb-12 text-center lg:mb-16">
+                <div className="mb-12 text-start lg:mb-16">
                     <p className="mb-4 font-mono text-[10px] uppercase tracking-[0.28em] text-emerald-300/70">
                         01 / About me
                     </p>
+                    <h2 className="font-sans text-[clamp(1.875rem,3.5vw,2.5rem)] font-medium leading-[1.05] tracking-[-0.045em] text-white">
+                        Profile <span className="text-emerald-300">Details</span>
+                    </h2>
                 </div>
 
                 <div className="grid items-center gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:gap-16 xl:gap-24">

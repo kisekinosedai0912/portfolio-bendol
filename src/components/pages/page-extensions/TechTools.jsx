@@ -118,23 +118,18 @@ export default function TechTools() {
                                                 viewport={{ once: true, margin: "-40px" }}
                                                 whileHover={{ y: -4 }}
                                                 data-cursor-grid-ignore
-                                                className="hero-cursor-target group relative min-h-36 overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.025] p-4 backdrop-blur-sm transition-[background-color,border-color,box-shadow] duration-300 hover:border-emerald-200/20 hover:bg-white/[0.045] hover:shadow-[0_18px_40px_rgba(0,0,0,0.18)]"
+                                                className="hero-cursor-target group relative min-h-16 overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.025] p-3 backdrop-blur-sm transition-[background-color,border-color,box-shadow] duration-300 hover:border-emerald-200/20 hover:bg-white/[0.045] hover:shadow-[0_18px_40px_rgba(0,0,0,0.18)] sm:min-h-36 sm:p-4"
                                             >
                                                 <div
                                                     aria-hidden="true"
                                                     className="absolute -right-6 -top-8 h-20 w-20 rounded-full bg-emerald-300/0 blur-2xl transition-colors duration-300 group-hover:bg-emerald-300/[0.08]"
                                                 />
-                                                <div className="relative flex h-full flex-col justify-between gap-6">
-                                                    <div className="flex items-start justify-between gap-3">
-                                                        <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/[0.08] bg-[#0b1813] text-emerald-300 transition-colors duration-300 group-hover:border-emerald-200/15 group-hover:text-emerald-200">
-                                                            <ToolIcon className="h-5 w-5" aria-hidden="true" />
-                                                        </span>
-                                                        <span className="font-mono text-[9px] tracking-[0.12em] text-white/20">
-                                                            {String(animationIndex + 1).padStart(2, "0")}
-                                                        </span>
-                                                    </div>
+                                                <div className="relative flex h-full items-center gap-3 sm:flex-col sm:items-stretch sm:justify-between sm:gap-6">
+                                                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-white/[0.08] bg-[#0b1813] text-emerald-300 transition-colors duration-300 group-hover:border-emerald-200/15 group-hover:text-emerald-200">
+                                                        <ToolIcon className="h-5 w-5" aria-hidden="true" />
+                                                    </span>
 
-                                                    <div>
+                                                    <div className="min-w-0 flex-1 sm:flex-none">
                                                         <p className="font-sans text-sm font-medium leading-5 text-white/82 transition-colors group-hover:text-white">
                                                             {tool.name}
                                                         </p>
@@ -142,6 +137,10 @@ export default function TechTools() {
                                                             {tool.role}
                                                         </p>
                                                     </div>
+
+                                                    <span className="ml-auto shrink-0 font-mono text-[9px] tracking-[0.12em] text-white/20 sm:absolute sm:right-0 sm:top-0 sm:ml-0">
+                                                        {String(animationIndex + 1).padStart(2, "0")}
+                                                    </span>
                                                 </div>
                                             </motion.div>
                                         );

@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef } from 'react'
+import { useCallback, useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import './TargetCursor.css'
 
@@ -24,15 +24,6 @@ export default function TargetCursor({
     const spinTimelineRef = useRef(null)
     const activeTargetRef = useRef(null)
     const mouseRef = useRef({ x: 0, y: 0 })
-    const isMobile = useMemo(() => {
-        if (typeof window === 'undefined') return false
-        const touchScreen = 'ontouchstart' in window || navigator.maxTouchPoints > 0
-        const smallScreen = window.innerWidth <= 768
-        const mobileAgent = /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i
-            .test(navigator.userAgent.toLowerCase())
-        return (touchScreen && smallScreen) || mobileAgent
-    }, [])
-
     const moveCursor = useCallback((x, y) => {
         if (!cursorRef.current) return
         mouseRef.current = { x, y }
@@ -40,7 +31,7 @@ export default function TargetCursor({
     }, [])
 
     useEffect(() => {
-        if (isMobile || !cursorRef.current) return undefined
+        if (!cursorRef.current) return undefined
 
         const cursor = cursorRef.current
         const corners = cornersRef.current.filter(Boolean)
@@ -151,6 +142,10 @@ export default function TargetCursor({
         }
 
         const mouseMoveHandler = (event) => moveCursor(event.clientX, event.clientY)
+        const touchMoveHandler = (event) => {
+            const touch = event.touches[0]
+            if (touch) moveCursor(touch.clientX, touch.clientY)
+        }
         const mouseOverHandler = (event) => {
             const target = event.target.closest?.(targetSelector)
             if (target) enterTarget(target)
@@ -176,6 +171,8 @@ export default function TargetCursor({
 
         startSpin()
         window.addEventListener('mousemove', mouseMoveHandler)
+        window.addEventListener('touchstart', touchMoveHandler, { passive: true })
+        window.addEventListener('touchmove', touchMoveHandler, { passive: true })
         window.addEventListener('mouseover', mouseOverHandler, { passive: true })
         window.addEventListener('mouseout', mouseOutHandler, { passive: true })
         window.addEventListener('scroll', updateTargetCorners, { passive: true })
@@ -185,6 +182,8 @@ export default function TargetCursor({
         return () => {
             if (tickerActive) gsap.ticker.remove(ticker)
             window.removeEventListener('mousemove', mouseMoveHandler)
+            window.removeEventListener('touchstart', touchMoveHandler)
+            window.removeEventListener('touchmove', touchMoveHandler)
             window.removeEventListener('mouseover', mouseOverHandler)
             window.removeEventListener('mouseout', mouseOutHandler)
             window.removeEventListener('scroll', updateTargetCorners)
@@ -194,9 +193,7 @@ export default function TargetCursor({
             spinTimelineRef.current?.kill()
             document.body.style.cursor = originalCursor
         }
-    }, [cursorColor, cursorColorOnTarget, hideDefaultCursor, hoverDuration, isMobile, moveCursor, parallaxOn, spinDuration, targetSelector])
-
-    if (isMobile) return null
+    }, [cursorColor, cursorColorOnTarget, hideDefaultCursor, hoverDuration, moveCursor, parallaxOn, spinDuration, targetSelector])
 
     return (
         <div ref={cursorRef} className="target-cursor-wrapper" aria-hidden="true">

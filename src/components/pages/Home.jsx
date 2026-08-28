@@ -6,7 +6,7 @@ import TargetCursor from '../react-bits/TargetCursor'
 
 export default function Home() {
     return (
-        <section id="home" className="relative flex h-screen h-svh max-h-screen max-h-svh items-center overflow-hidden bg-[#07100d] px-5 py-5 pb-24 sm:px-8 md:pb-5 md:pr-24 lg:px-12 lg:pr-28">
+        <section id="home" className="relative flex h-screen h-svh max-h-screen max-h-svh items-start overflow-hidden bg-[#07100d] px-5 pb-28 pt-[clamp(5rem,12svh,7rem)] sm:items-center sm:px-8 sm:py-5 sm:pb-24 md:pb-5 md:pr-24 lg:px-12 lg:pr-28">
             <TargetCursor
                 targetSelector=".hero-cursor-target"
                 cursorColor="#6ee7b7"
@@ -15,7 +15,7 @@ export default function Home() {
                 hoverDuration={0.2}
             />
             <motion.div
-                className="mx-auto grid h-full w-full max-w-[82rem] content-center items-center gap-6 lg:grid-cols-[1fr_0.9fr] lg:gap-10 xl:gap-16"
+                className="mx-auto grid h-full w-full max-w-[82rem] content-start items-center gap-3 sm:content-center sm:gap-6 lg:grid-cols-[1fr_0.9fr] lg:gap-10 xl:gap-16"
                 initial={{ opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, ease: 'easeOut' }}
@@ -75,23 +75,25 @@ export default function Home() {
                         </a>
                     </div>
 
-                    <p className="mt-5 font-pixel-line text-[9px] uppercase tracking-[0.2em] text-white/35 sm:mt-6 sm:text-[11px]">
-                        Mid-level Software Engineer <span className="px-2 text-emerald-300/60">•</span> Clean code
+                    <p className="mt-5 flex flex-wrap items-center gap-x-2 gap-y-1 font-pixel-line text-[9px] uppercase tracking-[0.2em] text-white/35 sm:mt-6 sm:text-[11px]">
+                        <span>Mid-level Software Engineer</span>
+                        <span aria-hidden="true" className="text-emerald-300/60">•</span>
+                        <span>Clean code</span>
                     </p>
                 </div>
 
-                <div className="relative mx-auto hidden w-full max-w-[34rem] items-center justify-center lg:flex">
-                    <div className="pointer-events-none absolute left-1/2 top-1/2 aspect-square w-[126%] max-w-[42rem] -translate-x-1/2 -translate-y-1/2 opacity-100 drop-shadow-[0_0_36px_rgba(52,211,153,0.2)]">
+                <div className="relative mx-auto flex w-[min(70vw,18rem)] items-center justify-center sm:hidden lg:flex lg:w-full lg:max-w-[34rem]">
+                    <div className="pointer-events-none absolute left-1/2 top-1/2 aspect-square w-[140%] max-w-[42rem] -translate-x-1/2 -translate-y-1/2 opacity-70 drop-shadow-[0_0_36px_rgba(52,211,153,0.2)] lg:w-[126%] lg:opacity-100">
                         <Orb hue={108} hoverIntensity={0.4} rotateOnHover={false} backgroundColor="#07100d" />
                     </div>
                     <div
                         data-cursor-grid-ignore
-                        className="relative z-10 w-[86%] max-w-[29rem] overflow-hidden rounded-[1.15rem] shadow-[0_24px_80px_rgba(0,0,0,0.48)]"
+                        className="relative z-10 w-[86%] max-w-[29rem] overflow-hidden rounded-xl shadow-[0_18px_55px_rgba(0,0,0,0.42)] lg:rounded-[1.15rem] lg:shadow-[0_24px_80px_rgba(0,0,0,0.48)]"
                     >
                         <img
                             src="/snippet.png"
                             alt="JavaScript code describing Jasper's software engineering focus"
-                            className="block h-auto w-full rounded-[1.15rem] opacity-[0.94]"
+                            className="block h-auto w-full rounded-xl opacity-90 lg:rounded-[1.15rem] lg:opacity-[0.94]"
                         />
                     </div>
                 </div>
