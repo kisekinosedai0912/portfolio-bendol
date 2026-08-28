@@ -35,6 +35,24 @@ export default function FoldText({
     const shadeRefs = useRef([])
     const timelineRef = useRef(null)
     const segments = useMemo(() => splitText(text, splitBy), [splitBy, text])
+    const characterWords = useMemo(() => {
+        let animationIndex = 0
+
+        return text.split(/(\s+)/).filter(Boolean).map((token) => {
+            const isWhitespace = /^\s+$/.test(token)
+
+            return {
+                token,
+                isWhitespace,
+                characters: isWhitespace
+                    ? []
+                    : Array.from(token).map((character) => ({
+                        character,
+                        animationIndex: animationIndex++
+                    }))
+            }
+        })
+    }, [text])
 
     const play = useCallback(() => {
         const panels = panelRefs.current.filter(Boolean)
@@ -89,6 +107,28 @@ export default function FoldText({
         return () => timelineRef.current?.kill()
     }, [play, trigger])
 
+    const renderPanel = (segment, index) => (
+        <span
+            key={`${segment}-${index}`}
+            className="relative inline-block"
+            style={{ perspective: `${perspective}px`, whiteSpace: 'pre' }}
+            aria-hidden="true"
+        >
+            <span
+                ref={(element) => { panelRefs.current[index] = element }}
+                className="relative inline-block will-change-transform"
+                style={{ transformStyle: 'preserve-3d' }}
+            >
+                {segment}
+                <span
+                    ref={(element) => { shadeRefs.current[index] = element }}
+                    className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/70 via-black/20 to-transparent"
+                    aria-hidden="true"
+                />
+            </span>
+        </span>
+    )
+
     return (
         <span
             ref={rootRef}
@@ -103,27 +143,21 @@ export default function FoldText({
             onMouseEnter={trigger === 'hover' ? play : undefined}
             aria-label={text}
         >
-            {segments.map((segment, index) => (
-                <span
-                    key={`${segment}-${index}`}
-                    className="relative inline-block"
-                    style={{ perspective: `${perspective}px`, whiteSpace: 'pre' }}
-                    aria-hidden="true"
-                >
-                    <span
-                        ref={(element) => { panelRefs.current[index] = element }}
-                        className="relative inline-block will-change-transform"
-                        style={{ transformStyle: 'preserve-3d' }}
-                    >
-                        {segment}
-                        <span
-                            ref={(element) => { shadeRefs.current[index] = element }}
-                            className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/70 via-black/20 to-transparent"
-                            aria-hidden="true"
-                        />
-                    </span>
-                </span>
-            ))}
+            {splitBy === 'char'
+                ? characterWords.map((word, wordIndex) => (
+                    word.isWhitespace ? (
+                        <span key={`space-${wordIndex}`} aria-hidden="true" style={{ whiteSpace: 'pre' }}>
+                            {word.token}
+                        </span>
+                    ) : (
+                        <span key={`word-${wordIndex}`} className="inline-block whitespace-nowrap">
+                            {word.characters.map(({ character, animationIndex }) => (
+                                renderPanel(character, animationIndex)
+                            ))}
+                        </span>
+                    )
+                ))
+                : segments.map((segment, index) => renderPanel(segment, index))}
         </span>
     )
 }
