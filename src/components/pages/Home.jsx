@@ -91,8 +91,11 @@ export default function Home() {
                         className="relative z-10 w-[86%] max-w-[29rem] overflow-hidden rounded-xl shadow-[0_18px_55px_rgba(0,0,0,0.42)] lg:rounded-[1.15rem] lg:shadow-[0_24px_80px_rgba(0,0,0,0.48)]"
                     >
                         <img
-                            src="/snippet.png"
+                            src="/snippet.webp"
                             alt="JavaScript code describing Jasper's software engineering focus"
+                            width="960"
+                            height="642"
+                            decoding="async"
                             className="block h-auto w-full rounded-xl opacity-90 lg:rounded-[1.15rem] lg:opacity-[0.94]"
                         />
                     </div>

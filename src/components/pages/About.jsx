@@ -5,7 +5,7 @@ import {
     FolderGit2,
     MapPin,
 } from "lucide-react";
-import Profile from "@/assets/img/profile.png";
+import Profile from "@/assets/img/profile.webp";
 import IdCard from "@/components/IdCard";
 import CountUp from "@/components/react-bits/CountUp";
 

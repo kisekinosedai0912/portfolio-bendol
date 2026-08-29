@@ -47,6 +47,10 @@ export default function IdCard({
                             <img
                                 src={imageSrc}
                                 alt={imageAlt}
+                                width="480"
+                                height="768"
+                                loading="lazy"
+                                decoding="async"
                                 className="h-full w-full object-contain"
                             />
                         </div>
