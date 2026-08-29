@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
-import './TargetCursor.css'
+import '@/components/react-bits/TargetCursor.css'
 
 const idleCornerPositions = [
     { x: -18, y: -18 },

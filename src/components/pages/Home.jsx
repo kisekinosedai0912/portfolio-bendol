@@ -1,8 +1,8 @@
 import { motion } from 'framer-motion'
 import { ArrowRight, Download } from 'lucide-react'
-import FoldText from '../react-bits/FoldText'
-import Orb from '../react-bits/Orb'
-import TargetCursor from '../react-bits/TargetCursor'
+import FoldText from '@/components/react-bits/FoldText'
+import Orb from '@/components/react-bits/Orb'
+import TargetCursor from '@/components/react-bits/TargetCursor'
 
 export default function Home() {
     return (

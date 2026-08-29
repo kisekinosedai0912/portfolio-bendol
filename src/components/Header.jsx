@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { FolderKanban, House, Layers, Mail, User, Wrench } from 'lucide-react'
-import Dock from './react-bits/Dock'
+import Dock from '@/components/react-bits/Dock'
 
 export default function Header() {
     const [theme, setTheme] = useState(() => {

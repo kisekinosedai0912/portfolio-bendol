@@ -1,50 +1,7 @@
 import { useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { Code2, Globe, Server, Zap } from "lucide-react";
-import Frontend from "./Frontend";
-import Backend from "./Backend";
-import WebDev from "./WebDev";
-import SoftwareDev from "./SoftwareDev";
-import CountUp from "../../react-bits/CountUp";
-
-const tabs = [
-    {
-        id: "frontend",
-        label: "Front-end",
-        eyebrow: "Interface systems",
-        description: "Accessible, responsive interfaces with thoughtful state, data, and testing foundations.",
-        icon: Code2,
-        component: Frontend,
-        count: 17,
-    },
-    {
-        id: "backend",
-        label: "Back-end",
-        eyebrow: "Services & workflows",
-        description: "Reliable APIs, event-driven workflows, infrastructure, and production observability.",
-        icon: Server,
-        component: Backend,
-        count: 20,
-    },
-    {
-        id: "webdev",
-        label: "Web development",
-        eyebrow: "End-to-end delivery",
-        description: "The broader web ecosystem I use to move products from database to deployment.",
-        icon: Globe,
-        component: WebDev,
-        count: 33,
-    },
-    {
-        id: "softwaredev",
-        label: "Software development",
-        eyebrow: "Enterprise platforms",
-        description: "Application tooling for building and maintaining business-critical software systems.",
-        icon: Zap,
-        component: SoftwareDev,
-        count: 4,
-    },
-];
+import CountUp from "@/components/react-bits/CountUp";
+import { tabs } from '@/assets/data/tabs'
 
 export default function TechStack() {
     const [activeTab, setActiveTab] = useState("frontend");

@@ -16,7 +16,7 @@ import { BsBing } from "react-icons/bs";
 import { CiLink } from "react-icons/ci";
 import { TbBrandTerraform } from "react-icons/tb";
 import { PiInfinityFill } from "react-icons/pi";
-import StackGrid from "./StackGrid";
+import StackGrid from "@/components/pages/page-extensions/StackGrid";
 
 const backendStack = [
         { name: "NodeJs", icon: FaNodeJs },

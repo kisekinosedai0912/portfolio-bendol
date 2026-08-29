@@ -1,6 +1,6 @@
 import { Suspense, useEffect, useState } from 'react'
-import CursorGrid from './react-bits/CursorGrid'
-import Loader from './Loader'
+import CursorGrid from '@/components/react-bits/CursorGrid'
+import Loader from '@/components/Loader'
 
 function useDocumentTheme() {
     const [theme, setTheme] = useState(() => (

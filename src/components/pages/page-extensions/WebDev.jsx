@@ -28,7 +28,7 @@ import { VscAzureDevops } from "react-icons/vsc";
 import { FaReact, FaPhp, FaNodeJs, FaLaravel, FaCss3Alt } from "react-icons/fa";
 import { CiLink } from "react-icons/ci";
 import { PiInfinityFill } from "react-icons/pi";
-import StackGrid from "./StackGrid";
+import StackGrid from "@/components/pages/page-extensions/StackGrid";
 
 const webDevStack = [
         { name: "Google Analytics", icon: SiGoogleanalytics },

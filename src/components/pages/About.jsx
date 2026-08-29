@@ -5,9 +5,9 @@ import {
     FolderGit2,
     MapPin,
 } from "lucide-react";
-import Profile from "../../assets/img/profile.png";
-import IdCard from "../IdCard";
-import CountUp from "../react-bits/CountUp";
+import Profile from "@/assets/img/profile.png";
+import IdCard from "@/components/IdCard";
+import CountUp from "@/components/react-bits/CountUp";
 
 const focusAreas = [
     "System architecture",

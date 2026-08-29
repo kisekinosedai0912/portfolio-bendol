@@ -14,7 +14,7 @@ import {
     SiClerk,
     SiTypescript
 } from "react-icons/si";
-import StackGrid from "./StackGrid";
+import StackGrid from "@/components/pages/page-extensions/StackGrid";
 
 const frontendStack = [
         { name: "HTML5", icon: FaHtml5 },
