@@ -24,11 +24,8 @@ export default function Header() {
             theme === 'light' ? '#f3f7f4' : '#07100d'
         )
 
-        try {
-            localStorage.setItem('portfolio-theme', theme)
-        } catch {
-            // The selected theme still works for this session when storage is unavailable.
-        }
+        localStorage.setItem('portfolio-theme', theme)
+      
     }, [theme])
 
     return (
