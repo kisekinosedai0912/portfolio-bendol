@@ -58,47 +58,7 @@ export default function Contact() {
 
                     <div className="divide-y divide-white/[0.08]">
                         {contacts.map((contact, index) => {
-                            const Icon = contact.icon;
-                            const Wrapper = contact.href ? "a" : "div";
-
-                            return (
-                                <motion.div
-                                    key={contact.label}
-                                    initial={{ opacity: 0, x: 14 }}
-                                    whileInView={{ opacity: 1, x: 0 }}
-                                    viewport={{ once: true, margin: "-40px" }}
-                                    transition={{ duration: 0.38, delay: index * 0.045, ease: 'easeOut' }}
-                                    className="group bg-[#0a1210]/82 transition-colors duration-200 hover:bg-white/[0.04]"
-                                >
-                                    <Wrapper
-                                        href={contact.href || undefined}
-                                        target={contact.href?.startsWith("http") ? "_blank" : undefined}
-                                        rel={contact.href?.startsWith("http") ? "noopener noreferrer" : undefined}
-                                        className="grid min-h-[6rem] grid-cols-[2.25rem_2.75rem_minmax(0,1fr)_auto] items-center gap-3 px-4 py-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-emerald-200/70 sm:grid-cols-[2.75rem_3rem_minmax(0,1fr)_auto] sm:gap-4 sm:px-6 md:px-8"
-                                    >
-                                        <span className="font-mono text-[9px] tracking-[0.18em] text-white/28">
-                                            {String(index + 1).padStart(2, "0")}
-                                        </span>
-
-                                        <span className="flex h-10 w-10 items-center justify-center border border-emerald-200/12 bg-emerald-300/[0.07] text-emerald-300 sm:h-11 sm:w-11">
-                                            <Icon className="h-[1.125rem] w-[1.125rem]" />
-                                        </span>
-
-                                        <span className="min-w-0">
-                                            <span className="block font-mono text-[8px] uppercase tracking-[0.2em] text-white/40">
-                                                {contact.label}
-                                            </span>
-                                            <span className="mt-1 block truncate font-sans text-sm text-white/90 md:text-[15px]">
-                                                {contact.value}
-                                            </span>
-                                        </span>
-
-                                        {contact.href ? (
-                                            <ArrowUpRight className="h-4 w-4 shrink-0 text-white/35 transition-[color,transform] duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-emerald-300" />
-                                        ) : null}
-                                    </Wrapper>
-                                </motion.div>
-                            );
+                            return (<ContactRows key={`${index}-contact-rows`} contact={contact} index={index} />);
                         })}
                     </div>
                 </div>
@@ -110,4 +70,48 @@ export default function Contact() {
             </motion.div>
         </section>
     );
+}
+
+function ContactRows({ contact, index }) {
+    const Icon = contact.icon;
+    const Wrapper = contact.href ? "a" : "div";
+
+    return (
+        <motion.div
+            key={contact.label}
+            initial={{ opacity: 0, x: 14 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.38, delay: index * 0.045, ease: 'easeOut' }}
+            className="group bg-[#0a1210]/82 transition-colors duration-200 hover:bg-white/[0.04]"
+        >
+            <Wrapper
+                href={contact.href || undefined}
+                target={contact.href?.startsWith("http") ? "_blank" : undefined}
+                rel={contact.href?.startsWith("http") ? "noopener noreferrer" : undefined}
+                className="grid min-h-[6rem] grid-cols-[2.25rem_2.75rem_minmax(0,1fr)_auto] items-center gap-3 px-4 py-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-emerald-200/70 sm:grid-cols-[2.75rem_3rem_minmax(0,1fr)_auto] sm:gap-4 sm:px-6 md:px-8"
+            >
+                <span className="font-mono text-[9px] tracking-[0.18em] text-white/28">
+                    {String(index + 1).padStart(2, "0")}
+                </span>
+
+                <span className="flex h-10 w-10 items-center justify-center border border-emerald-200/12 bg-emerald-300/[0.07] text-emerald-300 sm:h-11 sm:w-11">
+                    <Icon className="h-[1.125rem] w-[1.125rem]" />
+                </span>
+
+                <span className="min-w-0">
+                    <span className="block font-mono text-[8px] uppercase tracking-[0.2em] text-white/40">
+                        {contact.label}
+                    </span>
+                    <span className="mt-1 block truncate font-sans text-sm text-white/90 md:text-[15px]">
+                        {contact.value}
+                    </span>
+                </span>
+
+                {contact.href ? (
+                    <ArrowUpRight className="h-4 w-4 shrink-0 text-white/35 transition-[color,transform] duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-emerald-300" />
+                ) : null}
+            </Wrapper>
+        </motion.div>
+    )
 }

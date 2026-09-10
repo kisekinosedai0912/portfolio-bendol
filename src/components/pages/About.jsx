@@ -5,7 +5,7 @@ import {
     FolderGit2,
     MapPin,
 } from "lucide-react";
-import Profile from "@/assets/img/profile.webp";
+import Profile from "@/assets/img/black.webp";
 import IdCard from "@/components/IdCard";
 import CountUp from "@/components/react-bits/CountUp";
 
@@ -103,6 +103,7 @@ export default function About() {
                             <Metric
                                 icon={FolderGit2}
                                 to={13}
+                                suffix="+"
                                 label="Projects completed"
                             />
                             <Metric

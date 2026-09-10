@@ -126,49 +126,55 @@ export default function AllProjectsGallery({ onClose, shouldReduceMotion }) {
                             </p>
                         </div>
 
-                        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                            {projects.map((project, index) => (
-                                <button
-                                    key={project.id}
-                                    ref={(node) => {
-                                        if (node) projectButtonRefs.current.set(project.id, node);
-                                        else projectButtonRefs.current.delete(project.id);
-                                    }}
-                                    type="button"
-                                    onClick={() => openProject(project)}
-                                    aria-label={`View details for ${project.title}`}
-                                    className="group relative overflow-hidden border border-white/[0.1] bg-[#07100d] text-left transition-[border-color,transform,box-shadow] duration-200 hover:-translate-y-1 hover:border-emerald-300/35 hover:shadow-[0_18px_50px_rgba(0,0,0,0.28)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-200/70"
-                                >
-                                    <img
-                                        src={project.image}
-                                        alt=""
-                                        loading="eager"
-                                        decoding="async"
-                                        className="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-[1.025]"
-                                    />
-                                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#07100d] via-[#07100d]/5 to-transparent" />
-                                    <div className="absolute inset-x-0 bottom-0 p-4">
-                                        <div className="mb-2 flex items-center justify-between gap-3">
-                                            <span className="font-mono text-[8px] uppercase tracking-[0.18em] text-emerald-200/65">
-                                                {String(index + 1).padStart(2, "0")}
-                                            </span>
-                                            <span className="inline-flex items-center gap-1.5 font-mono text-[7px] uppercase tracking-[0.14em] text-white/55">
-                                                <span className={`h-1.5 w-1.5 rounded-full ${project.link ? "bg-emerald-300" : "bg-white/40"}`} />
-                                                {project.link ? "Live" : "Private"}
-                                            </span>
-                                        </div>
-                                        <h3 className="line-clamp-2 text-base font-medium leading-snug tracking-[-0.025em] text-white sm:text-lg">
-                                            {project.title}
-                                        </h3>
-                                    </div>
-                                </button>
-                            ))}
-                        </div>
+                        <CardGallery ref={projectButtonRefs} modalHandle={openProject} />
                     </div>
                 )}
             </motion.div>
         </motion.div>
     );
+}
+
+function CardGallery({ ref, modalHandle }) {
+    return (
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {projects.map((project, index) => (
+                <button
+                    key={project.id}
+                    ref={(node) => {
+                        if (node) ref.current.set(project.id, node);
+                        else ref.current.delete(project.id);
+                    }}
+                    type="button"
+                    onClick={() => modalHandle(project)}
+                    aria-label={`View details for ${project.title}`}
+                    className="group relative overflow-hidden border border-white/[0.1] bg-[#07100d] text-left transition-[border-color,transform,box-shadow] duration-200 hover:-translate-y-1 hover:border-emerald-300/35 hover:shadow-[0_18px_50px_rgba(0,0,0,0.28)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-200/70"
+                >
+                    <img
+                        src={project.image}
+                        alt=""
+                        loading="eager"
+                        decoding="async"
+                        className="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-[1.025]"
+                    />
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#07100d] via-[#07100d]/5 to-transparent" />
+                    <div className="absolute inset-x-0 bottom-0 p-4">
+                        <div className="mb-2 flex items-center justify-between gap-3">
+                            <span className="font-mono text-[8px] uppercase tracking-[0.18em] text-emerald-200/65">
+                                {String(index + 1).padStart(2, "0")}
+                            </span>
+                            <span className="inline-flex items-center gap-1.5 font-mono text-[7px] uppercase tracking-[0.14em] text-white/55">
+                                <span className={`h-1.5 w-1.5 rounded-full ${project.link ? "bg-emerald-300" : "bg-white/40"}`} />
+                                {project.link ? "Live" : "Private"}
+                            </span>
+                        </div>
+                        <h3 className="line-clamp-2 text-base font-medium leading-snug tracking-[-0.025em] text-white sm:text-lg">
+                            {project.title}
+                        </h3>
+                    </div>
+                </button>
+            ))}
+        </div>
+    )
 }
 
 function ProjectArchiveDetail({ project, onBack, backButtonRef }) {
