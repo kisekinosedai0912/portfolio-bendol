@@ -4,7 +4,7 @@ import CountUp from "@/components/react-bits/CountUp";
 import { tabs } from '@/assets/data/tabs'
 
 export default function TechStack() {
-    const [activeTab, setActiveTab] = useState("frontend");
+    const [activeTab, setActiveTab] = useState("infra");
     const shouldReduceMotion = useReducedMotion();
     const activeTabData = tabs.find((tab) => tab.id === activeTab) ?? tabs[0];
     const ActiveContent = activeTabData.component;
