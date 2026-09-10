@@ -10,6 +10,6 @@ const softwareDevStack = [
         { name: "Azure DevOps", icon: VscAzureDevops },
 ];
 
-export default function SoftwareDev() {
+export default function Enterprise() {
     return <StackGrid items={softwareDevStack} />;
 }

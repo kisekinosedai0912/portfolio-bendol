@@ -17,23 +17,24 @@ import {
 import StackGrid from "@/components/pages/page-extensions/StackGrid";
 
 const frontendStack = [
-        { name: "HTML5", icon: FaHtml5 },
-        { name: "CSS", icon: FaCss3Alt },
-        { name: "Tailwind", icon: SiTailwindcss },
-        { name: "Bootstrap", icon: FaBootstrap },
-        { name: "Javascript", icon: SiJavascript },
-        { name: "Typescript", icon: SiTypescript },
-        { name: "React", icon: FaReact },
         { name: "Next.js", icon: SiNextdotjs },
-        { name: "Clerk", icon: SiClerk },
-        { name: "Playwright", icon: LiaTheaterMasksSolid },
-        { name: "jQuery", icon: SiJquery },
-        { name: "Axios", icon: SiAxios },
-        { name: "Shadcn UI", icon: SiShadcnui },
-        { name: "MUI", icon: SiMui },
-        { name: "Vite", icon: SiVite },
+        { name: "React", icon: FaReact },
         { name: "TanStack Query", icon: SiReactquery },
         { name: "Zustand", icon: SiRedux },
+        { name: "Typescript", icon: SiTypescript },
+        { name: "Javascript", icon: SiJavascript },
+        { name: "Tailwind", icon: SiTailwindcss },
+        { name: "Clerk", icon: SiClerk },
+        { name: "Axios", icon: SiAxios },
+        { name: "Playwright", icon: LiaTheaterMasksSolid },
+        { name: "Shadcn UI", icon: SiShadcnui },
+        { name: "MUI", icon: SiMui },
+        { name: "React Bits", icon: FaReact },
+        { name: "Vite", icon: SiVite },
+        { name: "jQuery", icon: SiJquery },
+        { name: "HTML5", icon: FaHtml5 },
+        { name: "CSS", icon: FaCss3Alt },
+        { name: "Bootstrap", icon: FaBootstrap },
 ];
 
 export default function Frontend() {

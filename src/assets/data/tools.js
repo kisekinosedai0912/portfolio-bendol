@@ -30,11 +30,11 @@ export const toolGroups = [
         description: "Versioning, packaging, and infrastructure for dependable releases.",
         icon: GitBranch,
         tools: [
+            { name: "Terraform", icon: SiTerraform, role: "Infrastructure" },
+            { name: "Docker", icon: FaDocker, role: "Containers" },
             { name: "Git", icon: FaGitAlt, role: "Version control" },
             { name: "GitHub", icon: FaGithubSquare, role: "Collaboration" },
             { name: "GitHub Desktop", icon: FaSquareGithub, role: "Git client" },
-            { name: "Docker", icon: FaDocker, role: "Containers" },
-            { name: "Terraform", icon: SiTerraform, role: "Infrastructure" },
         ],
     },
     {
@@ -43,8 +43,8 @@ export const toolGroups = [
         description: "Signals that keep products observable, measurable, and healthy.",
         icon: ScanSearch,
         tools: [
-            { name: "Google Analytics", icon: SiGoogleanalytics, role: "Product analytics" },
             { name: "Sentry", icon: SiSentry, role: "Error monitoring" },
+            { name: "Google Analytics", icon: SiGoogleanalytics, role: "Product analytics" },
         ],
     },
 ];
