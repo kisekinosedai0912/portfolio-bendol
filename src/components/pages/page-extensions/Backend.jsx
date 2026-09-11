@@ -9,7 +9,6 @@ import {
     SiPostman,
     SiSwagger
 } from "react-icons/si";
-import { DiRedis } from "react-icons/di";
 import { BsBing } from "react-icons/bs";
 import StackGrid from "@/components/pages/page-extensions/StackGrid";
 
@@ -20,7 +19,6 @@ const backendStack = [
         { name: "Express Js", icon: SiExpress },
         { name: "Laravel", icon: FaLaravel },
         { name: "Sentry", icon: SiSentry },
-        { name: "Redis", icon: DiRedis },
         { name: "Ngrok", icon: SiNgrok },
         { name: "Postman", icon: SiPostman },
         { name: "Swagger", icon: SiSwagger },
