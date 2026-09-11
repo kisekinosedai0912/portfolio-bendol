@@ -23,7 +23,7 @@ export const tabs = [
         description: "Languages, frameworks, and services for building reliable application backends.",
         icon: Server,
         component: Backend,
-        count: 13,
+        count: 12,
     },
     {
         id: "frontend",
